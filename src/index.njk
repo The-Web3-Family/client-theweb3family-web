@@ -1,8 +1,9 @@
 ---
 layout: base.njk
-title: The Web3 Family | You’re the one with the ideas, I make them exist
+title: The Web3 Family | You’re the one with the mission, I make them exist
 description: Christopher Clarke works with people who started a nonprofit after a full career in something else. You talk, I build. Something lands every Friday. $3,000 a month, two hours a week.
 ---
+{% from "cta.njk" import button %}
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
@@ -14,19 +15,12 @@ description: Christopher Clarke works with people who started a nonprofit after 
       </div>
     </div>
 
-    <h1>You’re the one with the ideas.<br>I’m the one who makes them exist.</h1>
+    <h1>You’re the one with the mission.<br>I’m the one who makes them exist.</h1>
 
-    <p class="subhead">I work with people who started a nonprofit after a full career in something else. You talk, I build, and every Friday something lands that you can hand to somebody.</p>
+    <p class="subhead">I just make sure that every Friday you see the mission moving forward.</p>
 
-    <p><strong>$<span class="fig-lining">3,000</span> a month. Two hours a week. Month to month.</strong></p>
-
-    <div class="actions">
-      <a class="cta" href="#booking">
-        <span>Book my 15 minute call</span>
-      </a>
-      <p class="call-alt">or call <a href="tel:+13107036003">310-703-6003</a></p>
-    </div>
-    <p class="reassure">Work has landed every Friday since March. Slow weeks included.</p>
+    {{ button() }}
+    <p class="reassure">Month to month, Cancel anytime.</p>
   </div>
 </div>
 
@@ -35,13 +29,13 @@ description: Christopher Clarke works with people who started a nonprofit after 
   <div class="wrap">
     <div class="split">
       <div class="split-label">
-        <span class="eyebrow">The problem</span>
-        <h2>The ideas keep coming.</h2>
+        <span class="eyebrow">The Problem:</span>
+        <h2>Your ideas keep coming.</h2>
       </div>
       <div class="split-body">
-        <p>You spent a lifetime becoming the person other people ask. The philosophy, the catalog, the curriculum, the thing that took a lifetime to learn.</p>
-        <p>And it keeps coming. A song idea at eleven at night. A framework you could teach in your sleep. A closet full of photographs.</p>
-        <p style="margin-bottom:0">Most of it lives in your head, in your voice, on index cards. You want it out where a stranger can find it.</p>
+        <p>You’ve spent a lifetime preparing to bring your vision to life.</p>
+        <p>You already know the audience.</p>
+        <p style="margin-bottom:0">You’re just missing one piece.</p>
       </div>
     </div>
   </div>
@@ -55,9 +49,76 @@ description: Christopher Clarke works with people who started a nonprofit after 
         <h2>What I do</h2>
       </div>
       <div class="split-body">
-        <p><strong>You stay the one with the ideas.</strong> You talk, I ask questions, and you correct me when I get it wrong. Your words, your judgment, your call. I run the machines.</p>
-        <p><strong>Work arrives every Friday.</strong> Finished, and explained in plain words. You look it over. I keep going.</p>
-        <p style="margin-bottom:0"><strong>Your organization owns all of it.</strong> Everything lands in a library with your organization’s name on it. It stacks up week after week, in one place and in order.</p>
+        <p><strong>I listen to you talk.</strong> You talk, I ask questions, and you correct me when I get it wrong. Your words, your judgment, your call. I run the machines.</p>
+        <p><strong>I work behind the scenes.</strong> Finished, and explained in plain words. You look it over. I keep going.</p>
+        <p style="margin-bottom:0"><strong>I deliver the work every Friday.</strong> Everything lands in a library with your organization’s name on it. It stacks up week after week, in one place and in order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT CHANGES -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div class="split-label">
+        <h2>What is delivered</h2>
+      </div>
+      <div class="split-body">
+        <p style="margin-bottom:0">Your organization will have a history of emails and a dedicated Google Drive for you to share.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="band">
+  <div class="wrap">
+    <h2>Clients like you</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="eyebrow-person"><span class="person-name">Arthur Flatto</span><span class="org-name">Love Aid Foundation</span></span>
+        <h3>A nonprofit, combining music and charity</h3>
+        <a class="card-site" href="https://loveaid.foundation" target="_blank" rel="noopener">loveaid.foundation<span class="link-out-icon" aria-hidden="true">&#8599;</span></a>
+        <a class="card-btn" href="/case-studies/love-aid-foundation/">Learn More</a>
+      </div>
+      <div class="card">
+        <span class="eyebrow-person"><span class="person-name">Howard Eley</span><span class="org-name">Ask G-Pop</span></span>
+        <h3>A program enabling youth mentorship by seniors</h3>
+        <a class="card-site" href="https://askgpop.online" target="_blank" rel="noopener">askgpop.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a>
+        <a class="card-btn" href="/case-studies/ask-g-pop/">Learn More</a>
+      </div>
+      <div class="card">
+        <span class="eyebrow-person"><span class="person-name">Anthony Taylor</span><span class="org-name">Rap Frogs</span></span>
+        <h3>Brand refresh of a 20-year crime prevention IP</h3>
+        <a class="card-site" href="https://rapfrogs.online" target="_blank" rel="noopener">rapfrogs.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a>
+        <a class="card-btn" href="/case-studies/rap-frogs/">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRAIGHT ANSWERS -->
+<section>
+  <div class="wrap">
+    <h2>Have Questions?</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What does the Web3 Family mean?</h3>
+        <p>Web 3 is a term coined to explain the current generation of content creation on the internet. <strong>You own everything I make.</strong></p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens if we stop?</h3>
+        <p>You still keep everything.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What do you need from me?</h3>
+        <p>No pressure, just show up to the meetings you set.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What do I get delivered?</h3>
+        <p>Your Friday emails.</p>
       </div>
     </div>
   </div>
@@ -73,90 +134,7 @@ description: Christopher Clarke works with people who started a nonprofit after 
         <p class="figure-sub">a month</p>
       </div>
       <div>
-        <p>Two hours a week, on a standing appointment. Month to month, so one email ends it whenever you decide.</p>
-        <p style="margin-bottom:0">That covers the talking, the looking things up, the building, and the thing that lands on Friday. Whatever the week calls for is what gets made.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section>
-  <div class="wrap">
-    <h2>How it works</h2>
-    <ol class="steps">
-      <li>
-        <span class="step-num" aria-hidden="true">1</span>
-        <div><h3>We talk.</h3><p>An hour at a time, the same day every week. You talk, I listen and ask.</p></div>
-      </li>
-      <li>
-        <span class="step-num" aria-hidden="true">2</span>
-        <div><h3>I see what you mean.</h3><p>I go look things up. I plan the week around what you told me.</p></div>
-      </li>
-      <li>
-        <span class="step-num" aria-hidden="true">3</span>
-        <div><h3>I go build it.</h3><p>On my own time, with whatever tool does the job.</p></div>
-      </li>
-      <li>
-        <span class="step-num" aria-hidden="true">4</span>
-        <div><h3>Friday, it lands.</h3><p>Finished, explained, and sitting in a library your organization owns.</p></div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section class="band">
-  <div class="wrap">
-    <h2>The work so far</h2>
-    <p>Three clients. All three still running. Real names, real work, and you can read all of it below.</p>
-    <div class="cards">
-      <a class="card" href="/case-studies/love-aid-foundation/">
-        <span class="eyebrow">Arthur Flatto &middot; Love Aid Foundation</span>
-        <h3>A mission that now runs on a system his whole team can drive</h3>
-        <p class="card-stat"><span class="card-stat-num">11</span><span class="card-stat-label">things delivered</span></p>
-        <p>Nonprofit media and donation platform. Client since March 2026.</p>
-      </a>
-      <a class="card" href="/case-studies/ask-g-pop/">
-        <span class="eyebrow">Howard Eley &middot; Ask G-Pop</span>
-        <h3>A lifetime of wisdom, now sitting in a kid&rsquo;s hand</h3>
-        <p class="card-stat"><span class="card-stat-num">$1,000</span><span class="card-stat-label">saved on one decision</span></p>
-        <p>Youth program, an app, and an album. Client since March 2026.</p>
-      </a>
-      <a class="card" href="/case-studies/rap-frogs/">
-        <span class="eyebrow">Anthony Taylor &middot; Rap Frogs</span>
-        <h3>A character with a real path to grant money underneath it</h3>
-        <p class="card-stat"><span class="card-stat-num">4&rarr;1</span><span class="card-stat-label">calendars to one meeting</span></p>
-        <p>Licensing and funding structure. Client since June 2026.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- STRAIGHT ANSWERS -->
-<section>
-  <div class="wrap">
-    <h2>Straight answers</h2>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <h3>Why The Web3 Family?</h3>
-        <div>
-          <p>Web 1 was pages you read. Web 2 was pages you posted to, and somebody else kept what you made. Web 3 is a newer term for a simple idea: what you make belongs to you.</p>
-          <p>That idea is the whole reason for the name. Family is the plain part. You get one person who knows your work and stays with it.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <h3>What happens if I stop?</h3>
-        <p>You keep all of it. Every file, every account, every password, already in your organization’s name.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What do you need from me?</h3>
-        <p>Two hours a week and your honest opinion. You talk. Friday you look over what came out and tell me what to fix.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Where does all of this end up?</h3>
-        <p>In one place, in order, under your organization’s name. After a year you have everything your organization has said, made, and figured out, and the people who come after you can find it.</p>
+        <p style="margin-bottom:0">For your own dedicated slot on my calendar, the Friday emails, and your own personal Google Drive with everything built so far.</p>
       </div>
     </div>
   </div>
@@ -168,18 +146,7 @@ description: Christopher Clarke works with people who started a nonprofit after 
     <h2>Fifteen minutes on the phone, and you decide from there.</h2>
 
     <div class="booking-wrap">
-      <div class="panel">
-        <div class="panel-head">Book my 15 minute call</div>
-        <div class="panel-body panel-body-embed">
-          <div class="calendly-inline-widget" data-url="https://calendly.com/aweb3dad/15-minute-greeting" style="min-width:320px;height:700px;"></div>
-          <noscript>
-            <p style="padding:26px">Turn on JavaScript to see the calendar here, or <a href="https://calendly.com/aweb3dad/15-minute-greeting">open the scheduling page directly</a>.</p>
-          </noscript>
-        </div>
-      </div>
-      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-      <a class="tel" style="display:flex;width:100%" href="tel:+13107036003">Call 310-703-6003</a>
+      {{ button(showPhone=false) }}
     </div>
   </div>
 </section>

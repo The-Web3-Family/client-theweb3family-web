@@ -2,20 +2,15 @@
 layout: base.njk
 title: Ask G-Pop | The Web3 Family
 description: A youth program, an app, and a ten-track album, built one Friday at a time. 25 weeks running.
-calendlyPopup: true
 ---
+{% from "cta.njk" import button %}
 <!-- INTRO -->
 <section>
   <div class="wrap">
     <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/case-studies/">Case studies</a> &rarr; Ask G-Pop</p>
-    <span class="eyebrow">Howard Eley &middot; Ask G-Pop</span>
+    <span class="eyebrow-person"><span class="person-name">Howard Eley</span><span class="org-name">Ask G-Pop</span></span>
     <h1>A lifetime of wisdom, now sitting in a kid&rsquo;s hand</h1>
     <div class="case-facts">
-      <div>
-        <span class="case-fact-label">Client since</span>
-        <span class="case-fact-value">March 2026</span>
-        <span class="case-fact-sub">5 months and running</span>
-      </div>
       <div>
         <span class="case-fact-label">Client type</span>
         <span class="case-fact-value">Youth program, app, and album</span>
@@ -51,13 +46,7 @@ calendlyPopup: true
       </div>
     </div>
 
-    <div class="content-cta">
-      <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
-        <span>Book my 15 minute call</span>
-      </a>
-      <p class="call-alt">or call <a href="tel:+13107036003">310-703-6003</a></p>
-      <p class="risk-reversal">Month to month. Everything built is yours.</p>
-    </div>
+    {{ button("content-cta", true) }}
   </div>
 </section>
 

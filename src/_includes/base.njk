@@ -10,8 +10,29 @@
   The photo is real: src/christopher.jpg, passed through by
   .eleventy.js. The phone number is real: 310-703-6003, appearing in
   the hero, the last action section, and the footer below. The footer
-  also carries the real email, christopher@theweb3family.com. The
-  booking panel in src/index.njk holds a real Calendly inline embed.
+  also carries the real email, christopher@theweb3family.com. Every
+  "Book a free strategy call" button on the site, including the last
+  action section in src/index.njk and the footer below, shares one
+  macro (src/_includes/cta.njk) and opens Calendly's real popup
+  scheduler. Calendly's popup widget assets load in <head> on every
+  page, since the footer's own booking button needs them everywhere
+  the footer appears. The button read "Book my 15 minute call," then
+  "Book my meeting with you.," before landing on this text; each
+  change was a direct request, most recently from a September 2026
+  build instruction.
+
+  HEADER NAVIGATION
+     The header used to be logo-only. Christopher asked directly for a
+     hamburger menu, so the site no longer has "nothing to click but
+     the phone number and the one call to action" as an absolute rule;
+     treat the header nav as settled, but still don't add navigation
+     links anywhere else (a page footer, inline in body copy) without
+     asking first. It now holds four links: case studies, articles,
+     contact, and book a meeting (the popup) — contact was added after
+     the first three, once src/contact.njk existed to link to. The menu
+     itself is a <details>/<summary> disclosure, the same JS-free
+     pattern the case study pages already used for their weekly log,
+     so it stays inside the site's zero-client-JS rule.
 
   ANALYTICS
      Microsoft Clarity is loaded in <head> above, on every page. This
@@ -105,14 +126,15 @@
      write the page's own sections below the front matter using the same
      rhythm as index.njk: a <section> with a top border (or class="band"
      for the alternate ground), a .wrap container, and either .split
-     prose or a .cards grid. The header and footer above come along
-     automatically. Do not add navigation links in the header for the new
-     page. That decision needs an explicit conversation first, since the
-     whole site was built around having nothing to click but the phone
-     number and the one call to action.
+     prose or a .cards grid. The header, footer, and hamburger menu above
+     come along automatically. Do not add the new page into the
+     hamburger menu itself without asking first: its four links (case
+     studies, articles, contact, book a meeting) were Christopher's own
+     explicit list, not a general "add every page" rule.
 
 =============================================================================
 -->
+{% from "cta.njk" import button %}
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -125,10 +147,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-{% if calendlyPopup %}
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-{% endif %}
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -139,15 +159,49 @@
 </head>
 <body>
 
-<!-- HEADER. Logo only, no separate nav. The logo itself links home. -->
+<!-- HEADER. The logo still links home. A hamburger menu (case studies,
+     articles, book a meeting) sits next to it now, per Christopher's
+     direct request. Built with <details>/<summary>, the same zero-JS
+     disclosure pattern the case study pages already used for their
+     weekly log, so it opens and closes without any client-side
+     JavaScript. -->
 <header>
-  <a class="wrap brand" href="/">
-    <div class="mark">CC</div>
-    <div>
-      <b>Christopher Clarke</b>
-      <span>The Web3 Family</span>
-    </div>
-  </a>
+  <div class="wrap header-row">
+    <a class="brand" href="/">
+      <div class="mark">CC</div>
+      <div>
+        <b>Christopher Clarke</b>
+        <span>The Web3 Family</span>
+      </div>
+    </a>
+    <!-- Desktop: a plain always-visible nav, per direct request
+         ("can we have a better menu on desktop?"). Hidden below the
+         760px breakpoint via CSS. -->
+    <nav class="nav-inline" aria-label="Site">
+      <a href="/case-studies/">Case studies</a>
+      <a href="/articles/">Articles</a>
+      <a href="/contact/">Contact</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
+    </nav>
+    <!-- Mobile: the hamburger disclosure. Hidden at 760px and up, where
+         .nav-inline takes over. Kept as a second copy of the same four
+         links rather than trying to force a closed <details> element's
+         content visible via CSS: Chromium keeps an internal collapsed
+         layout state for closed <details> regardless of a `display`
+         override, which was tried first and silently broke the layout
+         (the nav rendered with zero width and overflowed off-screen). -->
+    <details class="nav-menu">
+      <summary class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </summary>
+      <nav class="nav-panel" aria-label="Site">
+        <a href="/case-studies/">Case studies</a>
+        <a href="/articles/">Articles</a>
+        <a href="/contact/">Contact</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
+      </nav>
+    </details>
+  </div>
 </header>
 
 <main>
@@ -155,12 +209,15 @@
 </main>
 
 <footer>
-  <div class="wrap">
-    <p class="footer-name">Christopher Clarke</p>
-    <p class="footer-line">The Web3 Family</p>
-    <p class="footer-line">Inglewood, California</p>
-    <p class="footer-line"><a href="tel:+13107036003">310-703-6003</a></p>
-    <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+  <div class="wrap footer-cols">
+    <div class="footer-info">
+      <p class="footer-name">Christopher Clarke</p>
+      <p class="footer-line">The Web3 Family</p>
+      <p class="footer-line">Inglewood, California</p>
+      <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
+      <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+    </div>
+    {{ button("footer-cta actions") }}
   </div>
 </footer>
 

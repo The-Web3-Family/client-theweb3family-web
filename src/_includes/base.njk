@@ -174,6 +174,22 @@
         <span>The Web3 Family</span>
       </div>
     </a>
+    <!-- Desktop: a plain always-visible nav, per direct request
+         ("can we have a better menu on desktop?"). Hidden below the
+         760px breakpoint via CSS. -->
+    <nav class="nav-inline" aria-label="Site">
+      <a href="/case-studies/">Case studies</a>
+      <a href="/articles/">Articles</a>
+      <a href="/contact/">Contact</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
+    </nav>
+    <!-- Mobile: the hamburger disclosure. Hidden at 760px and up, where
+         .nav-inline takes over. Kept as a second copy of the same four
+         links rather than trying to force a closed <details> element's
+         content visible via CSS: Chromium keeps an internal collapsed
+         layout state for closed <details> regardless of a `display`
+         override, which was tried first and silently broke the layout
+         (the nav rendered with zero width and overflowed off-screen). -->
     <details class="nav-menu">
       <summary class="nav-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -182,7 +198,7 @@
         <a href="/case-studies/">Case studies</a>
         <a href="/articles/">Articles</a>
         <a href="/contact/">Contact</a>
-        <a href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
       </nav>
     </details>
   </div>

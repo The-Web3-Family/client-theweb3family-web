@@ -3,16 +3,19 @@
   button appears (hero, last action section, footer, case study pages),
   per Christopher's direct request. Always opens Calendly's real popup
   scheduler; never links to an anchor. Pass riskReversal=true for the
-  case study pages' third disclaimer line. Button text is "Book a free
-  strategy call," changed from "Book my meeting with you." on direct
-  request (build instruction from a September 2026 coaching session).
+  case study pages' third disclaimer line. Pass showPhone=false to omit
+  the "or call/text" line, used once (the homepage's final booking
+  section) on direct request, since the number already appears earlier
+  on that same page. Button text is "Book a free strategy call,"
+  changed from "Book my meeting with you." on direct request (build
+  instruction from a September 2026 coaching session).
 #}
-{% macro button(wrapClass="actions", riskReversal=false) %}
+{% macro button(wrapClass="actions", riskReversal=false, showPhone=true) %}
 <div class="{{ wrapClass }}">
   <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
     <span>Book a free strategy call</span>
   </a>
-  <p class="call-alt">or call/text <a href="tel:+13107036003">(310) 703-6003</a></p>
+  {% if showPhone %}<p class="call-alt">or call/text <a href="tel:+13107036003">(310) 703-6003</a></p>{% endif %}
   {% if riskReversal %}<p class="risk-reversal">Month to month. Everything built is yours.</p>{% endif %}
 </div>
 {% endmacro %}

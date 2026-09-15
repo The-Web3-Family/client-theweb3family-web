@@ -11,20 +11,25 @@
   .eleventy.js. The phone number is real: 310-703-6003, appearing in
   the hero, the last action section, and the footer below. The footer
   also carries the real email, christopher@theweb3family.com. Every
-  "Book my meeting with you." button on the site, including the last
+  "Book a free strategy call" button on the site, including the last
   action section in src/index.njk and the footer below, shares one
   macro (src/_includes/cta.njk) and opens Calendly's real popup
   scheduler. Calendly's popup widget assets load in <head> on every
   page, since the footer's own booking button needs them everywhere
-  the footer appears.
+  the footer appears. The button read "Book my 15 minute call," then
+  "Book my meeting with you.," before landing on this text; each
+  change was a direct request, most recently from a September 2026
+  build instruction.
 
   HEADER NAVIGATION
      The header used to be logo-only. Christopher asked directly for a
-     hamburger menu (case studies, articles, book a meeting), so the
-     site no longer has "nothing to click but the phone number and the
-     one call to action" as an absolute rule; treat the header nav as
-     settled, but still don't add navigation links anywhere else (a
-     page footer, inline in body copy) without asking first. The menu
+     hamburger menu, so the site no longer has "nothing to click but
+     the phone number and the one call to action" as an absolute rule;
+     treat the header nav as settled, but still don't add navigation
+     links anywhere else (a page footer, inline in body copy) without
+     asking first. It now holds four links: case studies, articles,
+     contact, and book a meeting (the popup) — contact was added after
+     the first three, once src/contact.njk existed to link to. The menu
      itself is a <details>/<summary> disclosure, the same JS-free
      pattern the case study pages already used for their weekly log,
      so it stays inside the site's zero-client-JS rule.
@@ -123,9 +128,9 @@
      for the alternate ground), a .wrap container, and either .split
      prose or a .cards grid. The header, footer, and hamburger menu above
      come along automatically. Do not add the new page into the
-     hamburger menu itself without asking first: its three links (case
-     studies, articles, book a meeting) were Christopher's own explicit
-     list, not a general "add every page" rule.
+     hamburger menu itself without asking first: its four links (case
+     studies, articles, contact, book a meeting) were Christopher's own
+     explicit list, not a general "add every page" rule.
 
 =============================================================================
 -->
@@ -176,7 +181,8 @@
       <nav class="nav-panel" aria-label="Site">
         <a href="/case-studies/">Case studies</a>
         <a href="/articles/">Articles</a>
-        <a href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book my meeting with you.</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
       </nav>
     </details>
   </div>

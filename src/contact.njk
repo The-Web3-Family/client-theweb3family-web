@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: Contact | The Web3 Family
+description: Reach Christopher Clarke directly, or book a free strategy call.
+---
+{% from "cta.njk" import button %}
+<!-- CONTACT -->
+<section>
+  <div class="wrap">
+    <h1>Contact</h1>
+    <p class="subhead">Call, text, email, or book a free strategy call. Whatever is easiest.</p>
+
+    <!--
+      ZipForm embed goes here, per direct request. Not wired in yet:
+      this needs the real embed snippet (or hosted form URL) from
+      Christopher's own ZipForm account, which nobody but him can pull.
+      Loading it will also be a deliberate, confirmed exception to the
+      site's zero-client-JS rule (section 9), the same kind of
+      documented tradeoff Microsoft Clarity already is, once the real
+      snippet is in hand.
+    -->
+    <div class="prose">
+      <p>Reach me directly:</p>
+      <p><a href="tel:+13107036003">(310) 703-6003</a>, call or text</p>
+      <p style="margin-bottom:0"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+    </div>
+
+    {{ button() }}
+  </div>
+</section>

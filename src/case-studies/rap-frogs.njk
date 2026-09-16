@@ -2,20 +2,15 @@
 layout: base.njk
 title: Rap Frogs | The Web3 Family
 description: A children’s character with a licensing structure and a real path to grant money. 11 weeks running.
-calendlyPopup: true
 ---
+{% from "cta.njk" import button %}
 <!-- INTRO -->
 <section>
   <div class="wrap">
     <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/case-studies/">Case studies</a> &rarr; Rap Frogs</p>
-    <span class="eyebrow">Anthony Taylor &middot; Rap Frogs</span>
+    <span class="eyebrow-person"><span class="person-name">Anthony Taylor</span><span class="org-name">Rap Frogs</span></span>
     <h1>A character with a real path to grant money underneath it</h1>
     <div class="case-facts">
-      <div>
-        <span class="case-fact-label">Client since</span>
-        <span class="case-fact-value">June 2026</span>
-        <span class="case-fact-sub">2 months and running</span>
-      </div>
       <div>
         <span class="case-fact-label">Client type</span>
         <span class="case-fact-value">Children&rsquo;s program, licensing &amp; funding structure</span>
@@ -48,13 +43,7 @@ calendlyPopup: true
       </div>
     </div>
 
-    <div class="content-cta">
-      <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
-        <span>Book my 15 minute call</span>
-      </a>
-      <p class="call-alt">or call <a href="tel:+13107036003">310-703-6003</a></p>
-      <p class="risk-reversal">Month to month. Everything built is yours.</p>
-    </div>
+    {{ button("content-cta", true) }}
   </div>
 </section>
 

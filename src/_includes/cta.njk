@@ -6,9 +6,13 @@
   case study pages' third disclaimer line. Pass showPhone=false to omit
   the "or call/text" line, used once (the homepage's final booking
   section) on direct request, since the number already appears earlier
-  on that same page. Button text is "Book a free strategy call,"
-  changed from "Book my meeting with you." on direct request (build
-  instruction from a September 2026 coaching session).
+  on that same page. The "or email me directly" mailto line, added on a
+  September 2026 build instruction, always shows regardless of
+  showPhone: unlike the phone number, the email address isn't shown
+  anywhere earlier on the homepage by the time you reach that section.
+  Button text is "Book a free strategy call," changed from "Book my
+  meeting with you." on direct request (build instruction from a
+  September 2026 coaching session).
 #}
 {% macro button(wrapClass="actions", riskReversal=false, showPhone=true) %}
 <div class="{{ wrapClass }}">
@@ -16,6 +20,7 @@
     <span>Book a free strategy call</span>
   </a>
   {% if showPhone %}<p class="call-alt">or call/text <a href="tel:+13107036003">(310) 703-6003</a></p>{% endif %}
+  <p class="call-alt">or <a href="mailto:christopher@theweb3family.com?subject=Booking%20a%20call">email me directly</a></p>
   {% if riskReversal %}<p class="risk-reversal">Month to month. Everything built is yours.</p>{% endif %}
 </div>
 {% endmacro %}

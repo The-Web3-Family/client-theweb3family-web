@@ -156,6 +156,46 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "tnn1clsc3d");
 </script>
+{% if page.url == "/" %}
+<!-- Organization + Person JSON-LD, homepage only, per a September 2026
+     build instruction. This is inert structured data for crawlers, not
+     executable script, so it doesn't touch the site's zero-JS rule. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://theweb3family.com/#organization",
+  "name": "The Web3 Family",
+  "description": "A one-person studio in Inglewood, California that builds websites, brand identity, pitch decks, apps, donation platforms, and fundraising infrastructure for nonprofits.",
+  "disambiguatingDescription": "The Web3 Family is a nonprofit-focused design and build studio. It is not a cryptocurrency, blockchain, or Web3 software company.",
+  "url": "https://theweb3family.com",
+  "email": "christopher@theweb3family.com",
+  "telephone": "+1-310-703-6003",
+  "founder": { "@id": "https://theweb3family.com/#christopher" },
+  "areaServed": "United States",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Inglewood",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "knowsAbout": ["nonprofit website design", "brand identity", "pitch decks", "donation platforms", "mobile apps", "fundraising strategy"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://theweb3family.com/#christopher",
+  "name": "Christopher Clarke",
+  "jobTitle": "Founder",
+  "worksFor": { "@id": "https://theweb3family.com/#organization" },
+  "email": "christopher@theweb3family.com",
+  "telephone": "+1-310-703-6003",
+  "url": "https://theweb3family.com"
+}
+</script>
+{% endif %}
 </head>
 <body>
 
@@ -220,6 +260,21 @@
     {{ button("footer-cta actions") }}
   </div>
 </footer>
+
+<!--
+  GoatCounter pixel, per a September 2026 build instruction: path-level
+  analytics with zero JavaScript (a single hidden 1x1 <img>, no script).
+  Commented out until Christopher creates the free GoatCounter account
+  and supplies the real subdomain: don't invent one to fill this in, per
+  the same rule that's kept a fake ZipForm/analytics code off the site
+  elsewhere. Once real, uncomment this on every page (move it outside
+  the comment, below), and it becomes a fourth external dependency
+  alongside Google Fonts, Calendly, and Clarity (section 9).
+
+  <img src="https://MYCODE.goatcounter.com/count?p={{ page.url }}&t={{ title }}"
+       alt="" aria-hidden="true" width="1" height="1"
+       style="position:absolute;left:-9999px">
+-->
 
 </body>
 </html>

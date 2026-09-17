@@ -7,7 +7,13 @@
   --charcoal:#181C1B;
   --muted:#2f3d38;
   --hair:rgba(24,28,27,.2);
-  --gap:clamp(48px,9vw,84px);
+  /* spacing scale, added on a September 2026 build instruction to
+     replace one-off pixel values with a shared set of steps */
+  --space-1:4px;  --space-2:8px;  --space-3:12px;
+  --space-4:16px; --space-5:24px; --space-6:32px;
+  --space-7:48px; --space-8:64px; --space-9:80px;
+  --space-10:96px; --space-11:128px;
+  --gap:var(--space-7);
   --grain:url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22160%22%20height=%22160%22%3E%3Cfilter%20id=%22g%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.85%22%20numOctaves=%223%22/%3E%3C/filter%3E%3Crect%20width=%22160%22%20height=%22160%22%20filter=%22url%28%23g%29%22%20opacity=%220.05%22/%3E%3C/svg%3E');
 }
 *{box-sizing:border-box}
@@ -22,7 +28,7 @@ body{
 /* the one number on the page set in lining figures, per the copy notes */
 .fig-lining{font-variant-numeric:lining-nums}
 h1,h2,h3{font-family:'Lora',Georgia,serif;color:var(--forest);margin:0}
-p{margin:0 0 1.15rem}
+p{margin:0 0 var(--space-5)}
 strong{font-weight:700;color:var(--forest)}
 a{color:var(--forest);text-underline-offset:3px;text-decoration-thickness:2px}
 a:hover{color:var(--rust)}
@@ -55,11 +61,11 @@ section{padding:var(--gap) 0}
 
 h2{
   font-size:clamp(29px,6vw,38px);font-weight:600;line-height:1.18;
-  letter-spacing:-.01em;margin-bottom:14px;
+  letter-spacing:-.01em;margin-bottom:var(--space-4);
 }
 h2::after{
   content:"";display:block;width:58px;height:4px;border-radius:2px;
-  background:var(--orange);margin:16px 0 22px;
+  background:var(--orange);margin:var(--space-4) 0 var(--space-6);
 }
 h3{font-size:21px;line-height:1.3;margin-bottom:6px}
 
@@ -180,11 +186,17 @@ p.figure{
    nesting two <a> tags inside one outer <a> is invalid HTML. Hovering
    anywhere in the card, including the button, still lifts the whole
    card, since CSS :hover on a parent fires from a hover anywhere
-   inside it. */
-.cards{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px}
+   inside it. Each card is a flex column with the button pinned to the
+   bottom via margin-top:auto, not absolutely positioned: that way,
+   when the row's cards stretch to match the tallest one (the grid's
+   default align-items:stretch), every button still lands on the same
+   line, since it's laid out relative to its own now-equal-height
+   card rather than positioned at a fixed offset that only worked if
+   every card already happened to be the same height. */
+.cards{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px;align-items:stretch}
 .card{
   background:var(--cream);border:1px solid var(--hair);border-top:4px solid var(--orange);
-  padding:22px;padding-bottom:80px;position:relative;
+  padding:22px;display:flex;flex-direction:column;
   transition:transform .2s ease-out,box-shadow .2s ease-out;
 }
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
@@ -195,7 +207,7 @@ p.figure{
 }
 .link-out-icon{font-size:16px}
 .card-btn{
-  position:absolute;right:18px;bottom:18px;min-height:48px;padding:0 20px;
+  align-self:flex-end;margin-top:auto;min-height:48px;padding:0 20px;
   display:inline-flex;align-items:center;justify-content:center;
   background:var(--orange);color:var(--charcoal);font-weight:700;font-size:18px;
   border:2px solid var(--forest);border-radius:3px;text-decoration:none;
@@ -217,14 +229,15 @@ footer p:last-child{margin-bottom:0}
 .footer-line{font-size:18px;color:#cbbfb3}
 .footer-line a{color:#cbbfb3;text-decoration-thickness:2px}
 .footer-cols{display:flex;flex-direction:column;gap:32px}
+.footer-clients-label{color:var(--cream);font-weight:700}
 .footer-cta{margin-bottom:0}
 .footer-cta .call-alt{color:#cbbfb3;margin:0}
 .footer-cta .call-alt a{color:var(--cream);text-decoration-thickness:2px}
 
 @media (min-width:760px){
-  .wrap{max-width:1000px;padding:0 48px}
+  .wrap{max-width:1100px;padding:0 var(--space-8)}
   .footer-cols{flex-direction:row;justify-content:space-between;align-items:center;gap:40px}
-  section{padding:calc(var(--gap) * 1.15) 0}
+  :root{--gap:var(--space-10)}
   h2,.crosslinks-heading{font-size:clamp(34px,3.2vw,38px)}
 
   .split{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start}
@@ -253,10 +266,10 @@ footer p:last-child{margin-bottom:0}
   .price-grid p{max-width:none}
 
   .cards{grid-template-columns:1fr 1fr 1fr;gap:22px}
-  .card{padding:28px;padding-bottom:84px}
+  .card{padding:28px}
 
   .faq-list{max-width:900px}
-  .faq-item{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}
+  .faq-item{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
 
   .booking-wrap{max-width:620px}
 }
@@ -396,3 +409,8 @@ footer p:last-child{margin-bottom:0}
 }
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* hides the GoatCounter analytics pixel (base.njk) from a printed page,
+   once it's live; harmless to keep while the pixel itself is still
+   commented out pending Christopher's real account code (see section 8) */
+@media print{img[aria-hidden="true"]{display:none}}

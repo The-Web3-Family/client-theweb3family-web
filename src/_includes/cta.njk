@@ -10,14 +10,16 @@
   September 2026 build instruction, always shows regardless of
   showPhone: unlike the phone number, the email address isn't shown
   anywhere earlier on the homepage by the time you reach that section.
-  Button text is "Book a free strategy call," changed from "Book my
-  meeting with you." on direct request (build instruction from a
-  September 2026 coaching session).
+  Button text is "Book a call with me," changed from "Book a free
+  strategy call" (itself changed from "Book my meeting with you," itself
+  changed from the original "Book my 15 minute call") on direct request,
+  via a Vercel toolbar comment on the header nav CTA reading "Book a call
+  with me - across all pages."
 #}
 {% macro button(wrapClass="actions", riskReversal=false, showPhone=true) %}
 <div class="{{ wrapClass }}">
   <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
-    <span>Book a free strategy call</span>
+    <span>Book a call with me</span>
   </a>
   {% if showPhone %}<p class="call-alt">or call/text <a href="tel:+13107036003">(310) 703-6003</a></p>{% endif %}
   <p class="call-alt">or <a href="mailto:christopher@theweb3family.com?subject=Booking%20a%20call">email me directly</a></p>

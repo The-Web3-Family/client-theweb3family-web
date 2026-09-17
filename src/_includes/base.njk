@@ -11,15 +11,15 @@
   .eleventy.js. The phone number is real: 310-703-6003, appearing in
   the hero, the last action section, and the footer below. The footer
   also carries the real email, christopher@theweb3family.com. Every
-  "Book a free strategy call" button on the site, including the last
+  "Book a call with me" button on the site, including the last
   action section in src/index.njk and the footer below, shares one
   macro (src/_includes/cta.njk) and opens Calendly's real popup
   scheduler. Calendly's popup widget assets load in <head> on every
   page, since the footer's own booking button needs them everywhere
   the footer appears. The button read "Book my 15 minute call," then
-  "Book my meeting with you.," before landing on this text; each
-  change was a direct request, most recently from a September 2026
-  build instruction.
+  "Book my meeting with you.," then "Book a free strategy call,"
+  before landing on this text; each change was a direct request, most
+  recently via a Vercel toolbar comment on the header nav CTA.
 
   HEADER NAVIGATION
      The header used to be logo-only. Christopher asked directly for a
@@ -221,7 +221,7 @@
       <a href="/case-studies/">Case studies</a>
       <a href="/articles/">Articles</a>
       <a href="/contact/">Contact</a>
-      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a call with me</a>
     </nav>
     <!-- Mobile: the hamburger disclosure. Hidden at 760px and up, where
          .nav-inline takes over. Kept as a second copy of the same four
@@ -238,7 +238,7 @@
         <a href="/case-studies/">Case studies</a>
         <a href="/articles/">Articles</a>
         <a href="/contact/">Contact</a>
-        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a free strategy call</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a call with me</a>
       </nav>
     </details>
   </div>
@@ -256,6 +256,12 @@
       <p class="footer-line">Inglewood, California</p>
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+    </div>
+    <div class="footer-clients">
+      <p class="footer-line footer-clients-label">Clients</p>
+      <p class="footer-line"><a href="https://loveaid.foundation" target="_blank" rel="noopener">loveaid.foundation<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
+      <p class="footer-line"><a href="https://askgpop.online" target="_blank" rel="noopener">askgpop.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
+      <p class="footer-line"><a href="https://rapfrogs.online" target="_blank" rel="noopener">rapfrogs.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
     </div>
     {{ button("footer-cta actions") }}
   </div>

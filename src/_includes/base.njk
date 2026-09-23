@@ -35,12 +35,14 @@
      so it stays inside the site's zero-client-JS rule.
 
   ANALYTICS
-     Microsoft Clarity is loaded in <head> above, on every page. This
-     was an explicit request, made knowing Clarity sets cookies for
-     session replay and heatmaps, which is a real exception to the
+     Microsoft Clarity and Google Analytics (gtag.js) are both loaded in
+     <head> above, on every page. Both were an explicit request, made
+     knowing each sets its own cookies (Clarity for session replay and
+     heatmaps, GA4 for aggregate visit stats), a real exception to the
      "no cookies, no consent banner" rule this site was otherwise built
-     around. No consent banner was added alongside it. See CLAUDE.md
-     section 9 for the accepted tradeoff.
+     around. No consent banner was added; instead, a short /privacy/
+     page (src/privacy.njk) explains what's collected and why, linked
+     from the footer. See CLAUDE.md section 9 for the accepted tradeoff.
 
   CASE STUDIES
 
@@ -156,6 +158,16 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "tnn1clsc3d");
 </script>
+<!-- Google tag (gtag.js), added on direct request. Loaded sitewide,
+     alongside Clarity above; see the ANALYTICS note near the top of
+     this file and CLAUDE.md section 9. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7WWKF2SFX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X7WWKF2SFX');
+</script>
 {% if page.url == "/" %}
 <!-- Organization + Person JSON-LD, homepage only, per a September 2026
      build instruction. This is inert structured data for crawlers, not
@@ -256,6 +268,7 @@
       <p class="footer-line">Inglewood, California</p>
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+      <p class="footer-line"><a href="/privacy/">Privacy</a></p>
     </div>
     <div class="footer-clients">
       <p class="footer-line footer-clients-label">Clients</p>

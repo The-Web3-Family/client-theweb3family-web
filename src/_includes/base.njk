@@ -44,6 +44,18 @@
      page (src/privacy.njk) explains what's collected and why, linked
      from the footer. See CLAUDE.md section 9 for the accepted tradeoff.
 
+  SEO
+     Canonical, OpenGraph, and Twitter card tags live in <head> above,
+     built from each page's own `title` and `description` front matter
+     (every page has both). `og:image` points at src/og-share.jpg, a
+     1200x630 static image checked into the repo, not generated at
+     build time. It's a typographic card (the homepage headline, the
+     wordmark, an orange rule) built from CSS and the site's own fonts,
+     rendered with a one-off headless-browser screenshot rather than
+     any photography or AI image generation, per CLAUDE.md's no-stock-
+     photography rule. src/sitemap.njk (served at /sitemap.xml) lists
+     every page from collections.all; src/robots.txt points at it.
+
   CASE STUDIES
 
      src/case-studies/ is an index page plus one full page per client,
@@ -143,6 +155,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
+<link rel="canonical" href="https://theweb3family.com{{ page.url | url }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theweb3family.com{{ page.url | url }}">
+<meta property="og:image" content="https://theweb3family.com/og-share.jpg">
+<meta property="og:site_name" content="The Web3 Family">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,15 +1,12 @@
 ---
 layout: base.njk
 ---
+{% from "cta.njk" import button %}
 <article class="prose">
   <div class="wrap">
     <p class="article-date">{{ page.date | readableDate }}</p>
     <h1>{{ title }}</h1>
     {{ content | safe }}
-    <div class="content-cta">
-      <a class="cta" href="/#booking">
-        <span>Book my 15 minute call</span>
-      </a>
-    </div>
+    {{ button("content-cta") }}
   </div>
 </article>

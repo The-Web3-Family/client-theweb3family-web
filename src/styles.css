@@ -22,9 +22,13 @@ body{
   margin:0;color:var(--charcoal);
   background-color:var(--cream);
   font-family:'Inter',system-ui,-apple-system,sans-serif;
-  font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;
   font-variant-numeric:oldstyle-nums;
 }
+/* Headings are set in px/clamp(), not em/rem, so this drop from the old
+   20px base doesn't cascade into them; the type scale stays proportional
+   without any heading-size changes. */
+a,button{touch-action:manipulation}
 /* the one number on the page set in lining figures, per the copy notes */
 .fig-lining{font-variant-numeric:lining-nums}
 h1,h2,h3{font-family:'Lora',Georgia,serif;color:var(--forest);margin:0}
@@ -182,36 +186,49 @@ p.figure{
 
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's
-   own external site, and "Learn More" to the case study page), and
-   nesting two <a> tags inside one outer <a> is invalid HTML. Hovering
-   anywhere in the card, including the button, still lifts the whole
-   card, since CSS :hover on a parent fires from a hover anywhere
-   inside it. Each card is a flex column with the button pinned to the
-   bottom via margin-top:auto, not absolutely positioned: that way,
-   when the row's cards stretch to match the tallest one (the grid's
-   default align-items:stretch), every button still lands on the same
-   line, since it's laid out relative to its own now-equal-height
-   card rather than positioned at a fixed offset that only worked if
-   every card already happened to be the same height. */
+   own external site, and the card-anchor to the case study page), and
+   nesting two <a> tags inside one outer <a> is invalid HTML. Instead
+   the whole card is clickable via a stretched ::after pseudo-element
+   on .card-btn (position:absolute;inset:0, sized to .card because
+   .card is the nearest positioned ancestor), a September 2026 build
+   instruction fixing a Lighthouse audit that flagged "Learn More" as
+   non-descriptive link text; the anchor text now names the client
+   ("See the Love Aid Foundation build"). .card-site is carved out of
+   that overlay with its own z-index so it stays independently
+   clickable to the client's own domain; every other child gets
+   pointer-events:none so a click anywhere else on the card still
+   reaches the stretched anchor underneath. Hovering anywhere in the
+   card, including the button, still lifts the whole card, since CSS
+   :hover on a parent fires from a hover anywhere inside it. Each card
+   is a flex column with the button pinned to the bottom via
+   margin-top:auto, not absolutely positioned: that way, when the
+   row's cards stretch to match the tallest one (the grid's default
+   align-items:stretch), every button still lands on the same line,
+   since it's laid out relative to its own now-equal-height card
+   rather than positioned at a fixed offset that only worked if every
+   card already happened to be the same height. */
 .cards{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px;align-items:stretch}
 .card{
   background:var(--cream);border:1px solid var(--hair);border-top:4px solid var(--orange);
-  padding:22px;display:flex;flex-direction:column;
+  padding:22px;display:flex;flex-direction:column;position:relative;
   transition:transform .2s ease-out,box-shadow .2s ease-out;
 }
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
 .card p{margin:0}
+.card > *:not(.card-btn):not(.card-site){pointer-events:none}
 .card-site{
   display:inline-flex;align-items:center;gap:5px;margin-top:10px;
   font-size:18px;font-weight:600;color:var(--forest);
+  position:relative;z-index:2;
 }
 .link-out-icon{font-size:16px}
 .card-btn{
-  align-self:flex-end;margin-top:auto;min-height:48px;padding:0 20px;
+  align-self:flex-end;margin-top:auto;min-height:56px;padding:16px 28px;
   display:inline-flex;align-items:center;justify-content:center;
   background:var(--orange);color:var(--charcoal);font-weight:700;font-size:18px;
   border:2px solid var(--forest);border-radius:3px;text-decoration:none;
 }
+.card-btn::after{content:"";position:absolute;inset:0;z-index:1}
 .card-btn:hover{background:#ff5f18}
 
 /* ---------- faq ---------- */

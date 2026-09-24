@@ -11,7 +11,7 @@
   Read CLAUDE.md before writing. The short version: short sentences, plain
   words, no jargon, first person singular ("I," never "we"), no em dashes,
   curly quotes and apostrophes, and read it aloud imagining a 68 year old
-  hearing it before it ships. Body text renders at 20px automatically;
+  hearing it before it ships. Body text renders at 18px automatically;
   nothing here needs a font-size decision.
 -->
 ---

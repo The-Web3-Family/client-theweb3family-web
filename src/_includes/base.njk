@@ -283,6 +283,33 @@
 </main>
 
 <footer>
+  <!--
+    Newsletter signup, added on a September 2026 build instruction
+    ("Buttondown email signup"). Sitewide, footer-only, above the
+    contact block, per direct request: the homepage body stays
+    untouched, since its one job is booking calls and a second ask
+    would compete with the orange CTA. Plain HTML POST to Buttondown,
+    zero JavaScript. The form action below still reads YOURUSERNAME:
+    that has to come from Christopher's own Buttondown account, same
+    as the Splitform/GoatCounter placeholders in CLAUDE.md section 8 -
+    don't invent one. Until the real username replaces it, this form
+    is visually live but won't actually submit anywhere real, so swap
+    it in before treating this as done.
+  -->
+  <section class="newsletter" aria-labelledby="newsletter-heading">
+    <div class="wrap">
+      <h2 id="newsletter-heading" class="newsletter-title">A short letter, once a month</h2>
+      <p class="newsletter-blurb">What I learn building for nonprofit founders. Plain words, no pitch. Leave whenever you like.</p>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/YOURUSERNAME" method="post" target="_blank" class="newsletter-form">
+        <div class="newsletter-field">
+          <label for="bd-email" class="newsletter-label">Your email</label>
+          <input type="email" name="email" id="bd-email" placeholder="you@yourorganization.org" autocomplete="email" required>
+        </div>
+        <button type="submit" class="newsletter-btn">Send it to me</button>
+      </form>
+      <p class="footer-line newsletter-privacy">Your address stays with me. <a href="/privacy/">How I handle it</a>.</p>
+    </div>
+  </section>
   <div class="wrap footer-cols">
     <div class="footer-info">
       <p class="footer-name">Christopher Clarke</p>

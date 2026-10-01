@@ -207,10 +207,10 @@ p.figure{
    since it's laid out relative to its own now-equal-height card
    rather than positioned at a fixed offset that only worked if every
    card already happened to be the same height. */
-.cards{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px;align-items:stretch}
+.cards{display:grid;grid-template-columns:1fr;gap:var(--space-4);margin-top:30px;align-items:stretch}
 .card{
   background:var(--cream);border:1px solid var(--hair);border-top:4px solid var(--orange);
-  padding:22px;display:flex;flex-direction:column;position:relative;
+  padding:var(--space-4);display:flex;flex-direction:column;position:relative;
   transition:transform .2s ease-out,box-shadow .2s ease-out;
 }
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
@@ -242,6 +242,33 @@ p.figure{
 footer{background:var(--forest);color:var(--cream);padding:44px 0}
 footer p{margin:0 0 8px}
 footer p:last-child{margin-bottom:0}
+
+/* newsletter signup, added on a September 2026 build instruction; sits
+   above the contact block inside the footer (see base.njk). Buttondown
+   accepts a plain form POST, so this needs no JavaScript. Uses the
+   same cream-fill/forest-border field styling as .contact-form, and a
+   cream (not orange) button: orange stays reserved for the booking
+   CTA, per the instruction's own "secondary treatment" call. */
+.newsletter{padding-block:var(--space-7);border-block-start:1px solid rgba(245,235,225,.2)}
+.newsletter-title{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--cream);margin:0 0 var(--space-2)}
+.newsletter-title::after{content:none}
+.newsletter-blurb{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5);max-width:48ch}
+.newsletter-form{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:flex-end}
+.newsletter-field{flex:1 1 260px;display:flex;flex-direction:column;gap:var(--space-2)}
+.newsletter-label{font-size:18px;font-weight:600;color:var(--cream)}
+.newsletter input[type="email"]{
+  font:inherit;font-size:18px;min-height:56px;padding:var(--space-3) var(--space-4);
+  border:2px solid var(--forest);border-radius:3px;background:var(--cream);color:var(--charcoal);
+}
+.newsletter input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.newsletter-btn{
+  min-height:56px;padding:12px 28px;font:inherit;font-size:18px;font-weight:700;
+  background:var(--cream);color:var(--forest);border:2px solid var(--forest);border-radius:3px;
+  cursor:pointer;flex:0 0 auto;
+}
+.newsletter-btn:hover{background:var(--cream-deep)}
+.newsletter-privacy{margin-top:var(--space-4)}
+
 .footer-name{font-family:'Lora',serif;font-weight:700;font-size:22px;color:var(--cream)}
 .footer-line{font-size:18px;color:#cbbfb3}
 .footer-line a{color:#cbbfb3;text-decoration-thickness:2px}
@@ -430,4 +457,4 @@ footer p:last-child{margin-bottom:0}
 /* hides the GoatCounter analytics pixel (base.njk) from a printed page,
    once it's live; harmless to keep while the pixel itself is still
    commented out pending Christopher's real account code (see section 8) */
-@media print{img[aria-hidden="true"]{display:none}}
+@media print{img[aria-hidden="true"]{display:none}.newsletter{display:none}}

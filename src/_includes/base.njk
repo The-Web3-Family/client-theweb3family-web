@@ -11,15 +11,16 @@
   .eleventy.js. The phone number is real: 310-703-6003, appearing in
   the hero, the last action section, and the footer below. The footer
   also carries the real email, christopher@theweb3family.com. Every
-  "Book a call with me" button on the site, including the last
+  "Schedule a call with me" button on the site, including the last
   action section in src/index.njk and the footer below, shares one
   macro (src/_includes/cta.njk) and opens Calendly's real popup
   scheduler. Calendly's popup widget assets load in <head> on every
   page, since the footer's own booking button needs them everywhere
   the footer appears. The button read "Book my 15 minute call," then
-  "Book my meeting with you.," then "Book a free strategy call,"
-  before landing on this text; each change was a direct request, most
-  recently via a Vercel toolbar comment on the header nav CTA.
+  "Book my meeting with you.," then "Book a free strategy call," then
+  "Book a call with me," before landing on this text; each change was
+  a direct request, most recently via a Vercel toolbar comment on the
+  hero CTA.
 
   HEADER NAVIGATION
      The header used to be logo-only. Christopher asked directly for a
@@ -155,6 +156,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
 <link rel="canonical" href="https://theweb3family.com{{ page.url | url }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
@@ -255,7 +257,7 @@
       <a href="/case-studies/">Case studies</a>
       <a href="/articles/">Articles</a>
       <a href="/contact/">Contact</a>
-      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a call with me</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
     </nav>
     <!-- Mobile: the hamburger disclosure. Hidden at 760px and up, where
          .nav-inline takes over. Kept as a second copy of the same four
@@ -272,7 +274,7 @@
         <a href="/case-studies/">Case studies</a>
         <a href="/articles/">Articles</a>
         <a href="/contact/">Contact</a>
-        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a call with me</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
       </nav>
     </details>
   </div>
@@ -288,22 +290,35 @@
     ("Buttondown email signup"). Sitewide, footer-only, above the
     contact block, per direct request: the homepage body stays
     untouched, since its one job is booking calls and a second ask
-    would compete with the orange CTA. Plain HTML POST to Buttondown,
-    zero JavaScript. The form action below still reads YOURUSERNAME:
-    that has to come from Christopher's own Buttondown account, same
-    as the Splitform/GoatCounter placeholders in CLAUDE.md section 8 -
-    don't invent one. Until the real username replaces it, this form
-    is visually live but won't actually submit anywhere real, so swap
-    it in before treating this as done.
+    would compete with the orange CTA.
+
+    Posts to /api/subscribe (api/subscribe.js at the repo root), a
+    Vercel serverless function added on a follow-up build instruction
+    ("Buttondown signup through a Vercel serverless function"). The
+    browser still receives zero JavaScript; the function runs
+    server-side, holds the real Buttondown API key in the
+    BUTTONDOWN_API_KEY environment variable (set in the Vercel
+    dashboard, never in this repo), and redirects to /subscribed/ or
+    /subscribe-error/ depending on the result. The hidden "company"
+    field is a honeypot: a real visitor never sees or fills it (it's
+    visually hidden via .hp, not just off-screen with display:none,
+    and carries tabindex="-1" so keyboard users skip over it too), but
+    a bot that fills every field gets quietly redirected to the
+    thank-you page instead of erroring, so it doesn't learn to retry.
   -->
   <section class="newsletter" aria-labelledby="newsletter-heading">
     <div class="wrap">
       <h2 id="newsletter-heading" class="newsletter-title">A short letter, once a month</h2>
       <p class="newsletter-blurb">What I learn building for nonprofit founders. Plain words, no pitch. Leave whenever you like.</p>
-      <form action="https://buttondown.com/api/emails/embed-subscribe/YOURUSERNAME" method="post" target="_blank" class="newsletter-form">
+      <form action="/api/subscribe" method="post" class="newsletter-form">
         <div class="newsletter-field">
           <label for="bd-email" class="newsletter-label">Your email</label>
           <input type="email" name="email" id="bd-email" placeholder="you@yourorganization.org" autocomplete="email" required>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label>Leave this field empty
+            <input type="text" name="company" tabindex="-1" autocomplete="off">
+          </label>
         </div>
         <button type="submit" class="newsletter-btn">Send it to me</button>
       </form>

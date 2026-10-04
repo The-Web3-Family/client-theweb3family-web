@@ -44,6 +44,9 @@
      around. No consent banner was added; instead, a short /privacy/
      page (src/privacy.njk) explains what's collected and why, linked
      from the footer. See CLAUDE.md section 9 for the accepted tradeoff.
+     Vercel Speed Insights was added the same way, also on direct
+     request, but sets no cookies of its own (page-load performance
+     metrics only), so it doesn't widen that cookie exception.
 
   SEO
      Canonical, OpenGraph, and Twitter card tags live in <head> above,
@@ -190,6 +193,15 @@
   gtag('js', new Date());
   gtag('config', 'G-X7WWKF2SFX');
 </script>
+<!-- Vercel Speed Insights, added on direct request. Loaded sitewide, same
+     plain-script pattern as Clarity and GA above. No npm package needed
+     for a plain static site: @vercel/speed-insights' real content is
+     framework components (React, Vue, Next, etc.) for Eleventy to bundle
+     into nothing, so this just loads the hosted beacon script Vercel
+     serves once Speed Insights is turned on for the project (Vercel
+     dashboard, Project -> Speed Insights tab); see CLAUDE.md section 9.
+     Unlike Clarity and GA, it sets no cookies. -->
+<script defer src="/_vercel/speed-insights/script.js"></script>
 {% if page.url == "/" %}
 <!-- Organization + Person JSON-LD, homepage only, per a September 2026
      build instruction. This is inert structured data for crawlers, not

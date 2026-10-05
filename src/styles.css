@@ -203,6 +203,22 @@ p.figure{
   font-family:'Lora',serif;font-weight:600;font-size:clamp(22px,4vw,26px);
   color:var(--cream);line-height:1.3;margin:0 0 32px;
 }
+/* the booking CTA that used to be its own "Last action" section, folded
+   into the price band on direct request so the price band itself is
+   where the reader decides, whatever their budget. .ink p already sets
+   cream text, so price-explain and price-cta-note need no color of
+   their own; .call-alt and its link do, since their default colors
+   (set for the cream/band backgrounds they normally sit on) read as
+   nearly invisible on this section's dark forest background, the same
+   problem .footer-cta already solved below. */
+.price-explain{margin-block-start:var(--space-5);max-width:52ch}
+.price-cta{
+  margin-block-start:var(--space-6);padding-block-start:var(--space-6);
+  border-block-start:1px solid rgba(245,235,225,.25);max-width:52ch;
+}
+.price-cta .call-alt{color:#cbbfb3}
+.price-cta .call-alt a{color:var(--cream)}
+.price-cta-note{margin-block-start:var(--space-4);margin-bottom:0}
 
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's

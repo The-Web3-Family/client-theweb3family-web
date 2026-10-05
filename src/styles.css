@@ -59,6 +59,22 @@ a:hover{color:var(--rust)}
    a name that isn't there */
 .eyebrow-person .org-name:only-child{margin-left:0}
 
+/* a confirmed, one-word exception to the no-animation rule in CLAUDE.md
+   section 3, on Christopher's own direct, twice-repeated request: a
+   rainbow gloss sheen across the word "vision" in the problem section.
+   Disabled automatically by the sitewide prefers-reduced-motion rule
+   below, same as every other animation on the site. */
+.vision-shine{
+  background-image:linear-gradient(90deg,var(--rust),var(--orange),#d6a92c,var(--forest),var(--rust));
+  background-size:300% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:vision-sheen 3s linear infinite;
+}
+@keyframes vision-sheen{
+  0%{background-position:0% 50%}
+  100%{background-position:300% 50%}
+}
+
 /* even rhythm: top and bottom padding match, on every section, on every page */
 section{padding:var(--gap) 0}
 .band{background-color:var(--cream-deep);background-image:var(--grain);background-repeat:repeat;background-size:160px 160px}
@@ -227,9 +243,9 @@ p.figure{
 }
 .link-out-icon{font-size:16px}
 .card-btn{
-  align-self:flex-end;margin-top:auto;min-height:56px;padding:16px 28px;
+  align-self:flex-end;margin-top:auto;min-height:56px;padding:10px 18px;
   display:inline-flex;align-items:center;justify-content:center;
-  background:var(--orange);color:var(--charcoal);font-weight:700;font-size:18px;
+  background:var(--orange);color:var(--charcoal);font-weight:600;font-size:18px;
   border:2px solid var(--forest);border-radius:3px;text-decoration:none;
 }
 .card-btn::after{content:"";position:absolute;inset:0;z-index:1}

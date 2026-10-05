@@ -11,15 +11,16 @@
   .eleventy.js. The phone number is real: 310-703-6003, appearing in
   the hero, the last action section, and the footer below. The footer
   also carries the real email, christopher@theweb3family.com. Every
-  "Book a call with me" button on the site, including the last
+  "Schedule a call with me" button on the site, including the last
   action section in src/index.njk and the footer below, shares one
   macro (src/_includes/cta.njk) and opens Calendly's real popup
   scheduler. Calendly's popup widget assets load in <head> on every
   page, since the footer's own booking button needs them everywhere
   the footer appears. The button read "Book my 15 minute call," then
-  "Book my meeting with you.," then "Book a free strategy call,"
-  before landing on this text; each change was a direct request, most
-  recently via a Vercel toolbar comment on the header nav CTA.
+  "Book my meeting with you.," then "Book a free strategy call," then
+  "Book a call with me," before landing on this text; each change was
+  a direct request, most recently via a Vercel toolbar comment on the
+  hero CTA.
 
   HEADER NAVIGATION
      The header used to be logo-only. Christopher asked directly for a
@@ -43,6 +44,9 @@
      around. No consent banner was added; instead, a short /privacy/
      page (src/privacy.njk) explains what's collected and why, linked
      from the footer. See CLAUDE.md section 9 for the accepted tradeoff.
+     Vercel Speed Insights was added the same way, also on direct
+     request, but sets no cookies of its own (page-load performance
+     metrics only), so it doesn't widen that cookie exception.
 
   SEO
      Canonical, OpenGraph, and Twitter card tags live in <head> above,
@@ -60,10 +64,14 @@
 
      src/case-studies/ is an index page plus one full page per client,
      built from Christopher's own weekly delivery logs. All three
-     clients gave written permission to be named, so every page uses
-     real names, organizations, and quotes: Arthur Flatto (Love Aid
-     Foundation), Howard Eley (Ask G-Pop), and Anthony Taylor (Rap
-     Frogs). This replaced the earlier anonymous "#mission / #wisdom /
+     clients gave written permission to be named: Love Aid Foundation,
+     Howard Eley (Ask G-Pop), and Anthony Taylor (Rap Frogs). Love Aid
+     Foundation's founder asked, via a Vercel toolbar comment, to have
+     his own name taken off the site; his name is gone from every page
+     that used it (the homepage card, the case-studies index card, and
+     his own case study page, including both quote attributions), and
+     the organization name stays. See CLAUDE.md section 8 before adding
+     it back anywhere. This replaced the earlier anonymous "#mission / #wisdom /
      #character" single-page version at /proof/, which no longer
      exists; that URL now redirects to /case-studies/ (see
      vercel.json). A fragment-specific redirect straight to each old
@@ -155,6 +163,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
 <link rel="canonical" href="https://theweb3family.com{{ page.url | url }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
@@ -188,6 +197,15 @@
   gtag('js', new Date());
   gtag('config', 'G-X7WWKF2SFX');
 </script>
+<!-- Vercel Speed Insights, added on direct request. Loaded sitewide, same
+     plain-script pattern as Clarity and GA above. No npm package needed
+     for a plain static site: @vercel/speed-insights' real content is
+     framework components (React, Vue, Next, etc.) for Eleventy to bundle
+     into nothing, so this just loads the hosted beacon script Vercel
+     serves once Speed Insights is turned on for the project (Vercel
+     dashboard, Project -> Speed Insights tab); see CLAUDE.md section 9.
+     Unlike Clarity and GA, it sets no cookies. -->
+<script defer src="/_vercel/speed-insights/script.js"></script>
 {% if page.url == "/" %}
 <!-- Organization + Person JSON-LD, homepage only, per a September 2026
      build instruction. This is inert structured data for crawlers, not
@@ -255,7 +273,7 @@
       <a href="/case-studies/">Case studies</a>
       <a href="/articles/">Articles</a>
       <a href="/contact/">Contact</a>
-      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a call with me</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
     </nav>
     <!-- Mobile: the hamburger disclosure. Hidden at 760px and up, where
          .nav-inline takes over. Kept as a second copy of the same four
@@ -272,7 +290,7 @@
         <a href="/case-studies/">Case studies</a>
         <a href="/articles/">Articles</a>
         <a href="/contact/">Contact</a>
-        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Book a call with me</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
       </nav>
     </details>
   </div>
@@ -283,6 +301,45 @@
 </main>
 
 <footer>
+  <!--
+    Newsletter signup, added on a September 2026 build instruction
+    ("Buttondown email signup"). Sitewide, footer-only, above the
+    contact block, per direct request: the homepage body stays
+    untouched, since its one job is booking calls and a second ask
+    would compete with the orange CTA.
+
+    Posts to /api/subscribe (api/subscribe.js at the repo root), a
+    Vercel serverless function added on a follow-up build instruction
+    ("Buttondown signup through a Vercel serverless function"). The
+    browser still receives zero JavaScript; the function runs
+    server-side, holds the real Buttondown API key in the
+    BUTTONDOWN_API_KEY environment variable (set in the Vercel
+    dashboard, never in this repo), and redirects to /subscribed/ or
+    /subscribe-error/ depending on the result. The hidden "company"
+    field is a honeypot: a real visitor never sees or fills it (it's
+    visually hidden via .hp, not just off-screen with display:none,
+    and carries tabindex="-1" so keyboard users skip over it too), but
+    a bot that fills every field gets quietly redirected to the
+    thank-you page instead of erroring, so it doesn't learn to retry.
+  -->
+  <section class="newsletter" aria-labelledby="newsletter-heading">
+    <div class="wrap">
+      <h2 id="newsletter-heading" class="newsletter-title">Join my Friday newsletter.</h2>
+      <p class="newsletter-blurb">Every Friday I send an email to all my clients. I would love to send you one too.</p>
+      <form action="/api/subscribe" method="post" class="newsletter-form">
+        <div class="newsletter-field">
+          <label for="bd-email" class="newsletter-label sr-only">Your email</label>
+          <input type="email" name="email" id="bd-email" placeholder="Your email" autocomplete="email" required>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label>Leave this field empty
+            <input type="text" name="company" tabindex="-1" autocomplete="off">
+          </label>
+        </div>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
   <div class="wrap footer-cols">
     <div class="footer-info">
       <p class="footer-name">Christopher Clarke</p>
@@ -290,10 +347,10 @@
       <p class="footer-line">Inglewood, California</p>
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
-      <p class="footer-line"><a href="/privacy/">Privacy</a></p>
+      <p class="footer-line"><a href="/privacy/">Privacy Policy</a></p>
     </div>
     <div class="footer-clients">
-      <p class="footer-line footer-clients-label">Clients</p>
+      <p class="footer-line footer-clients-label">Some of my clients</p>
       <p class="footer-line"><a href="https://loveaid.foundation" target="_blank" rel="noopener">loveaid.foundation<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
       <p class="footer-line"><a href="https://askgpop.online" target="_blank" rel="noopener">askgpop.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
       <p class="footer-line"><a href="https://rapfrogs.online" target="_blank" rel="noopener">rapfrogs.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>

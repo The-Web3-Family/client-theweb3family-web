@@ -4,5 +4,8 @@
   "redirects": [
     { "source": "/proof", "destination": "/case-studies/", "permanent": true },
     { "source": "/proof/", "destination": "/case-studies/", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/api/subscribe", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
   ]
 }

@@ -54,6 +54,26 @@ a:hover{color:var(--rust)}
   font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:var(--rust);margin-left:14px;
 }
+/* org-name alone (no person-name line above it, e.g. a client not named by
+   their own request) shouldn't carry the indent meant to offset it under
+   a name that isn't there */
+.eyebrow-person .org-name:only-child{margin-left:0}
+
+/* a confirmed, one-word exception to the no-animation rule in CLAUDE.md
+   section 3, on Christopher's own direct, twice-repeated request: a
+   rainbow gloss sheen across the word "vision" in the problem section.
+   Disabled automatically by the sitewide prefers-reduced-motion rule
+   below, same as every other animation on the site. */
+.vision-shine{
+  background-image:linear-gradient(90deg,var(--rust),var(--orange),#d6a92c,var(--forest),var(--rust));
+  background-size:300% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:vision-sheen 3s linear infinite;
+}
+@keyframes vision-sheen{
+  0%{background-position:0% 50%}
+  100%{background-position:300% 50%}
+}
 
 /* even rhythm: top and bottom padding match, on every section, on every page */
 section{padding:var(--gap) 0}
@@ -183,6 +203,26 @@ p.figure{
   font-family:'Lora',serif;font-weight:600;font-size:clamp(22px,4vw,26px);
   color:var(--cream);line-height:1.3;margin:0 0 32px;
 }
+/* the booking CTA that used to be its own "Last action" section, folded
+   into the price band on direct request so the price band itself is
+   where the reader decides, whatever their budget. .ink p already sets
+   cream text; .call-alt and its link need their own override below,
+   since their default colors (set for the cream/band backgrounds they
+   normally sit on) read as nearly invisible on this section's dark
+   forest background, the same problem .footer-cta already solved. */
+/* a confirmed-tone, not confirmed-size, exception: Christopher called
+   this line "a sort of disclaimer," so it reads lighter in color, like
+   .call-alt elsewhere on this dark background, rather than shrinking
+   below the section 7 floor the way .risk-reversal was explicitly
+   confirmed to on the case study pages. Don't lower this past 18px
+   without that same kind of explicit, size-specific confirmation. */
+.price-disclaimer{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5)}
+.price-cta{
+  margin-block-start:var(--space-6);padding-block-start:var(--space-6);
+  border-block-start:1px solid rgba(245,235,225,.25);max-width:52ch;
+}
+.price-cta .call-alt{color:#cbbfb3}
+.price-cta .call-alt a{color:var(--cream)}
 
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's
@@ -207,25 +247,67 @@ p.figure{
    since it's laid out relative to its own now-equal-height card
    rather than positioned at a fixed offset that only worked if every
    card already happened to be the same height. */
-.cards{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px;align-items:stretch}
+.cards{display:grid;grid-template-columns:1fr;gap:var(--space-4);margin-top:30px;align-items:stretch}
 .card{
   background:var(--cream);border:1px solid var(--hair);border-top:4px solid var(--orange);
-  padding:22px;display:flex;flex-direction:column;position:relative;
+  padding:var(--space-4);display:flex;flex-direction:column;position:relative;
   transition:transform .2s ease-out,box-shadow .2s ease-out;
 }
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
 .card p{margin:0}
 .card > *:not(.card-btn):not(.card-site){pointer-events:none}
+/* base link styling shared with the case-study detail pages' own
+   "See [client] live at [domain]" paragraph link, a plain inline link
+   there, not a corner badge; the badge treatment below is scoped to
+   .card specifically so it doesn't reach that other, unrelated use of
+   the same class. */
 .card-site{
-  display:inline-flex;align-items:center;gap:5px;margin-top:10px;
-  font-size:18px;font-weight:600;color:var(--forest);
-  position:relative;z-index:2;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:18px;font-weight:500;color:var(--forest);
 }
+/* moved to the card's top-right corner, then through an icon-and-size
+   round ("it's ugly," wrapped in a rust pill), then restructured again
+   on direct, size-specific instruction: the class moved off the <a>
+   onto a wrapping <div>, so the link itself carries no class, and the
+   link now reads forest, 16px, underlined on hover only. Both the
+   16px size and the hover-only underline are explicit, deliberate
+   exceptions this time (section 7's 18px floor and the sitewide
+   underline-by-default rule), given with the kind of precise,
+   size-specific confirmation the earlier "make it smaller" rounds
+   didn't carry; scoped to this corner badge alone, not a sitewide
+   change to either rule. Moved again, from the top-right corner to
+   the bottom-right, on direct feedback that it "looks better" there;
+   this round dropped position:absolute entirely, since the flex
+   column .card already is (align-self:flex-end plus margin-top:auto
+   claims the column's leftover vertical space and right-aligns it,
+   landing it right above .card-btn, which went from its own
+   margin-top:auto to a small fixed gap now that .card-site claims
+   that space instead). position:relative plus z-index:2 still carry
+   over, unrelated to where it sits: that's what keeps it clickable
+   above .card-btn's stretched overlay (inset:0 across the whole
+   card, not just .card-btn itself), and z-index only does anything
+   on a positioned element, not a static one. The <a> inside inherits
+   normal pointer-events since the overlay-carveout rule only touches
+   .card's direct children. */
+.card .card-site{position:relative;z-index:2;align-self:flex-end;margin-top:var(--space-2);padding-right:4px}
+.card .card-site a{color:var(--forest);font-size:16px;text-decoration:none}
+.card .card-site a:hover{text-decoration:underline;text-decoration-thickness:2px}
+/* the ↗ icon came back on direct request, now a sibling of the <a>
+   inside the div rather than nested in it, so it reads as part of the
+   corner badge rather than the link text itself. On hover it nudges
+   in the direction it already points (up and to the right), the same
+   kind of hover-triggered micro-motion as .card's own hover lift
+   below, not the autoplay/scroll animation the no-animation rule in
+   CLAUDE.md section 3 is actually about; it's covered by the same
+   sitewide prefers-reduced-motion rule that already disables that
+   card lift. */
+.card .card-site .link-out-icon{display:inline-block;transition:transform .2s ease-out}
+.card .card-site:hover .link-out-icon{transform:translate(2px,-2px)}
 .link-out-icon{font-size:16px}
 .card-btn{
-  align-self:flex-end;margin-top:auto;min-height:56px;padding:16px 28px;
+  align-self:flex-end;margin-top:auto;min-height:56px;padding:10px 18px;
   display:inline-flex;align-items:center;justify-content:center;
-  background:var(--orange);color:var(--charcoal);font-weight:700;font-size:18px;
+  background:var(--orange);color:var(--charcoal);font-weight:600;font-size:18px;
   border:2px solid var(--forest);border-radius:3px;text-decoration:none;
 }
 .card-btn::after{content:"";position:absolute;inset:0;z-index:1}
@@ -242,6 +324,37 @@ p.figure{
 footer{background:var(--forest);color:var(--cream);padding:44px 0}
 footer p{margin:0 0 8px}
 footer p:last-child{margin-bottom:0}
+
+/* newsletter signup, added on a September 2026 build instruction; sits
+   above the contact block inside the footer (see base.njk). Buttondown
+   accepts a plain form POST, so this needs no JavaScript. Uses the
+   same cream-fill/forest-border field styling as .contact-form, and a
+   cream (not orange) button: orange stays reserved for the booking
+   CTA, per the instruction's own "secondary treatment" call. */
+.newsletter{padding-block:var(--space-7);border-block-start:1px solid rgba(245,235,225,.2)}
+.newsletter-title{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--cream);margin:0 0 var(--space-2)}
+.newsletter-title::after{content:none}
+.newsletter-blurb{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5);max-width:48ch}
+.newsletter-form{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:flex-end}
+.newsletter-field{flex:1 1 260px;display:flex;flex-direction:column;gap:var(--space-2)}
+.newsletter-label{font-size:18px;font-weight:600;color:var(--cream)}
+.newsletter input[type="email"]{
+  font:inherit;font-size:18px;min-height:56px;padding:var(--space-3) var(--space-4);
+  border:2px solid var(--forest);border-radius:3px;background:var(--cream);color:var(--charcoal);
+}
+.newsletter input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.newsletter-btn{
+  min-height:56px;padding:12px 28px;font:inherit;font-size:18px;font-weight:700;
+  background:var(--cream);color:var(--forest);border:2px solid var(--forest);border-radius:3px;
+  cursor:pointer;flex:0 0 auto;
+  display:inline-flex;align-items:center;justify-content:center;text-decoration:none;
+}
+.newsletter-btn:hover{background:var(--cream-deep)}
+/* honeypot: visually and positionally hidden from real visitors, who
+   never see or fill this field; a bot that fills every field does,
+   and gets quietly redirected instead of erroring (api/subscribe.js) */
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+
 .footer-name{font-family:'Lora',serif;font-weight:700;font-size:22px;color:var(--cream)}
 .footer-line{font-size:18px;color:#cbbfb3}
 .footer-line a{color:#cbbfb3;text-decoration-thickness:2px}
@@ -430,4 +543,4 @@ footer p:last-child{margin-bottom:0}
 /* hides the GoatCounter analytics pixel (base.njk) from a printed page,
    once it's live; harmless to keep while the pixel itself is still
    commented out pending Christopher's real account code (see section 8) */
-@media print{img[aria-hidden="true"]{display:none}}
+@media print{img[aria-hidden="true"]{display:none}.newsletter{display:none}}

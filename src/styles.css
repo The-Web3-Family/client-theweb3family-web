@@ -206,19 +206,25 @@ p.figure{
 /* the booking CTA that used to be its own "Last action" section, folded
    into the price band on direct request so the price band itself is
    where the reader decides, whatever their budget. .ink p already sets
-   cream text, so price-explain and price-cta-note need no color of
-   their own; .call-alt and its link do, since their default colors
-   (set for the cream/band backgrounds they normally sit on) read as
-   nearly invisible on this section's dark forest background, the same
-   problem .footer-cta already solved below. */
-.price-explain{margin-block-start:var(--space-5);max-width:52ch}
+   cream text, so price-explain needs no color of its own; .call-alt and
+   its link do, since their default colors (set for the cream/band
+   backgrounds they normally sit on) read as nearly invisible on this
+   section's dark forest background, the same problem .footer-cta
+   already solved below. */
+/* a confirmed-tone, not confirmed-size, exception: Christopher called
+   this line "a sort of disclaimer," so it reads lighter in color, like
+   .call-alt elsewhere on this dark background, rather than shrinking
+   below the section 7 floor the way .risk-reversal was explicitly
+   confirmed to on the case study pages. Don't lower this past 18px
+   without that same kind of explicit, size-specific confirmation. */
+.price-disclaimer{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5)}
+.price-explain{max-width:52ch}
 .price-cta{
   margin-block-start:var(--space-6);padding-block-start:var(--space-6);
   border-block-start:1px solid rgba(245,235,225,.25);max-width:52ch;
 }
 .price-cta .call-alt{color:#cbbfb3}
 .price-cta .call-alt a{color:var(--cream)}
-.price-cta-note{margin-block-start:var(--space-4);margin-bottom:0}
 
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's
@@ -252,10 +258,17 @@ p.figure{
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
 .card p{margin:0}
 .card > *:not(.card-btn):not(.card-site){pointer-events:none}
+/* moved to the card's top-right corner on direct request; position:absolute
+   takes it out of the flex column's flow (so .card-btn and the heading
+   below no longer reserve space for it), positioned against the padding
+   edge of .card, its nearest positioned ancestor. Text size stays at the
+   section 7 accessibility floor (18px covers captions too) even though
+   the request was for something smaller; the lighter font-weight is the
+   visual "smaller" this reader's floor still allows. */
 .card-site{
-  display:inline-flex;align-items:center;gap:5px;margin-top:10px;
-  font-size:18px;font-weight:600;color:var(--forest);
-  position:relative;z-index:2;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:18px;font-weight:500;color:var(--forest);
+  position:absolute;top:0;right:0;z-index:2;
 }
 .link-out-icon{font-size:16px}
 .card-btn{
@@ -304,7 +317,6 @@ footer p:last-child{margin-bottom:0}
   display:inline-flex;align-items:center;justify-content:center;text-decoration:none;
 }
 .newsletter-btn:hover{background:var(--cream-deep)}
-.newsletter-privacy{margin-top:var(--space-4)}
 /* honeypot: visually and positionally hidden from real visitors, who
    never see or fill this field; a bot that fills every field does,
    and gets quietly redirected instead of erroring (api/subscribe.js) */

@@ -206,11 +206,10 @@ p.figure{
 /* the booking CTA that used to be its own "Last action" section, folded
    into the price band on direct request so the price band itself is
    where the reader decides, whatever their budget. .ink p already sets
-   cream text, so price-explain needs no color of its own; .call-alt and
-   its link do, since their default colors (set for the cream/band
-   backgrounds they normally sit on) read as nearly invisible on this
-   section's dark forest background, the same problem .footer-cta
-   already solved below. */
+   cream text; .call-alt and its link need their own override below,
+   since their default colors (set for the cream/band backgrounds they
+   normally sit on) read as nearly invisible on this section's dark
+   forest background, the same problem .footer-cta already solved. */
 /* a confirmed-tone, not confirmed-size, exception: Christopher called
    this line "a sort of disclaimer," so it reads lighter in color, like
    .call-alt elsewhere on this dark background, rather than shrinking
@@ -218,7 +217,6 @@ p.figure{
    confirmed to on the case study pages. Don't lower this past 18px
    without that same kind of explicit, size-specific confirmation. */
 .price-disclaimer{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5)}
-.price-explain{max-width:52ch}
 .price-cta{
   margin-block-start:var(--space-6);padding-block-start:var(--space-6);
   border-block-start:1px solid rgba(245,235,225,.25);max-width:52ch;
@@ -258,18 +256,34 @@ p.figure{
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
 .card p{margin:0}
 .card > *:not(.card-btn):not(.card-site){pointer-events:none}
-/* moved to the card's top-right corner on direct request; position:absolute
-   takes it out of the flex column's flow (so .card-btn and the heading
-   below no longer reserve space for it), positioned against the padding
-   edge of .card, its nearest positioned ancestor. Text size stays at the
-   section 7 accessibility floor (18px covers captions too) even though
-   the request was for something smaller; the lighter font-weight is the
-   visual "smaller" this reader's floor still allows. */
+/* base link styling shared with the case-study detail pages' own
+   "See [client] live at [domain]" paragraph link, a plain inline link
+   there, not a corner badge; the badge treatment below is scoped to
+   .card specifically so it doesn't reach that other, unrelated use of
+   the same class. */
 .card-site{
   display:inline-flex;align-items:center;gap:5px;
   font-size:18px;font-weight:500;color:var(--forest);
-  position:absolute;top:0;right:0;z-index:2;
 }
+/* moved to the card's top-right corner on direct request, then redone
+   as a small rust-bordered pill on a follow-up comment calling the
+   plain text-plus-icon version "ugly": icon dropped, wrapped in an
+   accent-colored (rust, not orange, which stays reserved for the
+   booking CTA alone per the newsletter-button note above) outline.
+   position:absolute takes it out of the flex column's flow (so
+   .card-btn and the heading below don't reserve space for it),
+   positioned against the padding edge of .card, its nearest positioned
+   ancestor. Text size stays at the section 7 accessibility floor (18px
+   covers captions too) even though both rounds of feedback asked for
+   something smaller; the lighter weight and the pill's own padding are
+   the visual "smaller" this reader's floor still allows without an
+   explicit, size-specific confirmation like the one .risk-reversal got. */
+.card .card-site{
+  position:absolute;top:0;right:0;z-index:2;
+  padding:4px 10px;border:1px solid var(--rust);border-radius:999px;
+  color:var(--rust);font-weight:600;
+}
+.card .card-site .link-out-icon{display:none}
 .link-out-icon{font-size:16px}
 .card-btn{
   align-self:flex-end;margin-top:auto;min-height:56px;padding:10px 18px;

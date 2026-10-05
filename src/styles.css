@@ -54,6 +54,10 @@ a:hover{color:var(--rust)}
   font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:var(--rust);margin-left:14px;
 }
+/* org-name alone (no person-name line above it, e.g. a client not named by
+   their own request) shouldn't carry the indent meant to offset it under
+   a name that isn't there */
+.eyebrow-person .org-name:only-child{margin-left:0}
 
 /* even rhythm: top and bottom padding match, on every section, on every page */
 section{padding:var(--gap) 0}

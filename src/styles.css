@@ -275,12 +275,21 @@ p.figure{
    underline-by-default rule), given with the kind of precise,
    size-specific confirmation the earlier "make it smaller" rounds
    didn't carry; scoped to this corner badge alone, not a sitewide
-   change to either rule. The div, not the <a>, is positioned (against
-   .card's padding edge, its nearest positioned ancestor) and carries
-   the z-index that keeps it clickable above .card-btn's stretched
-   overlay; the <a> inside inherits normal pointer-events since the
-   overlay-carveout rule only touches .card's direct children. */
-.card .card-site{position:absolute;top:0;right:0;z-index:2;padding-right:4px}
+   change to either rule. Moved again, from the top-right corner to
+   the bottom-right, on direct feedback that it "looks better" there;
+   this round dropped position:absolute entirely, since the flex
+   column .card already is (align-self:flex-end plus margin-top:auto
+   claims the column's leftover vertical space and right-aligns it,
+   landing it right above .card-btn, which went from its own
+   margin-top:auto to a small fixed gap now that .card-site claims
+   that space instead). position:relative plus z-index:2 still carry
+   over, unrelated to where it sits: that's what keeps it clickable
+   above .card-btn's stretched overlay (inset:0 across the whole
+   card, not just .card-btn itself), and z-index only does anything
+   on a positioned element, not a static one. The <a> inside inherits
+   normal pointer-events since the overlay-carveout rule only touches
+   .card's direct children. */
+.card .card-site{position:relative;z-index:2;align-self:flex-end;margin-top:auto;padding-right:4px}
 .card .card-site a{color:var(--forest);font-size:16px;text-decoration:none}
 .card .card-site a:hover{text-decoration:underline;text-decoration-thickness:2px}
 /* the ↗ icon came back on direct request, now a sibling of the <a>
@@ -296,7 +305,7 @@ p.figure{
 .card .card-site:hover .link-out-icon{transform:translate(2px,-2px)}
 .link-out-icon{font-size:16px}
 .card-btn{
-  align-self:flex-end;margin-top:auto;min-height:56px;padding:10px 18px;
+  align-self:flex-end;margin-top:var(--space-2);min-height:56px;padding:10px 18px;
   display:inline-flex;align-items:center;justify-content:center;
   background:var(--orange);color:var(--charcoal);font-weight:600;font-size:18px;
   border:2px solid var(--forest);border-radius:3px;text-decoration:none;

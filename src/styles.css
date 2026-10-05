@@ -265,25 +265,24 @@ p.figure{
   display:inline-flex;align-items:center;gap:5px;
   font-size:18px;font-weight:500;color:var(--forest);
 }
-/* moved to the card's top-right corner on direct request, then redone
-   as a small rust-bordered pill on a follow-up comment calling the
-   plain text-plus-icon version "ugly": icon dropped, wrapped in an
-   accent-colored (rust, not orange, which stays reserved for the
-   booking CTA alone per the newsletter-button note above) outline.
-   position:absolute takes it out of the flex column's flow (so
-   .card-btn and the heading below don't reserve space for it),
-   positioned against the padding edge of .card, its nearest positioned
-   ancestor. Text size stays at the section 7 accessibility floor (18px
-   covers captions too) even though both rounds of feedback asked for
-   something smaller; the lighter weight and the pill's own padding are
-   the visual "smaller" this reader's floor still allows without an
-   explicit, size-specific confirmation like the one .risk-reversal got. */
-.card .card-site{
-  position:absolute;top:0;right:0;z-index:2;
-  padding:4px 10px;border:1px solid var(--rust);border-radius:999px;
-  color:var(--rust);font-weight:600;
-}
-.card .card-site .link-out-icon{display:none}
+/* moved to the card's top-right corner, then through an icon-and-size
+   round ("it's ugly," wrapped in a rust pill), then restructured again
+   on direct, size-specific instruction: the class moved off the <a>
+   onto a wrapping <div>, so the link itself carries no class, and the
+   link now reads forest, 16px, underlined on hover only. Both the
+   16px size and the hover-only underline are explicit, deliberate
+   exceptions this time (section 7's 18px floor and the sitewide
+   underline-by-default rule), given with the kind of precise,
+   size-specific confirmation the earlier "make it smaller" rounds
+   didn't carry; scoped to this corner badge alone, not a sitewide
+   change to either rule. The div, not the <a>, is positioned (against
+   .card's padding edge, its nearest positioned ancestor) and carries
+   the z-index that keeps it clickable above .card-btn's stretched
+   overlay; the <a> inside inherits normal pointer-events since the
+   overlay-carveout rule only touches .card's direct children. */
+.card .card-site{position:absolute;top:0;right:0;z-index:2}
+.card .card-site a{color:var(--forest);font-size:16px;text-decoration:none}
+.card .card-site a:hover{text-decoration:underline;text-decoration-thickness:2px}
 .link-out-icon{font-size:16px}
 .card-btn{
   align-self:flex-end;margin-top:auto;min-height:56px;padding:10px 18px;

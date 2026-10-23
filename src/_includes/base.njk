@@ -51,14 +51,13 @@
   SEO
      Canonical, OpenGraph, and Twitter card tags live in <head> above,
      built from each page's own `title` and `description` front matter
-     (every page has both). `og:image` points at src/og-share.jpg, a
-     1200x630 static image checked into the repo, not generated at
-     build time. It's a typographic card (the homepage headline, the
-     wordmark, an orange rule) built from CSS and the site's own fonts,
-     rendered with a one-off headless-browser screenshot rather than
-     any photography or AI image generation, per CLAUDE.md's no-stock-
-     photography rule. src/sitemap.njk (served at /sitemap.xml) lists
-     every page from collections.all; src/robots.txt points at it.
+     (every page has both). `og:image` points at src/og-share-v2.jpg, a
+     2000x1050 static JPEG checked into the repo, not generated at
+     build time. See CLAUDE.md section 9 for what it shows and why it
+     carries tagline copy ("Your vision, built one Friday at a time.")
+     that isn't the homepage's own locked headline. src/sitemap.njk
+     (served at /sitemap.xml) lists every page from collections.all;
+     src/robots.txt points at it.
 
   CASE STUDIES
 
@@ -169,7 +168,7 @@
 <meta property="og:description" content="{{ description }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theweb3family.com{{ page.url | url }}">
-<meta property="og:image" content="https://theweb3family.com/og-share.jpg">
+<meta property="og:image" content="https://theweb3family.com/og-share-v2.jpg">
 <meta property="og:site_name" content="The Web3 Family">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">

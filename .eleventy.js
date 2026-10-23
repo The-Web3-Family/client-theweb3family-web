@@ -4,7 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
   eleventyConfig.addPassthroughCopy("src/christopher.jpg");
-  eleventyConfig.addPassthroughCopy("src/og-share.jpg");
+  eleventyConfig.addPassthroughCopy("src/og-share-v2.jpg");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   // Articles are plain Markdown files under src/articles/. Adding one is

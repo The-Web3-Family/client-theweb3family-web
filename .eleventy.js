@@ -2,7 +2,7 @@ module.exports = function (eleventyConfig) {
   // Static assets that ship as-is, unchanged, into the built site.
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
-  eleventyConfig.addPassthroughCopy("src/favicon.svg");
+  eleventyConfig.addPassthroughCopy("src/logo.png");
   eleventyConfig.addPassthroughCopy("src/christopher.jpg");
   eleventyConfig.addPassthroughCopy("src/og-share-v2.jpg");
   eleventyConfig.addPassthroughCopy("src/robots.txt");

@@ -1,5 +1,5 @@
 <!doctype html>
-<!--
+{#
 =============================================================================
   THE WEB3 FAMILY  ·  theweb3family.com
   Built with Eleventy. Shared layout lives here; page content lives in each
@@ -154,7 +154,7 @@
      explicit list, not a general "add every page" rule.
 
 =============================================================================
--->
+#}
 {% from "cta.njk" import button %}
 <html lang="en">
 <head>
@@ -186,9 +186,9 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "tnn1clsc3d");
 </script>
-<!-- Google tag (gtag.js), added on direct request. Loaded sitewide,
+{# Google tag (gtag.js), added on direct request. Loaded sitewide,
      alongside Clarity above; see the ANALYTICS note near the top of
-     this file and CLAUDE.md section 9. -->
+     this file and CLAUDE.md section 9. #}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7WWKF2SFX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -196,19 +196,19 @@
   gtag('js', new Date());
   gtag('config', 'G-X7WWKF2SFX');
 </script>
-<!-- Vercel Speed Insights, added on direct request. Loaded sitewide, same
+{# Vercel Speed Insights, added on direct request. Loaded sitewide, same
      plain-script pattern as Clarity and GA above. No npm package needed
      for a plain static site: @vercel/speed-insights' real content is
      framework components (React, Vue, Next, etc.) for Eleventy to bundle
      into nothing, so this just loads the hosted beacon script Vercel
      serves once Speed Insights is turned on for the project (Vercel
      dashboard, Project -> Speed Insights tab); see CLAUDE.md section 9.
-     Unlike Clarity and GA, it sets no cookies. -->
+     Unlike Clarity and GA, it sets no cookies. #}
 <script defer src="/_vercel/speed-insights/script.js"></script>
 {% if page.url == "/" %}
-<!-- Organization + Person JSON-LD, homepage only, per a September 2026
+{# Organization + Person JSON-LD, homepage only, per a September 2026
      build instruction. This is inert structured data for crawlers, not
-     executable script, so it doesn't touch the site's zero-JS rule. -->
+     executable script, so it doesn't touch the site's zero-JS rule. #}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -250,12 +250,12 @@
 </head>
 <body>
 
-<!-- HEADER. The logo still links home. A hamburger menu (case studies,
+{# HEADER. The logo still links home. A hamburger menu (case studies,
      articles, book a meeting) sits next to it now, per Christopher's
      direct request. Built with <details>/<summary>, the same zero-JS
      disclosure pattern the case study pages already used for their
      weekly log, so it opens and closes without any client-side
-     JavaScript. -->
+     JavaScript. #}
 <header>
   <div class="wrap header-row">
     <a class="brand" href="/">
@@ -265,22 +265,22 @@
         <span>The Web3 Family</span>
       </div>
     </a>
-    <!-- Desktop: a plain always-visible nav, per direct request
+    {# Desktop: a plain always-visible nav, per direct request
          ("can we have a better menu on desktop?"). Hidden below the
-         760px breakpoint via CSS. -->
+         760px breakpoint via CSS. #}
     <nav class="nav-inline" aria-label="Site">
       <a href="/case-studies/">Case studies</a>
       <a href="/articles/">Articles</a>
       <a href="/contact/">Contact</a>
       <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
     </nav>
-    <!-- Mobile: the hamburger disclosure. Hidden at 760px and up, where
+    {# Mobile: the hamburger disclosure. Hidden at 760px and up, where
          .nav-inline takes over. Kept as a second copy of the same four
          links rather than trying to force a closed <details> element's
          content visible via CSS: Chromium keeps an internal collapsed
          layout state for closed <details> regardless of a `display`
          override, which was tried first and silently broke the layout
-         (the nav rendered with zero width and overflowed off-screen). -->
+         (the nav rendered with zero width and overflowed off-screen). #}
     <details class="nav-menu">
       <summary class="nav-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -300,7 +300,7 @@
 </main>
 
 <footer>
-  <!--
+  {#
     Newsletter signup, added on a September 2026 build instruction
     ("Buttondown email signup"). Sitewide, footer-only, above the
     contact block, per direct request: the homepage body stays
@@ -320,7 +320,7 @@
     and carries tabindex="-1" so keyboard users skip over it too), but
     a bot that fills every field gets quietly redirected to the
     thank-you page instead of erroring, so it doesn't learn to retry.
-  -->
+  #}
   <section class="newsletter" aria-labelledby="newsletter-heading">
     <div class="wrap">
       <h2 id="newsletter-heading" class="newsletter-title">Join my Friday newsletter.</h2>
@@ -358,7 +358,7 @@
   </div>
 </footer>
 
-<!--
+{#
   GoatCounter pixel, per a September 2026 build instruction: path-level
   analytics with zero JavaScript (a single hidden 1x1 <img>, no script).
   Commented out until Christopher creates the free GoatCounter account
@@ -371,7 +371,7 @@
   <img src="https://MYCODE.goatcounter.com/count?p={{ page.url }}&t={{ title }}"
        alt="" aria-hidden="true" width="1" height="1"
        style="position:absolute;left:-9999px">
--->
+#}
 
 </body>
 </html>

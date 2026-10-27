@@ -29,8 +29,6 @@ body{
    20px base doesn't cascade into them; the type scale stays proportional
    without any heading-size changes. */
 a,button{touch-action:manipulation}
-/* the one number on the page set in lining figures, per the copy notes */
-.fig-lining{font-variant-numeric:lining-nums}
 h1,h2,h3{font-family:'Lora',Georgia,serif;color:var(--forest);margin:0}
 p{margin:0 0 var(--space-5)}
 strong{font-weight:700;color:var(--forest)}
@@ -59,29 +57,12 @@ a:hover{color:var(--rust)}
    a name that isn't there */
 .eyebrow-person .org-name:only-child{margin-left:0}
 
-/* a confirmed, one-word exception to the no-animation rule in CLAUDE.md
-   section 3, on Christopher's own direct, twice-repeated request: a
-   rainbow gloss sheen across the word "vision" in the problem section.
-   Disabled automatically by the sitewide prefers-reduced-motion rule
-   below, same as every other animation on the site. */
-.vision-shine{
-  background-image:linear-gradient(90deg,var(--rust),var(--orange),#d6a92c,var(--forest),var(--rust));
-  background-size:300% auto;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:vision-sheen 3s linear infinite;
-}
-@keyframes vision-sheen{
-  0%{background-position:0% 50%}
-  100%{background-position:300% 50%}
-}
-
 /* even rhythm: top and bottom padding match, on every section, on every page */
 section{padding:var(--gap) 0}
 .band{background-color:var(--cream-deep);background-image:var(--grain);background-repeat:repeat;background-size:160px 160px}
 .ink{background:var(--forest);color:var(--cream)}
 .ink h2,.ink h3{color:var(--cream)}
 .ink p{color:var(--cream)}
-.ink .eyebrow{color:#f2b48e}
 
 h2{
   font-size:clamp(29px,6vw,38px);font-weight:600;line-height:1.18;
@@ -102,10 +83,7 @@ header{padding:20px 0;border-bottom:1px solid var(--hair)}
 header .wrap.header-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:13px;text-decoration:none;min-width:0}
 .brand:hover b{color:var(--rust)}
-.mark{
-  width:48px;height:48px;border-radius:11px;background:var(--forest);color:var(--orange);
-  font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
-}
+.mark{width:48px;height:48px;border-radius:50%;display:block;object-fit:cover;flex:0 0 auto}
 .brand b{font-family:'Lora',serif;font-size:22px;color:var(--forest);display:block;line-height:1.15}
 .brand span{font-size:18px;color:var(--muted);font-weight:500}
 
@@ -179,7 +157,6 @@ h1{
 .cta:hover{background:#ff5f18}
 .call-alt{font-size:18px;color:var(--muted);margin:0 0 14px}
 .call-alt a{color:var(--forest)}
-.reassure{font-size:18px;color:var(--muted);margin:0}
 a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 
 /* ---------- promises (outlined checkmarks) ---------- */
@@ -193,36 +170,62 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
   font-size:18px;font-weight:600;
 }
 
-/* ---------- price (single monthly figure) ---------- */
-p.figure{
-  font-family:'Lora',serif;font-weight:700;line-height:.95;
-  font-size:clamp(56px,13vw,84px);letter-spacing:-.03em;color:var(--orange);
-  margin:0 0 12px;
+/* ---------- price (three tiers, replacing the old single-figure band) ---------- */
+/* the one set of numbers on the page set in lining figures, per the
+   copy notes; shared by all three card prices below */
+.fig-lining{font-variant-numeric:lining-nums}
+.price-cards{display:grid;grid-template-columns:1fr;gap:var(--space-5);margin:var(--space-2) 0 var(--space-6)}
+/* cream cards on the section's dark forest ground, the same card
+   grammar as .card (cream fill, hair border, orange top accent, flat
+   offset shadow on hover) so the two card systems on this page read as
+   one family even though they sit on different backgrounds */
+.price-card{
+  position:relative;background:var(--cream);color:var(--charcoal);
+  border:1px solid var(--hair);border-top:4px solid var(--orange);border-radius:3px;
+  padding:var(--space-6) var(--space-5) var(--space-5);
+  display:flex;flex-direction:column;
+  transition:transform .2s ease-out,box-shadow .2s ease-out;
 }
-.figure-sub{
-  font-family:'Lora',serif;font-weight:600;font-size:clamp(22px,4vw,26px);
-  color:var(--cream);line-height:1.3;margin:0 0 32px;
+.price-card:hover{transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
+.price-card.rec{border:2px solid var(--forest)}
+.price-badge{
+  position:absolute;top:-14px;left:var(--space-5);
+  background:var(--orange);color:var(--charcoal);font-weight:700;font-size:18px;
+  padding:4px 14px;border:2px solid var(--forest);border-radius:3px;
 }
-/* the booking CTA that used to be its own "Last action" section, folded
-   into the price band on direct request so the price band itself is
-   where the reader decides, whatever their budget. .ink p already sets
-   cream text; .call-alt and its link need their own override below,
-   since their default colors (set for the cream/band backgrounds they
-   normally sit on) read as nearly invisible on this section's dark
-   forest background, the same problem .footer-cta already solved. */
-/* a confirmed-tone, not confirmed-size, exception: Christopher called
-   this line "a sort of disclaimer," so it reads lighter in color, like
-   .call-alt elsewhere on this dark background, rather than shrinking
-   below the section 7 floor the way .risk-reversal was explicitly
-   confirmed to on the case study pages. Don't lower this past 18px
-   without that same kind of explicit, size-specific confirmation. */
-.price-disclaimer{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5)}
-.price-cta{
-  margin-block-start:var(--space-6);padding-block-start:var(--space-6);
-  border-block-start:1px solid rgba(245,235,225,.25);max-width:52ch;
+.price-card h3{color:var(--forest);margin-bottom:4px}
+.price-with{display:block;font-family:'Inter',system-ui,sans-serif;font-size:18px;font-weight:600;color:var(--forest);margin-top:2px}
+.price-card .price-card-desc{color:var(--rust);font-weight:700;margin:0 0 var(--space-4)}
+.price-card .price-figure{
+  display:flex;align-items:baseline;gap:6px;color:var(--forest);margin:0 0 var(--space-4);
 }
-.price-cta .call-alt{color:#cbbfb3}
-.price-cta .call-alt a{color:var(--cream)}
+.price-figure .fig-lining{font-family:'Lora',serif;font-weight:700;font-size:40px;line-height:1}
+.price-figure .price-per{font-size:18px;color:var(--muted)}
+/* decorative only (aria-hidden): the weekday strip from the share-card
+   art, M T W T F with Friday lit, no longer animated across the tiers
+   the way an earlier draft of this had it drawing on a loop. Section 3
+   allows no animation while reading beyond the one confirmed exception
+   elsewhere on this page, so these tiles are a static weekly motif,
+   not a per-tier day count. */
+.price-tiles{display:flex;gap:8px;padding:var(--space-4) 0;border-block:1px solid var(--hair);margin:0 0 var(--space-4)}
+.price-tile{
+  width:40px;height:40px;border-radius:3px;background:var(--cream-deep);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Lora',serif;font-weight:700;font-size:16px;color:var(--muted);
+}
+.price-tile.lit{background:var(--orange);color:var(--charcoal)}
+.price-features{list-style:none;margin:0 0 var(--space-5);padding:0;display:flex;flex-direction:column;gap:var(--space-3);flex:1}
+.price-features li{position:relative;padding-left:26px;font-size:18px}
+.price-features li::before{content:"\2713";position:absolute;left:0;color:var(--forest);font-weight:700}
+.price-card-cta{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  min-height:56px;padding:12px 20px;font-weight:700;font-size:18px;
+  border:2px solid var(--forest);border-radius:3px;text-decoration:none;
+  color:var(--forest);background:var(--cream);
+}
+.price-card-cta:hover{background:var(--cream-deep)}
+.price-card.rec .price-card-cta{background:var(--forest);color:var(--cream)}
+.price-card.rec .price-card-cta:hover{background:#004a33}
 
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's
@@ -335,7 +338,7 @@ footer p:last-child{margin-bottom:0}
 .newsletter-title{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--cream);margin:0 0 var(--space-2)}
 .newsletter-title::after{content:none}
 .newsletter-blurb{font-size:18px;color:#cbbfb3;margin:0 0 var(--space-5);max-width:48ch}
-.newsletter-form{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:flex-end}
+.newsletter-form{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:flex-start}
 .newsletter-field{flex:1 1 260px;display:flex;flex-direction:column;gap:var(--space-2)}
 .newsletter-label{font-size:18px;font-weight:600;color:var(--cream)}
 .newsletter input[type="email"]{
@@ -392,13 +395,12 @@ footer p:last-child{margin-bottom:0}
   .cta span{font-size:21px}
   .call-alt{margin:0}
 
-  .price-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start}
-  .price-grid p{max-width:none}
-
   .cards{grid-template-columns:1fr 1fr 1fr;gap:22px}
   .card{padding:28px}
 
-  .faq-list{max-width:900px}
+  .price-cards{grid-template-columns:1fr 1fr 1fr;align-items:stretch}
+  .price-card.rec{transform:translateY(-10px)}
+
   .faq-item{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
 
   .booking-wrap{max-width:620px}
@@ -531,7 +533,31 @@ footer p:last-child{margin-bottom:0}
 .contact-form input:focus-visible,.contact-form textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 .contact-form button.cta{align-self:flex-start;min-width:160px;cursor:pointer;font-family:inherit}
 
+/* three ways to reach Christopher, beside the note form */
+.contact-grid{display:grid;gap:var(--space-7);margin-top:var(--space-6)}
+.contact-ways{display:flex;flex-direction:column;gap:var(--space-4)}
+.way{
+  position:relative;display:flex;flex-direction:column;gap:2px;
+  padding:20px 56px 20px 24px;
+  background:var(--cream-deep);border:2px solid var(--forest);border-radius:3px;
+  text-decoration:none;color:var(--charcoal);
+}
+.way:hover{border-color:var(--rust)}
+.way-label{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--forest)}
+.way-detail{font-size:18px}
+.way-go{position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--forest)}
+/* the one orange card: "when orange appears, it means act" */
+.way-primary{background:var(--orange)}
+.way-primary .way-label,.way-primary .way-detail,.way-primary .way-go{color:var(--charcoal)}
+.way-primary:hover{background:#ff5f18;border-color:var(--forest)}
+.contact-place{margin:var(--space-2) 0 0;color:var(--muted)}
+.contact-card{margin:0;max-width:none;background:var(--cream-deep);border:1px solid var(--hair);border-radius:3px;padding:28px}
+.contact-card-title{font-size:26px}
+.contact-card-title::after{margin:10px 0 var(--space-4)}
+.contact-form .optional{font-weight:500;color:var(--muted)}
+
 @media (min-width:760px){
+  .contact-grid{grid-template-columns:1fr 1.1fr;align-items:start}
   .case-facts{flex-direction:row;gap:0}
   .case-facts>div{flex:1;padding:0 28px}
   .case-facts>div:first-child{padding-left:0}

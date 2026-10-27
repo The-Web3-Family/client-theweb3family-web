@@ -1,48 +1,64 @@
 ---
 layout: base.njk
 title: Contact | The Web3 Family
-description: Reach Christopher Clarke directly, or book a free strategy call.
+description: Call, text, email, or schedule a call with Christopher Clarke directly.
 ---
-{% from "cta.njk" import button %}
 <!-- CONTACT -->
 <section>
   <div class="wrap">
-    <h1>Contact</h1>
-    <p class="subhead">Call, text, email, or book a free strategy call. Whatever is easiest.</p>
+    <h1>Let's talk.</h1>
+    <p class="subhead">Pick whatever is easiest. Every message comes straight to me.</p>
 
-    <!--
-      This is a stand-in for real Splitform embed, per direct request
-      ("This needs to be a form"). Not the real Splitform widget: that
-      still needs the actual embed snippet or hosted form URL from
-      Christopher's own Splitform account, which nobody but him can
-      pull, and loading it will be a deliberate, confirmed exception
-      to the site's zero-client-JS rule (section 9), the same kind of
-      tradeoff Microsoft Clarity already is. In the meantime this is a
-      plain mailto: form: it needs no backend and adds no JavaScript,
-      but it only works if the visitor's device has an email app
-      configured to handle mailto: links, which not everyone does
-      (many people read mail only in a browser tab). Swap this whole
-      block for the real Splitform embed once that's in hand.
-    -->
-    <form class="contact-form" action="mailto:christopher@theweb3family.com" method="post" enctype="text/plain">
-      <label>Name
-        <input type="text" name="Name" required>
-      </label>
-      <label>Email
-        <input type="email" name="Email" required>
-      </label>
-      <label>Message
-        <textarea name="Message" rows="5" required></textarea>
-      </label>
-      <button type="submit" class="cta"><span>Send</span></button>
-    </form>
+    <div class="contact-grid">
+      <div class="contact-ways">
+        <a class="way way-primary" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
+          <span class="way-label">Schedule a call with me</span>
+          <span class="way-detail">A free 15 minute call on my calendar</span>
+          <span class="way-go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="way" href="tel:+13107036003">
+          <span class="way-label">Call or text</span>
+          <span class="way-detail">(310) 703-6003</span>
+          <span class="way-go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="way" href="mailto:christopher@theweb3family.com">
+          <span class="way-label">Email</span>
+          <span class="way-detail">christopher@theweb3family.com</span>
+          <span class="way-go" aria-hidden="true">&rarr;</span>
+        </a>
+        <p class="contact-place">Based in Inglewood, California. Working with nonprofits everywhere.</p>
+      </div>
 
-    <div class="prose">
-      <p>Or reach me directly:</p>
-      <p><a href="tel:+13107036003">(310) 703-6003</a>, call or text</p>
-      <p style="margin-bottom:0"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+      {#
+        This is a stand-in for real Splitform embed, per direct request
+        ("This needs to be a form"). Not the real Splitform widget: that
+        still needs the actual embed snippet or hosted form URL from
+        Christopher's own Splitform account, which nobody but him can
+        pull, and loading it will be a deliberate, confirmed exception
+        to the site's zero-client-JS rule (section 9), the same kind of
+        tradeoff Microsoft Clarity already is. In the meantime this is a
+        plain mailto: form: it needs no backend and adds no JavaScript,
+        but it only works if the visitor's device has an email app
+        configured to handle mailto: links, which not everyone does
+        (many people read mail only in a browser tab). Swap this whole
+        block for the real Splitform embed once that's in hand.
+      #}
+      <form class="contact-form contact-card" action="mailto:christopher@theweb3family.com" method="post" enctype="text/plain">
+        <h2 class="contact-card-title">Send a note</h2>
+        <label>Name
+          <input type="text" name="Name" autocomplete="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="Email" autocomplete="email" required>
+        </label>
+        <label><span>Organization <span class="optional">(optional)</span></span>
+          <input type="text" name="Organization" autocomplete="organization">
+        </label>
+        <label>How can I help?
+          <textarea name="Message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="cta"><span>Send</span></button>
+      </form>
     </div>
-
-    {{ button() }}
   </div>
 </section>

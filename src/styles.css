@@ -229,18 +229,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .price-card.rec .price-card-cta{background:var(--forest);color:var(--cream)}
 .price-card.rec .price-card-cta:hover{background:#004a33}
 
-/* the shared phone/email contact block, now below all three cards
-   rather than beside a single price figure. .ink p already sets cream
-   text; .call-alt and its link need their own override below, since
-   their default colors (set for the cream/band backgrounds they
-   normally sit on) read as nearly invisible on this section's dark
-   forest background, the same problem .footer-cta already solved. */
-.price-cta{
-  margin-block-start:var(--space-2);max-width:52ch;
-}
-.price-cta .call-alt{color:#cbbfb3}
-.price-cta .call-alt a{color:var(--cream)}
-
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's
    own external site, and the card-anchor to the case study page), and

@@ -535,7 +535,31 @@ footer p:last-child{margin-bottom:0}
 .contact-form input:focus-visible,.contact-form textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 .contact-form button.cta{align-self:flex-start;min-width:160px;cursor:pointer;font-family:inherit}
 
+/* three ways to reach Christopher, beside the note form */
+.contact-grid{display:grid;gap:var(--space-7);margin-top:var(--space-6)}
+.contact-ways{display:flex;flex-direction:column;gap:var(--space-4)}
+.way{
+  position:relative;display:flex;flex-direction:column;gap:2px;
+  padding:20px 56px 20px 24px;
+  background:var(--cream-deep);border:2px solid var(--forest);border-radius:3px;
+  text-decoration:none;color:var(--charcoal);
+}
+.way:hover{border-color:var(--rust)}
+.way-label{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--forest)}
+.way-detail{font-size:18px}
+.way-go{position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--forest)}
+/* the one orange card: "when orange appears, it means act" */
+.way-primary{background:var(--orange)}
+.way-primary .way-label,.way-primary .way-detail,.way-primary .way-go{color:var(--charcoal)}
+.way-primary:hover{background:#ff5f18;border-color:var(--forest)}
+.contact-place{margin:var(--space-2) 0 0;color:var(--muted)}
+.contact-card{margin:0;max-width:none;background:var(--cream-deep);border:1px solid var(--hair);border-radius:3px;padding:28px}
+.contact-card-title{font-size:26px}
+.contact-card-title::after{margin:10px 0 var(--space-4)}
+.contact-form .optional{font-weight:500;color:var(--muted)}
+
 @media (min-width:760px){
+  .contact-grid{grid-template-columns:1fr 1.1fr;align-items:start}
   .case-facts{flex-direction:row;gap:0}
   .case-facts>div{flex:1;padding:0 28px}
   .case-facts>div:first-child{padding-left:0}

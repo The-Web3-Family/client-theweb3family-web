@@ -63,7 +63,6 @@ section{padding:var(--gap) 0}
 .ink{background:var(--forest);color:var(--cream)}
 .ink h2,.ink h3{color:var(--cream)}
 .ink p{color:var(--cream)}
-.ink .eyebrow{color:#f2b48e}
 
 h2{
   font-size:clamp(29px,6vw,38px);font-weight:600;line-height:1.18;
@@ -175,7 +174,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 /* the one set of numbers on the page set in lining figures, per the
    copy notes; shared by all three card prices below */
 .fig-lining{font-variant-numeric:lining-nums}
-.price-intro{color:var(--cream);margin:0 0 var(--space-6);max-width:52ch}
 .price-cards{display:grid;grid-template-columns:1fr;gap:var(--space-5);margin:var(--space-2) 0 var(--space-6)}
 /* cream cards on the section's dark forest ground, the same card
    grammar as .card (cream fill, hair border, orange top accent, flat

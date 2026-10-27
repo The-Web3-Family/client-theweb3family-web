@@ -437,6 +437,15 @@ footer p:last-child{margin-bottom:0}
 
   .price-cards{grid-template-columns:1fr 1fr 1fr;align-items:stretch}
   .price-card.rec{transform:translateY(-10px)}
+  /* "Family Package" alone is one line; the other two cards' h3 wraps to
+     two ("with Extra Support" / "with Extra Extra Support" on its own
+     line), and the desc line wraps to two lines on two of three cards
+     but not the first. Both left unreserved, the tiles divider (and
+     everything under it) landed at a different height on each card,
+     so the row never lined up. Reserving two lines' worth on both
+     evens every card out to the same starting height below them. */
+  .price-card h3{min-height:2.6em}
+  .price-card .price-card-desc{min-height:3.2em}
 
   .faq-item{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
 

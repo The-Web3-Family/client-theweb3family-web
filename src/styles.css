@@ -263,6 +263,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .price-card.p3 .t2 .price-sq path{animation:price-p3d2 17.6s linear infinite}
 @keyframes price-p3d3{0%{stroke-dashoffset:300;opacity:0}0.01%{stroke-dashoffset:300;opacity:0}25.01%{stroke-dashoffset:300;opacity:0}25.3%{stroke-dashoffset:291;opacity:1}31.25%{stroke-dashoffset:0;opacity:1}42.61%{stroke-dashoffset:0;opacity:1}48.58%{stroke-dashoffset:291;opacity:1}48.86%{stroke-dashoffset:300;opacity:0}50.01%{stroke-dashoffset:300;opacity:0}50.3%{stroke-dashoffset:291;opacity:1}56.25%{stroke-dashoffset:0;opacity:1}67.61%{stroke-dashoffset:0;opacity:1}73.58%{stroke-dashoffset:291;opacity:1}73.86%{stroke-dashoffset:300;opacity:0}75.01%{stroke-dashoffset:300;opacity:0}100%{stroke-dashoffset:300;opacity:0}}
 .price-card.p3 .t3 .price-sq path{animation:price-p3d3 17.6s linear infinite}
+/* Extra Extra Support runs half a step behind Extra Support so the two cards never squiggle in sync */
+.price-card.p3 .price-tile .price-sq path{animation-delay:-2.2s}
+/* within Extra Extra Support, the second day of each pair (always Wed or Thu) starts about a second after the first */
+.price-card.p3 .t2 .price-sq path,.price-card.p3 .t3 .price-sq path{animation-delay:-1.2s}
 
 /* ---------- cards ---------- */
 /* Plain <div>, not <a>: each card holds two real links (the client's

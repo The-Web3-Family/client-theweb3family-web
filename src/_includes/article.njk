@@ -1,12 +1,108 @@
 ---
 layout: base.njk
+ogType: article
 ---
 {% from "cta.njk" import button %}
-<article class="prose">
+{#
+  ARTICLE LAYOUT (rebuilt on direct request, Oct 28 2026: "give me
+  everything to give my articles so that they can rank well and be laid
+  out well"). Top to bottom, in the order an older reader on a phone
+  meets it:
+    breadcrumb -> date line (date, minutes to read, "Updated" when the
+    article carries an `updated` date) -> title -> "The short answer"
+    box (front matter `summary`) -> cover image with caption (front
+    matter `image`, `imageAlt`, optional `imageCaption`) -> the article
+    -> author note (reuses the case studies' `.author-note` and the one
+    portrait the site allows) -> a plain link to The Friday Letter
+    signup in the footer -> the one "Schedule a call with me" button ->
+    up to three more articles (reuses `.case-crosslinks`).
+  Every optional piece simply disappears when its front matter field is
+  left out, so older articles still render cleanly.
+  The two JSON-LD blocks are inert structured data for search engines
+  and AI assistants, not executable script (same reasoning as the
+  homepage Organization/Person blocks in base.njk).
+#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  "description": {{ description | dump | safe }},
+  "datePublished": "{{ page.date.toISOString() }}",
+  "dateModified": "{{ (updated or page.date) | isoDate }}",
+  "mainEntityOfPage": "https://theweb3family.com{{ page.url }}",
+  "image": "https://theweb3family.com{{ image or '/og-share-v2.jpg' }}",
+  "author": {
+    "@type": "Person",
+    "@id": "https://theweb3family.com/#christopher",
+    "name": "Christopher Clarke",
+    "jobTitle": "Founder, The Web3 Family, Creative Studio for Nonprofits",
+    "image": "https://theweb3family.com/christopher.jpg",
+    "url": "https://theweb3family.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://theweb3family.com/#organization",
+    "name": "The Web3 Family",
+    "logo": { "@type": "ImageObject", "url": "https://theweb3family.com/logo.png" }
+  },
+  "isPartOf": { "@type": "Blog", "name": "The Friday Letter", "url": "https://theweb3family.com/articles/" }{% if keyword %},
+  "keywords": {{ keyword | dump | safe }}{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://theweb3family.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://theweb3family.com/articles/" },
+    { "@type": "ListItem", "position": 3, "name": {{ title | dump | safe }} }
+  ]
+}
+</script>
+<article class="prose article">
   <div class="wrap">
-    <p class="article-date">{{ page.date | readableDate }}</p>
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/articles/">Articles</a></p>
+    <p class="article-date">
+      <time datetime="{{ page.date.toISOString() }}">{{ page.date | readableDate }}</time>
+      &middot; {{ content | readingTime }} minute read
+      {% if updated %}<br>Updated <time datetime="{{ updated | isoDate }}">{{ updated | readableDate }}</time>{% endif %}
+    </p>
     <h1>{{ title }}</h1>
+
+    {% if summary %}
+    <div class="article-summary">
+      <p class="article-summary-label">The short answer</p>
+      <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+
+    {% if image %}
+    <figure class="article-cover">
+      <img src="{{ image }}" alt="{{ imageAlt }}" width="1200" height="630">
+      {% if imageCaption %}<figcaption>{{ imageCaption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+
     {{ content | safe }}
+
+    <div class="author-note">
+      <img class="portrait portrait-sm" src="/christopher.jpg" alt="Christopher Clarke">
+      <p>Hi, I&rsquo;m Christopher. I run The Web3 Family, a creative studio for nonprofits in Inglewood, California. Every Friday I share what I learn building for founders like you.</p>
+    </div>
+
+    <p class="article-letter">Want a new lesson every Friday? <a href="#newsletter-heading">Join The Friday Letter</a>, it&rsquo;s free.</p>
+
     {{ button("content-cta") }}
+
+    {% set more = collections.articles | otherArticles(page.url, 3) %}
+    {% if more.length %}
+    <h2 class="crosslinks-heading">More from The Friday Letter</h2>
+    <ul class="case-crosslinks">
+      {% for a in more %}<li><a href="{{ a.url }}">{{ a.data.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
 </article>

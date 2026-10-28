@@ -166,9 +166,10 @@
 <link rel="canonical" href="https://theweb3family.com{{ page.url | url }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:url" content="https://theweb3family.com{{ page.url | url }}">
-<meta property="og:image" content="https://theweb3family.com/og-share-v2.jpg">
+<meta property="og:image" content="https://theweb3family.com{{ image or '/og-share-v2.jpg' }}">
+{% if imageAlt %}<meta property="og:image:alt" content="{{ imageAlt }}">{% endif %}
 <meta property="og:site_name" content="The Web3 Family">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/logo.png" type="image/png">
@@ -215,7 +216,8 @@
   "@type": "ProfessionalService",
   "@id": "https://theweb3family.com/#organization",
   "name": "The Web3 Family",
-  "description": "A one-person studio in Inglewood, California that builds websites, brand identity, pitch decks, apps, donation platforms, and fundraising infrastructure for nonprofits.",
+  "alternateName": "The Web3 Family, Creative Studio for Nonprofits",
+  "description": "A one-person creative studio for nonprofits in Inglewood, California that builds websites, brand identity, pitch decks, apps, donation platforms, and fundraising infrastructure for nonprofits.",
   "disambiguatingDescription": "The Web3 Family is a nonprofit-focused design and build studio. It is not a cryptocurrency, blockchain, or Web3 software company.",
   "url": "https://theweb3family.com",
   "email": "christopher@theweb3family.com",
@@ -230,6 +232,7 @@
     "addressRegion": "CA",
     "addressCountry": "US"
   },
+  "sameAs": ["https://www.youtube.com/@theweb3family"],
   "knowsAbout": ["nonprofit website design", "brand identity", "pitch decks", "donation platforms", "mobile apps", "fundraising strategy"]
 }
 </script>
@@ -241,6 +244,7 @@
   "name": "Christopher Clarke",
   "jobTitle": "Founder",
   "worksFor": { "@id": "https://theweb3family.com/#organization" },
+  "sameAs": ["https://www.linkedin.com/in/aweb3dad"],
   "email": "christopher@theweb3family.com",
   "telephone": "+1-310-703-6003",
   "url": "https://theweb3family.com"
@@ -343,6 +347,7 @@
     <div class="footer-info">
       <p class="footer-name">Christopher Clarke</p>
       <p class="footer-line">The Web3 Family</p>
+      <p class="footer-line">Creative Studio for Nonprofits</p>
       <p class="footer-line">Inglewood, California</p>
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>

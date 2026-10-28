@@ -133,7 +133,7 @@ a.nav-cta:hover{background:#ff5f18}
   border:3px solid var(--forest);background:var(--cream-deep);
 }
 .me b{font-family:'Lora',serif;font-size:21px;color:var(--charcoal);display:block;line-height:1.2}
-.me span{font-size:18px;color:var(--muted)}
+.me span{display:block;font-size:18px;color:var(--muted)}
 
 h1{
   font-size:clamp(40px,10vw,66px);font-weight:600;

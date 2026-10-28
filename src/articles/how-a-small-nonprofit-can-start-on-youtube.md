@@ -6,50 +6,19 @@ description: Why I set up YouTube channels for the nonprofits I work with, what 
 ---
 *From The Friday Letter, my weekly email for nonprofit founders.*
 
-This was my first real newsletter, and it came at the end of a great week. I’ve been pacing myself every Friday: delivering to my clients, and sharing what I learn with everyone else. This week the lesson was about YouTube.
+Had an amazing week here, and am slowly bringing everything to a home plate. I've noticed the power of having my emails connected to my Claude, and pacing myself every Friday to deliver to my clients, but also deliver to the general populace.
 
-## Why YouTube matters for a nonprofit
+So for me, what I'm doing next is making sure that I have content for the search engine algorithms, but also that I have content for social media as well, since I'm drawing everyone in to be able to see the services the business provides, but also carefully making sure that I don't hit any algorithmic errors, since we are all at the whim of these search engines and social networks when it comes to the internet.
 
-People search for help on Google and YouTube every day. When your nonprofit shows up there, you meet them right where they’re looking.
+With that said, we're in the middle of launching a new YouTube channel for a client, in which I'll show over time. And actually... now that I think about it, I do have one I can show, or rather two. My YouTube channel and one of my other client's YouTube channels:
 
-That’s why I set up YouTube channels for the organizations I work with. A channel gives your mission a home where your videos keep working long after you post them. A parent, a funder, or a school official can find you and see your work for themselves.
+- Mine: [youtube.com/@theweb3family](https://www.youtube.com/@theweb3family)
+- Ask G-Pop: [youtube.com/@AskGpop](https://www.youtube.com/@AskGpop)
 
-Two channels you can look at right now:
+The reason this is important is because I'm creating a pathway for all my clients to build their own audience and climb the algorithms through it.
 
-- My own channel: [youtube.com/@theweb3family](https://www.youtube.com/@theweb3family)
-- Ask G-Pop, a youth mentorship program I work with: [youtube.com/@AskGpop](https://www.youtube.com/@AskGpop)
+So along with branding and websites, I can say officially that we do social media as well.
 
-## Short videos open the door
+And one of the key things we're learning about social media is that 15-30 second videos are key, at least that's what I'm learning from the research.
 
-The research I’ve been reading points the same way: short videos, about 15 to 30 seconds, are what people watch and share most. On YouTube these are called Shorts. The same clips work on Instagram Reels, Facebook, and LinkedIn too.
-
-A short video works best with one simple idea:
-
-- A moment from your program
-- A quick tip for the families you serve
-- A thank-you to a volunteer or donor
-- One sentence about why your mission matters
-
-You make it once, and it can travel to every platform.
-
-## Turn viewers into connections
-
-A video is only the beginning. Every video should invite people one step closer. Think of it as a clear path: from watching, to visiting your website, to reaching out.
-
-So end each video with one simple invitation. Visit the website. Call the number. Sign up for the newsletter. Book a tour. Pick one, and say it out loud.
-
-## Simple first steps
-
-If your nonprofit is starting from zero, here’s how I’d begin:
-
-1. **Claim your channel name.** Use your organization’s name, and add your logo and a banner.
-2. **Make a welcome video.** One minute about who you serve and why.
-3. **Post two Shorts a week.** Consistency matters more than polish.
-4. **Group videos into playlists,** like “Meet Our Program” or “Events,” so visitors can explore.
-5. **Link everything back to your website,** where people can give, sign up, or reach out.
-
-## Play it safe with YouTube’s rules
-
-Every nonprofit depends on search engines and social networks to be seen. So I move carefully: steady posting, honest titles, and no shortcuts that could get a channel flagged. Slow and steady builds trust with people and with the platforms.
-
-Along with branding and websites, I can now officially say I help nonprofits with social media too. If your organization needs help getting started, let me know. And if you want a new lesson every Friday, [join The Friday Letter here](#newsletter-heading).
+Either way, I'll keep everyone posted over time. If anyone needs any help, let me know. If you want a new letter every Friday, [join The Friday Letter here](#newsletter-heading).

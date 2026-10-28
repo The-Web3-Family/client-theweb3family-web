@@ -3,6 +3,9 @@ layout: article.njk
 title: How a Small Nonprofit Can Start on YouTube
 date: 2026-10-09T12:00:00Z
 description: Why I set up YouTube channels for the nonprofits I work with, what short videos do for them, and simple first steps for your own organization.
+summary: I'm setting up YouTube channels for the nonprofits I work with, including my own, so people can find them through search and social media. Short 15 to 30 second videos matter most right now. Two real channels are already live, mine and Ask G-Pop's, both linked inside this letter.
+image: /images/articles/my-first-newsletter-truly.jpg
+imageAlt: 'A forest green card reading: The Friday Letter, My first newsletter, truly. A row of weekday tiles, Friday lit orange, and theweb3family.com.'
 ---
 *From The Friday Letter, my weekly email for nonprofit founders.*
 

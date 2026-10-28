@@ -3,6 +3,9 @@ layout: article.njk
 title: How to Measure Nonprofit Impact Beyond Views
 date: 2026-10-23T12:00:00Z
 description: Views and impressions show who scrolled past. Here’s how to count the moments people truly reach out, starting with a nonprofit phone line I set up this week.
+summary: This week I set up Love Aid Foundation's first phone line, 903-LOVEAID. Watching it come together taught me that connection, not views or impressions, is the real way to measure impact. Someone scrolling past your content hasn't made a deliberate choice the way someone who calls or reaches out has.
+image: /images/articles/count-connections-not-views.jpg
+imageAlt: 'A forest green card reading: The Friday Letter, Count connections, not views. A row of weekday tiles, Friday lit orange, and theweb3family.com.'
 ---
 *From The Friday Letter, my weekly email for nonprofit founders.*
 

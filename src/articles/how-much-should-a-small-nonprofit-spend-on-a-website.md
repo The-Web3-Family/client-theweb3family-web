@@ -3,6 +3,9 @@ layout: article.njk
 title: How Much Should a Small Nonprofit Spend on a Website?
 date: 2026-10-17T12:00:00Z
 description: An honest look at how I priced my own nonprofit services, what changed my mind, and the questions to ask before you pay anyone to build your website.
+summary: I'm rethinking my pricing after noticing free work rarely gets followed up on, even at the same quality as paid work. I'm moving toward a week of free work, then a $500 a month plan or a la carte, with the $3,000 a month tier reserved for people who want weekly one on one time with me.
+image: /images/articles/is-3000month-too-much-i-dont-know.jpg
+imageAlt: 'A forest green card reading: The Friday Letter, Is $3,000 a month too much? A row of weekday tiles, Friday lit orange, and theweb3family.com.'
 ---
 *From The Friday Letter, my weekly email for nonprofit founders.*
 

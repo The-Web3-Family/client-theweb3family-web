@@ -620,3 +620,12 @@ footer p:last-child{margin-bottom:0}
    once it's live; harmless to keep while the pixel itself is still
    commented out pending Christopher's real account code (see section 8) */
 @media print{img[aria-hidden="true"]{display:none}.newsletter{display:none}}
+
+/* Article page: short answer box, cover image, Friday Letter line */
+.article-summary{background:var(--cream-deep,#ede0d3);border-left:6px solid var(--forest,#003223);padding:20px 22px;margin:24px 0 28px;border-radius:4px}
+.article-summary p{margin:0;font-size:20px;line-height:1.6}
+.article-summary .article-summary-label{font-weight:700;font-size:18px;color:var(--forest,#003223);margin-bottom:6px}
+.article-cover{margin:0 0 28px}
+.article-cover img{display:block;width:100%;height:auto;border-radius:8px}
+.article-cover figcaption{font-size:18px;color:var(--muted);margin-top:8px}
+.article-letter{font-size:20px;margin:0 0 24px}

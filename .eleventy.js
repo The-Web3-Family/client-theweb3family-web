@@ -6,6 +6,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/christopher.jpg");
   eleventyConfig.addPassthroughCopy("src/og-share-v2.jpg");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  // Article cover images (1200x630 JPGs, one per article, named after the
+  // article's own filename). See article-template.md.
+  eleventyConfig.addPassthroughCopy("src/images");
 
   // Articles are plain Markdown files under src/articles/. Adding one is
   // the whole authoring workflow: no template edits needed. See
@@ -13,6 +16,16 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("articles", (collectionApi) =>
     collectionApi.getFilteredByGlob("src/articles/*.md").sort((a, b) => b.date - a.date)
   );
+
+  // Minutes to read, at a gentle 200 words a minute, for the article
+  // date line ("4 minute read"). Strips tags before counting.
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString());
+  eleventyConfig.addFilter("otherArticles", (list, url, n) =>
+    (list || []).filter((a) => a.url !== url).slice(0, n));
+  eleventyConfig.addFilter("readingTime", (html) => {
+    const words = String(html || "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+  });
 
   eleventyConfig.addFilter("readableDate", (dateObj) =>
     new Date(dateObj).toLocaleDateString("en-US", {

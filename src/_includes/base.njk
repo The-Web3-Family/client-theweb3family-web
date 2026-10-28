@@ -166,9 +166,10 @@
 <link rel="canonical" href="https://theweb3family.com{{ page.url | url }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:url" content="https://theweb3family.com{{ page.url | url }}">
-<meta property="og:image" content="https://theweb3family.com/og-share-v2.jpg">
+<meta property="og:image" content="https://theweb3family.com{{ image or '/og-share-v2.jpg' }}">
+{% if imageAlt %}<meta property="og:image:alt" content="{{ imageAlt }}">{% endif %}
 <meta property="og:site_name" content="The Web3 Family">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/logo.png" type="image/png">

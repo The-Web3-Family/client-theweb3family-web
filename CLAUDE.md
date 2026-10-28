@@ -294,3 +294,29 @@ Confirm every time:
 - Does every color pair meet the ratios in section 6?
 - Would an 87 year old understand every word?
 - Does the page still have exactly one goal and one action?
+
+
+## Article pages (added Oct 28 2026, on direct request)
+article.njk renders, in order: breadcrumb, date and minutes to read (plus
+"Updated" when set), title, "The short answer" box from `summary`, cover
+image from `image`/`imageAlt`, the article, the author note, a link to The
+Friday Letter signup, the booking button, and up to three more articles.
+It also emits BlogPosting and BreadcrumbList JSON-LD and sets og:type
+article and og:image from `image`. Cover images are typographic brand cards
+(1200x630 JPG in src/images/articles/, named after the article file), the
+named exception to "no stock photos": text and brand tiles only.
+
+**All three live articles now use `summary`, `image`, and `imageAlt`.** The
+patch that built this layout shipped the three cover JPGs (named after the
+original newsletter export filenames, e.g. `my-first-newsletter-truly.jpg`)
+but didn't wire any article's front matter to them; that wiring was added
+separately, matching each image to its article by content. Each `summary`
+is pulled straight from that article's own already-published text, nothing
+new claimed. **The cover images carry the original Friday Letter subject
+line** ("My first newsletter, truly," "Is $3,000 a month too much?," "Count
+connections, not views"), not the current, SEO-rewritten on-page `<h1>` text
+(e.g. "How a Small Nonprofit Can Start on YouTube"). They read as a stylized
+pull-quote under the headline rather than a mismatch, since both describe
+the same piece, but if a future article adds its own cover image, match the
+image's own text to that article's real `<h1>` to avoid drifting the two
+further apart.

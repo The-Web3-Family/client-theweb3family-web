@@ -476,6 +476,20 @@ footer p:last-child{margin-bottom:0}
 .author-note p{margin:0;font-size:20px}
 .portrait-sm{width:64px;height:64px;border-width:2px}
 
+/* ---------- support/ko-fi ----------
+   The Ko-fi iframe embed is a deliberate, confirmed exception to the
+   external-dependency list in section 9 of CLAUDE.md, same reasoning
+   as Calendly: a plain <iframe>, no script we load ourselves. Framed
+   like a card (hair border, 4px orange top accent, 3px corners) so it
+   reads as part of the page rather than a bare third-party box. */
+.kofi-panel{
+  max-width:680px;margin:0 auto var(--space-5);
+  background:var(--cream-deep);border:1px solid var(--hair);border-top:4px solid var(--orange);
+  border-radius:3px;padding:var(--space-4);
+}
+.kofi-panel iframe{display:block;width:100%;border:none;background:var(--cream-deep)}
+.kofi-note{max-width:62ch;margin:0 0 var(--space-6);color:var(--muted)}
+
 /* ---------- articles ---------- */
 .article-date{font-size:18px;color:var(--muted);margin:0 0 8px}
 

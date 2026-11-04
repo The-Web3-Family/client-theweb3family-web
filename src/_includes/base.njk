@@ -162,7 +162,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
-{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+{% if robotsMeta %}<meta name="robots" content="{{ robotsMeta }}">{% elif noindex %}<meta name="robots" content="noindex">{% endif %}
 <link rel="canonical" href="https://theweb3family.com{{ page.url | url }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
@@ -352,7 +352,7 @@
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
       <p class="footer-line"><a href="/privacy/">Privacy Policy</a></p>
-      <p class="footer-line"><a href="/support/">Support the studio on Ko-fi</a></p>
+      <p class="footer-line"><a href="/support/">Support the studio</a></p>
     </div>
     <div class="footer-clients">
       <p class="footer-line footer-clients-label">Nonprofits we work with.</p>

@@ -1,0 +1,47 @@
+---
+layout: base.njk
+permalink: /404.html
+title: Page not found | The Web3 Family
+description: This page has moved. Find your way back to The Web3 Family's articles, case studies, or home page.
+robotsMeta: noindex, follow
+eleventyExcludeFromCollections: true
+---
+<!-- 404 -->
+<section>
+  <div class="wrap">
+    <h1>You&rsquo;re in the right place.</h1>
+    <p class="subhead">This page has moved to a new home. Your phone and computer are working just fine, and I&rsquo;ll help you find what you need.</p>
+
+    <h2>Here&rsquo;s where you can go next</h2>
+    <div class="contact-ways">
+      <a class="way" href="/articles/">
+        <span class="way-label">Read my Articles</span>
+        <span class="way-detail">The Friday Letter, written out</span>
+        <span class="way-go" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="way" href="/case-studies/">
+        <span class="way-label">See my nonprofit work</span>
+        <span class="way-detail">Real clients, real case studies</span>
+        <span class="way-go" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="way" href="/">
+        <span class="way-label">Go to the Home page</span>
+        <span class="way-detail">Start over from the top</span>
+        <span class="way-go" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="way" href="/contact/">
+        <span class="way-label">Contact me</span>
+        <span class="way-detail">Call, text, email, or book a call</span>
+        <span class="way-go" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <h2>Or pick a time on my calendar, and we&rsquo;ll talk it through</h2>
+    {% from "cta.njk" import button %}
+    {{ button("content-cta", false, false) }}
+
+    <p class="subhead">Rather talk now? <a href="tel:+13107036003">Call</a> or <a href="sms:+13107036003">text</a> (310) 703-6003.</p>
+  </div>
+</section>
+
+<script>clarity("set","page_type","404");</script>

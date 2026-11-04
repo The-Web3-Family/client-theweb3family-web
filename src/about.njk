@@ -1,0 +1,90 @@
+---
+layout: base.njk
+title: About Christopher Clarke | The Web3 Family
+description: Christopher Clarke is the founder of The Web3 Family, a creative studio for nonprofits in Inglewood, California.
+---
+{% from "cta.njk" import button %}
+{#
+  ProfilePage JSON-LD, same convention as article.njk's BlogPosting/
+  BreadcrumbList blocks: inert structured data placed at the top of
+  the page content rather than base.njk's <head> (the homepage-only
+  Organization/Person blocks live there), since this is a single-page
+  concern, not a sitewide one. Reuses the homepage's own @id values so
+  this Person and that one are the same entity to a crawler.
+#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://theweb3family.com/about/",
+  "name": "About Christopher Clarke",
+  "dateModified": "{{ page.date | isoDate }}",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://theweb3family.com/#christopher",
+    "name": "Christopher Clarke",
+    "jobTitle": "Founder",
+    "image": "https://theweb3family.com/christopher.jpg",
+    "url": "https://theweb3family.com/about/",
+    "worksFor": { "@id": "https://theweb3family.com/#organization" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Inglewood", "addressRegion": "CA", "addressCountry": "US" },
+    "knowsAbout": ["Nonprofit branding", "Nonprofit websites", "Donation pages", "Video production", "Nonprofit marketing", "Email newsletters"],
+    "sameAs": [
+      "https://www.linkedin.com/in/aweb3dad",
+      "https://www.youtube.com/@theweb3family",
+      "PASTE_INSTAGRAM_URL",
+      "PASTE_FACEBOOK_URL",
+      "PASTE_THREADS_URL",
+      "PASTE_X_URL"
+    ]
+  }
+}
+</script>
+<!-- ABOUT -->
+<section>
+  <div class="wrap">
+    <img class="portrait" src="/christopher.jpg" alt="Christopher Clarke">
+    <h1>Christopher Clarke</h1>
+    <p class="subhead">Founder, The Web3 Family &middot; Creative Studio for Nonprofits</p>
+
+    <p>I help nonprofit founders and small business owners get seen. Every Friday, I finish something real for my clients: a website, a donation page, a video, a flyer, or a newsletter, saved to their own Google Drive.</p>
+
+    <h2>Why I do this</h2>
+    <p>[CHRISTOPHER WRITES 2&ndash;3 SENTENCES HERE, IN HIS OWN WORDS, ON WHY HE SERVES FOUNDERS. Don&rsquo;t ship this placeholder.]</p>
+
+    <h2>What I do</h2>
+    <div class="prose">
+      <ul>
+        <li><strong>Branding.</strong> Brand books and the look that ties your organization together.</li>
+        <li><strong>Content.</strong> Videos, flyers, and newsletters, finished every Friday.</li>
+        <li><strong>Websites.</strong> Websites and donation pages your organization owns.</li>
+        <li><strong>Marketing.</strong> Social media and YouTube, so people can find your work.</li>
+      </ul>
+    </div>
+
+    <h2>Nonprofits I work with</h2>
+    <div class="prose">
+      <ul>
+        <li><a href="/case-studies/love-aid-foundation/">Love Aid Foundation</a></li>
+        <li><a href="/case-studies/ask-g-pop/">Ask G-Pop</a></li>
+        <li><a href="/case-studies/rap-frogs/">Rap Frogs</a></li>
+      </ul>
+    </div>
+
+    <h2>Where to find me</h2>
+    <div class="prose">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/aweb3dad" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.youtube.com/@theweb3family" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="PASTE_INSTAGRAM_URL" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="PASTE_FACEBOOK_URL" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="PASTE_THREADS_URL" target="_blank" rel="noopener">Threads</a></li>
+        <li><a href="PASTE_X_URL" target="_blank" rel="noopener">X</a></li>
+      </ul>
+    </div>
+
+    <h2>Let&rsquo;s talk about your mission</h2>
+    {{ button("content-cta", false, false) }}
+    <p class="subhead">Or <a href="tel:+13107036003">call</a> or <a href="sms:+13107036003">text</a> (310) 703-6003.</p>
+  </div>
+</section>

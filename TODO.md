@@ -6,18 +6,19 @@ real unfinished step. Delete an item once it's done.
 
 ## About page (`/about/`)
 
-- [ ] Write the real "Why I do this" paragraph (2–3 sentences, in your own
-      words) in `src/about.njk`, replacing the bracketed placeholder. Don't
-      let this page go live with the placeholder still showing.
-- [ ] Send your real profile URLs for Instagram, Facebook, Threads, and X.
-      They're used in two places in `src/about.njk`: the visible "Where to
-      find me" links, and the page's own JSON-LD (`sameAs`). Both currently
-      read `PASTE_INSTAGRAM_URL`, `PASTE_FACEBOOK_URL`, `PASTE_THREADS_URL`,
-      `PASTE_X_URL`.
-- [ ] Once the above two are in and the page is live, run it through
+Content is done: the real "Why I do this" paragraph, all six social links,
+and the work history are all in and live in the branch.
+
+- [ ] Once the page is live, run it through
       [Google's Rich Results Test](https://search.google.com/test/rich-results)
       and request indexing in Search Console. A Profile page report should
       show up under Enhancements, next to Breadcrumbs, within a few weeks.
+- [ ] **Update your LinkedIn summary.** It still lists the old pricing
+      ("Three thousand a month, two hours a week") and "one email ends it."
+      I don't have access to your LinkedIn account to edit it myself. A
+      drafted replacement paragraph, using the real Family Package names and
+      prices, is in the PR description and the chat reply, ready to paste
+      into LinkedIn yourself.
 
 ## Support page (`/support/`)
 

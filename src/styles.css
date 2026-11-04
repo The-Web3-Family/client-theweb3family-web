@@ -491,6 +491,17 @@ footer p:last-child{margin-bottom:0}
 .tip-btn:hover{background:var(--cream-deep)}
 .tip-note{max-width:62ch;margin:0 0 var(--space-6);color:var(--muted)}
 
+/* ---------- about ----------
+   Work history: same border-top rhythm as .article-list-item, not a
+   new timeline system. */
+.work-history{display:flex;flex-direction:column;margin:0 0 var(--space-6)}
+.work-item{padding:var(--space-4) 0;border-top:1px solid var(--hair)}
+.work-item:first-child{border-top:none;padding-top:0}
+.work-item:last-child{border-bottom:1px solid var(--hair)}
+.work-company{font-family:'Lora',serif;font-weight:700;font-size:21px;color:var(--forest);margin:0 0 2px}
+.work-role{color:var(--muted);margin:0 0 8px}
+.work-item p:last-child{margin-bottom:0}
+
 /* ---------- articles ---------- */
 .article-date{font-size:18px;color:var(--muted);margin:0 0 8px}
 

@@ -11,16 +11,17 @@
   .eleventy.js. The phone number is real: 310-703-6003, appearing in
   the hero, the last action section, and the footer below. The footer
   also carries the real email, christopher@theweb3family.com. Every
-  "Schedule a call with me" button on the site, including the last
+  "Schedule your call today" button on the site, including the last
   action section in src/index.njk and the footer below, shares one
   macro (src/_includes/cta.njk) and opens Calendly's real popup
   scheduler. Calendly's popup widget assets load in <head> on every
   page, since the footer's own booking button needs them everywhere
   the footer appears. The button read "Book my 15 minute call," then
   "Book my meeting with you.," then "Book a free strategy call," then
-  "Book a call with me," before landing on this text; each change was
-  a direct request, most recently via a Vercel toolbar comment on the
-  hero CTA.
+  "Book a call with me," then "Schedule a call with me," before
+  landing on this text; each change was a direct request, most
+  recently via a Vercel toolbar comment on the hero CTA reading
+  "apply to all ctas."
 
   HEADER NAVIGATION
      The header used to be logo-only. Christopher asked directly for a
@@ -277,7 +278,7 @@
       <a href="/about/">About</a>
       <a href="/articles/">Articles</a>
       <a href="/contact/">Contact</a>
-      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule your call today</a>
     </nav>
     {# Mobile: the hamburger disclosure. Hidden at 760px and up, where
          .nav-inline takes over. Kept as a second copy of the same four
@@ -295,7 +296,7 @@
         <a href="/about/">About</a>
         <a href="/articles/">Articles</a>
         <a href="/contact/">Contact</a>
-        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule a call with me</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule your call today</a>
       </nav>
     </details>
   </div>
@@ -365,21 +366,6 @@
     {{ button("footer-cta actions") }}
   </div>
 </footer>
-
-{#
-  GoatCounter pixel, per a September 2026 build instruction: path-level
-  analytics with zero JavaScript (a single hidden 1x1 <img>, no script).
-  Commented out until Christopher creates the free GoatCounter account
-  and supplies the real subdomain: don't invent one to fill this in, per
-  the same rule that's kept a fake Splitform/analytics code off the site
-  elsewhere. Once real, uncomment this on every page (move it outside
-  the comment, below), and it becomes a fourth external dependency
-  alongside Google Fonts, Calendly, and Clarity (section 9).
-
-  <img src="https://MYCODE.goatcounter.com/count?p={{ page.url }}&t={{ title }}"
-       alt="" aria-hidden="true" width="1" height="1"
-       style="position:absolute;left:-9999px">
-#}
 
 </body>
 </html>

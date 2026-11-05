@@ -4,26 +4,27 @@
   per Christopher's direct request. Always opens Calendly's real popup
   scheduler; never links to an anchor. Pass riskReversal=true for the
   case study pages' third disclaimer line. Pass showPhone=false to omit
-  the "or call/text" line, used once (the homepage's final booking
-  section) on direct request, since the number already appears earlier
-  on that same page. The "or email me directly" mailto line, added on a
-  September 2026 build instruction, always shows regardless of
-  showPhone: unlike the phone number, the email address isn't shown
-  anywhere earlier on the homepage by the time you reach that section.
-  Button text is "Schedule a call with me," changed from "Book a call
-  with me" (itself changed from "Book a free strategy call," itself
-  changed from "Book my meeting with you," itself changed from the
-  original "Book my 15 minute call") on direct request, via a Vercel
-  toolbar comment on the hero CTA reading "Schedule a call with me -
-  apply to all ctas."
+  the "or call or text at" line, used once (the homepage's final
+  booking section) on direct request, since the number already
+  appears earlier on that same page. The "or email directly" mailto
+  line, added on a September 2026 build instruction, always shows
+  regardless of showPhone: unlike the phone number, the email address
+  isn't shown anywhere earlier on the homepage by the time you reach
+  that section.
+  Button text is "Schedule your call today," changed from "Schedule a
+  call with me" (itself changed from "Book a call with me," itself
+  changed from "Book a free strategy call," itself changed from "Book
+  my meeting with you," itself changed from the original "Book my 15
+  minute call") on direct request, via a Vercel toolbar comment on the
+  hero CTA reading "Schedule your call today (apply to all ctas)."
 #}
 {% macro button(wrapClass="actions", riskReversal=false, showPhone=true) %}
 <div class="{{ wrapClass }}">
   <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
-    <span>Schedule a call with me</span>
+    <span>Schedule your call today</span>
   </a>
-  {% if showPhone %}<p class="call-alt">or call/text <a href="tel:+13107036003">(310) 703-6003</a></p>{% endif %}
-  <p class="call-alt">or <a href="mailto:christopher@theweb3family.com?subject=Booking%20a%20call">email me directly</a></p>
+  {% if showPhone %}<p class="call-alt">or call or text at <a href="tel:+13107036003">(310) 703-6003</a></p>{% endif %}
+  <p class="call-alt">or <a href="mailto:christopher@theweb3family.com?subject=Booking%20a%20call">email directly</a></p>
   {% if riskReversal %}<p class="risk-reversal">Try it out today. Month to month. Everything built is yours.</p>{% endif %}
 </div>
 {% endmacro %}

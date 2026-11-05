@@ -296,6 +296,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
   background:var(--cream);border:1px solid var(--hair);border-top:4px solid var(--orange);
   padding:var(--space-4);display:flex;flex-direction:column;position:relative;
   transition:transform .2s ease-out,box-shadow .2s ease-out;
+  isolation:isolate;
 }
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
 .card p{margin:0}
@@ -356,6 +357,21 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 }
 .card-btn::after{content:"";position:absolute;inset:0;z-index:1}
 .card-btn:hover{background:#ff5f18}
+
+/* client card watermark system ─────────────────────────────────────────────
+   .card-watermark sits at z-index:-1 behind the card content and uses
+   mix-blend-mode:multiply so logos/book-covers with white backgrounds
+   blend into the cream card surface. It is always present at a low opacity
+   (.2 default); hover increases it to .55 so the image "comes forward."
+   isolation:isolate on .card keeps the negative z-index child contained. */
+.card-watermark{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  mix-blend-mode:multiply;opacity:.2;z-index:-1;pointer-events:none;
+}
+.card--love-aid .card-watermark{background-image:url('/images/clients/love-aid-foundation.png');background-size:contain}
+.card--ask-g-pop .card-watermark{background-image:url('/images/clients/ask-g-pop.png')}
+.card--rap-frogs .card-watermark{background-image:url('/images/clients/rap-frogs.png');background-size:contain}
 
 /* ---------- faq ---------- */
 .faq-list{display:flex;flex-direction:column}
@@ -478,7 +494,7 @@ footer p:last-child{margin-bottom:0}
 
 /* ---------- support ----------
    Tip buttons: cream fill, forest outline, never orange, so orange
-   stays reserved for the one "Schedule a call with me" action on the
+   stays reserved for the one "Schedule your call today" action on the
    page (section 6's "orange means act" rule). Each links straight to
    a Stripe Payment Link. */
 .tip-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin:0 0 var(--space-6)}
@@ -608,6 +624,8 @@ footer p:last-child{margin-bottom:0}
 .contact-form textarea{min-height:120px;resize:vertical}
 .contact-form input:focus-visible,.contact-form textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 .contact-form button.cta{align-self:flex-start;min-width:160px;cursor:pointer;font-family:inherit}
+.contact-form button.cta:disabled{opacity:.6;cursor:default}
+.form-status{font-size:18px;color:var(--forest);min-height:1.5em}
 
 /* three ways to reach Christopher, beside the note form */
 .contact-grid{display:grid;gap:var(--space-7);margin-top:var(--space-6)}
@@ -638,6 +656,16 @@ footer p:last-child{margin-bottom:0}
   .case-facts>div{flex:1;padding:0 28px}
   .case-facts>div:first-child{padding-left:0}
   .case-facts>div+div{border-left:1px solid var(--hair)}
+}
+
+/* hover reveal for client cards ─────────────────────────────────────────
+   Only on devices that report hover capability; touch screens see the
+   description at all times and nothing changes on tap.
+   150ms delay stops the effect firing when a mouse passes through. */
+@media(hover:hover){
+  .card .card-watermark{transition:opacity .25s ease .15s}
+
+  .card:hover .card-watermark,.card:focus-within .card-watermark{opacity:.45}
 }
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}

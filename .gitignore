@@ -16,3 +16,4 @@ node_modules/
 # Eleventy build output
 _site/
 .cache/
+.history

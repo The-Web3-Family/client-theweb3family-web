@@ -6,13 +6,13 @@ description: Call, text, email, or schedule a call with Christopher Clarke direc
 <!-- CONTACT -->
 <section>
   <div class="wrap">
-    <h1>Let's talk.</h1>
+    <h1>Let&rsquo;s talk.</h1>
     <p class="subhead">Pick whatever is easiest. Every message comes straight to me.</p>
 
     <div class="contact-grid">
       <div class="contact-ways">
         <a class="way way-primary" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
-          <span class="way-label">Schedule a call with me</span>
+          <span class="way-label">Schedule your call today</span>
           <span class="way-detail">A free 15 minute call on my calendar</span>
           <span class="way-go" aria-hidden="true">&rarr;</span>
         </a>
@@ -29,36 +29,63 @@ description: Call, text, email, or schedule a call with Christopher Clarke direc
         <p class="contact-place">Based in Inglewood, California. Working with nonprofits everywhere.</p>
       </div>
 
-      {#
-        This is a stand-in for real Splitform embed, per direct request
-        ("This needs to be a form"). Not the real Splitform widget: that
-        still needs the actual embed snippet or hosted form URL from
-        Christopher's own Splitform account, which nobody but him can
-        pull, and loading it will be a deliberate, confirmed exception
-        to the site's zero-client-JS rule (section 9), the same kind of
-        tradeoff Microsoft Clarity already is. In the meantime this is a
-        plain mailto: form: it needs no backend and adds no JavaScript,
-        but it only works if the visitor's device has an email app
-        configured to handle mailto: links, which not everyone does
-        (many people read mail only in a browser tab). Swap this whole
-        block for the real Splitform embed once that's in hand.
-      #}
-      <form class="contact-form contact-card" action="mailto:christopher@theweb3family.com" method="post" enctype="text/plain">
+      <form class="contact-form contact-card" id="contact-form">
         <h2 class="contact-card-title">Send a note</h2>
+        <input type="hidden" name="access_key" value="ef40ba3c1449496fb32d9c93756e1575">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
         <label>Name
-          <input type="text" name="Name" autocomplete="name" required>
+          <input type="text" name="name" autocomplete="name" required>
         </label>
         <label>Email
-          <input type="email" name="Email" autocomplete="email" required>
+          <input type="email" name="email" autocomplete="email" required>
         </label>
         <label><span>Organization <span class="optional">(optional)</span></span>
-          <input type="text" name="Organization" autocomplete="organization">
+          <input type="text" name="organization" autocomplete="organization">
         </label>
         <label>How can I help?
-          <textarea name="Message" rows="5" required></textarea>
+          <textarea name="message" rows="5" required></textarea>
         </label>
+        <div class="form-status" role="status" aria-live="polite"></div>
         <button type="submit" class="cta"><span>Send</span></button>
       </form>
     </div>
   </div>
 </section>
+
+<script src="https://splitforms.com/embed.js" async></script>
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('[type=submit]');
+    var label = btn.querySelector('span');
+    var status = form.querySelector('.form-status');
+    btn.disabled = true;
+    label.textContent = 'Sending…';
+    status.textContent = '';
+    fetch('https://splitforms.com/api/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        form.reset();
+        status.textContent = 'Sent. I’ll be in touch soon.';
+      } else {
+        status.textContent = data.message || 'Something went wrong. Please try again.';
+      }
+      btn.disabled = false;
+      label.textContent = 'Send';
+    })
+    .catch(function() {
+      status.textContent = 'Couldn’t send. Please try again.';
+      btn.disabled = false;
+      label.textContent = 'Send';
+    });
+  });
+})();
+</script>

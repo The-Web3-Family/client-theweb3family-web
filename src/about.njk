@@ -3,7 +3,6 @@ layout: base.njk
 title: About Christopher Clarke | The Web3 Family
 description: Christopher Clarke is the founder of The Web3 Family, a creative studio for nonprofits in Inglewood, California, with 15+ years building tools that help people do their own work.
 ---
-{% from "cta.njk" import button %}
 {#
   ProfilePage JSON-LD, same convention as article.njk's BlogPosting/
   BreadcrumbList blocks: inert structured data placed at the top of
@@ -64,6 +63,15 @@ description: Christopher Clarke is the founder of The Web3 Family, a creative st
     </div>
     <p>Everything lands in a Google Drive your organization owns, and it stacks up week after week.</p>
 
+    <h2>Nonprofits I work with</h2>
+    <div class="prose">
+      <ul>
+        <li><a href="/case-studies/love-aid-foundation/">Love Aid Foundation</a></li>
+        <li><a href="/case-studies/ask-g-pop/">Ask G-Pop</a></li>
+        <li><a href="/case-studies/rap-frogs/">Rap Frogs</a></li>
+      </ul>
+    </div>
+
     <h2>Where I&rsquo;ve worked</h2>
     <div class="work-history">
       <div class="work-item">
@@ -108,15 +116,6 @@ description: Christopher Clarke is the founder of The Web3 Family, a creative st
       </div>
     </div>
 
-    <h2>Nonprofits I work with</h2>
-    <div class="prose">
-      <ul>
-        <li><a href="/case-studies/love-aid-foundation/">Love Aid Foundation</a></li>
-        <li><a href="/case-studies/ask-g-pop/">Ask G-Pop</a></li>
-        <li><a href="/case-studies/rap-frogs/">Rap Frogs</a></li>
-      </ul>
-    </div>
-
     <h2>Where to find me</h2>
     <div class="prose">
       <ul>
@@ -130,7 +129,11 @@ description: Christopher Clarke is the founder of The Web3 Family, a creative st
     </div>
 
     <h2>Let&rsquo;s talk about your mission</h2>
-    {{ button("content-cta", false, false) }}
-    <p class="subhead">Or <a href="tel:+13107036003">call</a> or <a href="sms:+13107036003">text</a> (310) 703-6003.</p>
+    <div class="content-cta">
+      <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
+        <span>Schedule your call today</span>
+      </a>
+      <p class="call-alt">Free, 15 minutes, and month to month if we work together. Or <a href="tel:+13107036003">call</a> or <a href="sms:+13107036003">text</a> (310) 703-6003.</p>
+    </div>
   </div>
 </section>

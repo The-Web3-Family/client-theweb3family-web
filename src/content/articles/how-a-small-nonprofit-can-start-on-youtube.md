@@ -1,5 +1,4 @@
 ---
-layout: article.njk
 title: How a Small Nonprofit Can Start on YouTube
 date: 2026-10-09T12:00:00Z
 description: Why I set up YouTube channels for the nonprofits I work with, what short videos do for them, and simple first steps for your own organization.

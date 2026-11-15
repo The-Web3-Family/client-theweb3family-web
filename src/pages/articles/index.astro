@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const articles = (await getCollection('articles')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const readableDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base
+  title="Articles | The Web3 Family"
+  description="Notes from Christopher Clarke on starting a nonprofit and handling the technology side of it."
+>
+<section>
+  <div class="wrap">
+    <h1>Articles</h1>
+    {articles.length > 0 ? (
+      <div class="article-list">
+        {articles.map((article) => (
+          <div class="article-list-item">
+            <p class="article-date">{readableDate(article.data.date)}</p>
+            <h2><a href={`/articles/${article.id}/`}>{article.data.title}</a></h2>
+            <p>{article.data.description}</p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p>Nothing published yet. Check back soon.</p>
+    )}
+  </div>
+</section>
+</Base>

@@ -1,9 +1,11 @@
 ---
-layout: base.njk
-title: The Web3 Family | Creative Studio for Nonprofits
-description: A one-person creative studio for nonprofits in Inglewood, CA. Websites, donation pages, decks, brand books, and videos, finished every Friday.
+import Base from '../layouts/Base.astro';
+import CallButton from '../components/CallButton.astro';
+
+const title = "The Web3 Family | Creative Studio for Nonprofits";
+const description = "A one-person creative studio for nonprofits in Inglewood, CA. Websites, donation pages, decks, brand books, and videos, finished every Friday.";
 ---
-{% from "cta.njk" import button %}
+<Base title={title} description={description}>
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
@@ -19,7 +21,7 @@ description: A one-person creative studio for nonprofits in Inglewood, CA. Websi
 
     <p class="subhead">Every Friday, work in your inbox.</p>
 
-    {{ button() }}
+    <CallButton />
   </div>
 </div>
 
@@ -157,3 +159,4 @@ description: A one-person creative studio for nonprofits in Inglewood, CA. Websi
     </div>
   </div>
 </section>
+</Base>

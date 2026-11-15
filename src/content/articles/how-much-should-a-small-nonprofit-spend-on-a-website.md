@@ -1,5 +1,4 @@
 ---
-layout: article.njk
 title: How Much Should a Small Nonprofit Spend on a Website?
 date: 2026-10-17T12:00:00Z
 description: An honest look at how I priced my own nonprofit services, what changed my mind, and the questions to ask before you pay anyone to build your website.

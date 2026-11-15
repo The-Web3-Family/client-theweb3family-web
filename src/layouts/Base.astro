@@ -1,0 +1,204 @@
+---
+/*
+  THE WEB3 FAMILY  ·  theweb3family.com
+  Built with Astro. This is the one shared layout: the <head>, the header,
+  and the footer. Page content lives in each page's own file under
+  src/pages/. Read CLAUDE.md before changing anything.
+
+  The design system lives in one place, src/styles.css, and every page
+  shares it through this layout. Keep page-specific styles there too,
+  scoped with a class.
+
+  Header navigation: four links (Portfolio, About, Articles, Contact) and
+  the booking button. Below 760px it is a <details>/<summary> disclosure,
+  so it opens with zero JavaScript; at 760px and up it is a plain inline
+  nav. Both exist in the markup at once, one hidden by CSS. Adding a link
+  needs an explicit conversation with Christopher first.
+
+  Analytics: Microsoft Clarity, Google Analytics, and Vercel Speed
+  Insights load on every page, each on Christopher's direct request.
+  Calendly's popup assets load on every page too, since the footer's
+  booking button appears everywhere.
+
+  The newsletter form in the footer is a plain HTML POST to
+  /api/subscribe (api/subscribe.js at the repo root), which keeps the
+  Buttondown key on the server. The hidden "company" field is a honeypot.
+*/
+import '../styles.css';
+import CallButton from '../components/CallButton.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  robotsMeta?: string;
+  noindex?: boolean;
+  ogType?: string;
+  image?: string;
+  imageAlt?: string;
+}
+const { title, description, robotsMeta, noindex = false, ogType = 'website', image = '/og-share-v2.jpg', imageAlt } = Astro.props;
+
+const pathname = Astro.url.pathname.startsWith('/404') ? '/404.html' : Astro.url.pathname;
+const pageUrl = `https://theweb3family.com${pathname}`;
+const isHome = pathname === '/';
+
+// Organization + Person JSON-LD, homepage only. Inert structured data for
+// search engines, with the same @id values the About page uses.
+const organization = `{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://theweb3family.com/#organization",
+  "name": "The Web3 Family",
+  "alternateName": "The Web3 Family, Creative Studio for Nonprofits",
+  "description": "A one-person creative studio for nonprofits in Inglewood, California that builds websites, brand identity, pitch decks, apps, donation platforms, and fundraising infrastructure for nonprofits.",
+  "disambiguatingDescription": "The Web3 Family is a nonprofit-focused design and build studio. It is not a cryptocurrency, blockchain, or Web3 software company.",
+  "url": "https://theweb3family.com",
+  "email": "christopher@theweb3family.com",
+  "telephone": "+1-310-703-6003",
+  "image": "https://theweb3family.com/christopher.jpg",
+  "priceRange": "$500 - $3,000",
+  "founder": { "@id": "https://theweb3family.com/#christopher" },
+  "areaServed": "United States",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Inglewood",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "sameAs": ["https://www.youtube.com/@theweb3family"],
+  "knowsAbout": ["nonprofit website design", "brand identity", "pitch decks", "donation platforms", "mobile apps", "fundraising strategy"]
+}`;
+const person = `{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://theweb3family.com/#christopher",
+  "name": "Christopher Clarke",
+  "jobTitle": "Founder",
+  "worksFor": { "@id": "https://theweb3family.com/#organization" },
+  "sameAs": ["https://www.linkedin.com/in/aweb3dad"],
+  "email": "christopher@theweb3family.com",
+  "telephone": "+1-310-703-6003",
+  "url": "https://theweb3family.com/about/"
+}`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+{robotsMeta ? <meta name="robots" content={robotsMeta}> : noindex && <meta name="robots" content="noindex">}
+<link rel="canonical" href={pageUrl}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content={ogType}>
+<meta property="og:url" content={pageUrl}>
+<meta property="og:image" content={`https://theweb3family.com${image}`}>
+{imageAlt && <meta property="og:image:alt" content={imageAlt}>}
+<meta property="og:site_name" content="The Web3 Family">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script is:inline type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tnn1clsc3d");
+</script>
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-X7WWKF2SFX"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X7WWKF2SFX');
+</script>
+<script is:inline defer src="/_vercel/speed-insights/script.js"></script>
+{isHome && <script is:inline type="application/ld+json" set:html={organization} />}
+{isHome && <script is:inline type="application/ld+json" set:html={person} />}
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="/">
+      <img class="mark" src="/logo.png" alt="" width="48" height="48">
+      <div>
+        <b>Christopher Clarke</b>
+        <span>The Web3 Family</span>
+      </div>
+    </a>
+    <nav class="nav-inline" aria-label="Site">
+      <a href="/case-studies/">Portfolio</a>
+      <a href="/about/">About</a>
+      <a href="/articles/">Articles</a>
+      <a href="/contact/">Contact</a>
+      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule your call today</a>
+    </nav>
+    <details class="nav-menu">
+      <summary class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </summary>
+      <nav class="nav-panel" aria-label="Site">
+        <a href="/case-studies/">Portfolio</a>
+        <a href="/about/">About</a>
+        <a href="/articles/">Articles</a>
+        <a href="/contact/">Contact</a>
+        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule your call today</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main>
+<slot />
+</main>
+
+<footer>
+  <section class="newsletter" aria-labelledby="newsletter-heading">
+    <div class="wrap">
+      <h2 id="newsletter-heading" class="newsletter-title">Join my Friday newsletter.</h2>
+      <p class="newsletter-blurb">Every Friday I send an email to all my clients. I would love to send you one too.</p>
+      <form action="/api/subscribe" method="post" class="newsletter-form">
+        <div class="newsletter-field">
+          <label for="bd-email" class="newsletter-label sr-only">Your email</label>
+          <input type="email" name="email" id="bd-email" placeholder="Your email" autocomplete="email" required>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label>Leave this field empty
+            <input type="text" name="company" tabindex="-1" autocomplete="off">
+          </label>
+        </div>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  <div class="wrap footer-cols">
+    <div class="footer-info">
+      <p class="footer-name">Christopher Clarke</p>
+      <p class="footer-line">The Web3 Family</p>
+      <p class="footer-line">Creative Studio for Nonprofits</p>
+      <p class="footer-line">Inglewood, California</p>
+      <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
+      <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+      <p class="footer-line"><a href="/privacy/">Privacy Policy</a></p>
+      <p class="footer-line"><a href="/support/">Support the studio</a></p>
+    </div>
+    <div class="footer-clients">
+      <p class="footer-line footer-clients-label">Nonprofits we work with.</p>
+      <p class="footer-line"><a href="https://loveaid.foundation" target="_blank" rel="noopener">loveaid.foundation<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
+      <p class="footer-line"><a href="https://askgpop.online" target="_blank" rel="noopener">askgpop.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
+      <p class="footer-line"><a href="https://rapfrogs.online" target="_blank" rel="noopener">rapfrogs.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
+    </div>
+    <CallButton wrapClass="footer-cta actions" />
+  </div>
+</footer>
+
+</body>
+</html>

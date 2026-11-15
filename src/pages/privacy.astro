@@ -1,8 +1,10 @@
 ---
-layout: base.njk
-title: Privacy | The Web3 Family
-description: What this site collects, and why.
+import Base from '../layouts/Base.astro';
+
+const title = "Privacy | The Web3 Family";
+const description = "What this site collects, and why.";
 ---
+<Base title={title} description={description}>
 <!-- PRIVACY -->
 <section>
   <div class="wrap">
@@ -18,3 +20,4 @@ description: What this site collects, and why.
     </div>
   </div>
 </section>
+</Base>

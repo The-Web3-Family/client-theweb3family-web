@@ -1,0 +1,29 @@
+---
+/*
+  Shared "book a meeting" button. One markup source for every place this
+  button appears (hero, footer, case study pages, articles), per
+  Christopher's direct request. Always opens Calendly's real popup
+  scheduler, with a plain link to the Calendly page as the fallback.
+
+  riskReversal adds the case study pages' third disclaimer line.
+  showPhone={false} leaves out the "or call or text at" line. The "or
+  email directly" line always shows.
+
+  The button text is locked copy: change it only on Christopher's
+  explicit request, here, in one place.
+*/
+interface Props {
+  wrapClass?: string;
+  riskReversal?: boolean;
+  showPhone?: boolean;
+}
+const { wrapClass = 'actions', riskReversal = false, showPhone = true } = Astro.props;
+---
+<div class={wrapClass}>
+  <a class="cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">
+    <span>Schedule your call today</span>
+  </a>
+  {showPhone && <p class="call-alt">or call or text at <a href="tel:+13107036003">(310) 703-6003</a></p>}
+  <p class="call-alt">or <a href="mailto:christopher@theweb3family.com?subject=Booking%20a%20call">email directly</a></p>
+  {riskReversal && <p class="risk-reversal">Try it out today. Month to month. Everything built is yours.</p>}
+</div>

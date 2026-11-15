@@ -1,9 +1,11 @@
 ---
-layout: base.njk
-title: Support the Studio | The Web3 Family
-description: Tip to help keep the studio's tools, phone line, and free help for grassroots nonprofit founders running.
+import Base from '../layouts/Base.astro';
+import CallButton from '../components/CallButton.astro';
+
+const title = "Support the Studio | The Web3 Family";
+const description = "Tip to help keep the studio's tools, phone line, and free help for grassroots nonprofit founders running.";
 ---
-{% from "cta.njk" import button %}
+<Base title={title} description={description}>
 <!-- SUPPORT -->
 <section>
   <div class="wrap">
@@ -42,6 +44,7 @@ description: Tip to help keep the studio's tools, phone line, and free help for 
     <p><a href="https://ko-fi.com/theweb3family">Already use Ko-fi? Tip me there.</a></p>
 
     <h2>Rather work together?</h2>
-    {{ button("content-cta") }}
+    <CallButton wrapClass="content-cta" />
   </div>
 </section>
+</Base>

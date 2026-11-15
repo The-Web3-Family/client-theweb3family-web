@@ -13,66 +13,80 @@ ratios, and the accessibility floor. Those are project rules, not suggestions.
 
 ```
 src/
-  _includes/
-    base.njk       the shared layout: <head>, header, footer, every page uses it
-    article.njk    the shared layout for articles, wraps base.njk
-  index.njk         the homepage
-  articles/
-    index.njk       the /articles/ listing page
-    *.md            one file per published article
-  case-studies/
-    index.njk       the /case-studies/ listing page, three short cards
-    love-aid-foundation.njk   full case study, Arthur Flatto
-    ask-g-pop.njk             full case study, Howard Eley
-    rap-frogs.njk             full case study, Anthony Taylor
-  christopher.jpg   the portrait
-  styles.css        the one stylesheet every page shares
-  favicon.svg
-  favicon.ico
-.eleventy.js        build config: input/output dirs, passthrough copy list
-article-template.md starting point for a new article, copy into src/articles/
+  layouts/
+    Base.astro      the shared layout: <head>, header, footer, every page uses it
+  components/
+    CallButton.astro  the one booking button, used everywhere
+  pages/
+    index.astro       the homepage
+    about.astro, contact.astro, privacy.astro, support.astro
+    subscribed.astro, subscribe-error.astro, 404.astro
+    sitemap.xml.ts    builds /sitemap.xml
+    articles/
+      index.astro     the /articles/ listing page
+      [slug].astro    the page each article renders into
+    case-studies/
+      index.astro     the /case-studies/ listing page, three short cards
+      love-aid-foundation.astro   full case study, Love Aid Foundation
+      ask-g-pop.astro             full case study, Howard Eley
+      rap-frogs.astro             full case study, Anthony Taylor
+  content/
+    articles/*.md     one file per published article
+  content.config.ts   the article fields
+  styles.css          the one stylesheet every page shares
+public/               files served as they are: the portrait, logo,
+                      favicon, share image, robots.txt, images/
+api/subscribe.js      the newsletter signup function (runs on Vercel)
+astro.config.mjs      build config
+article-template.md   starting point for a new article, copy into src/content/articles/
 ```
 
-Built with [Eleventy](https://www.11ty.dev/). A brand-wide change (a color, a
+Built with [Astro](https://astro.build/). A brand-wide change (a color, a
 spacing value) is one edit to `src/styles.css`, not one edit per page.
 
 ## Running it
 
+Needs Node 22 (22.23.4 or newer).
+
 ```
 npm install
-npm run dev       # local preview with live reload, localhost:8080
-npm run build     # static output into _site/
+npm run dev       # local preview with live reload, localhost:4321
+npm run build     # static output into dist/
 ```
 
 ## Adding a page
 
-Create a file under `src/` with front matter:
+Create an `.astro` file under `src/pages/`:
 
 ```
 ---
-layout: base.njk
-title: Page title here
-description: One sentence for the meta description.
+import Base from '../layouts/Base.astro';
 ---
+<Base title="Page title here" description="One sentence for the meta description.">
+  <section>
+    <div class="wrap">
+      <h1>Page heading</h1>
+    </div>
+  </section>
+</Base>
 ```
 
-Write the page's sections below the front matter, matching the rhythm in
-`src/index.njk`: a `<section>` with a top border (or `class="band"` for the
+Write the page's sections inside `<Base>`, matching the rhythm in
+`src/pages/index.astro`: a `<section>` with a top border (or `class="band"` for the
 alternate ground), a `.wrap` container, and either `.split` prose or a `.cards`
-grid. The header and footer come from `base.njk` automatically. Do not add a
+grid. The header and footer come from `Base.astro` automatically. Add the page's
+address to the list in `src/pages/sitemap.xml.ts`. Do not add a
 navigation link anywhere without asking first, see CLAUDE.md section 10.
 
 ## Adding an article
 
-Copy `article-template.md` into `src/articles/` under a new filename (that
+Copy `article-template.md` into `src/content/articles/` under a new filename (that
 filename becomes the URL), fill in the front matter, write the body in
-Markdown, done. It shows up on `/articles/` and builds automatically. Nothing
-currently links to `/articles/` itself, so it's reachable by direct URL only,
-on purpose, until there's a decision about how visitors should find it.
+Markdown, done. It shows up on `/articles/` and builds automatically.
 
 ## Adding a case study
 
-Case studies live at `src/case-studies/`: `index.njk` (short cards, page
+Case studies live at `src/pages/case-studies/`: `index.astro` (short cards, page
 heading "The work so far") plus one full page per client, not a
 collection like articles. Each full page: a breadcrumb, an eyebrow
 reading `Person · Organization`, the serif headline, a `.case-facts`
@@ -99,12 +113,12 @@ specific person's written permission, confirmed with Christopher before
 publishing, not assumed from a broader organization-level okay. If a
 quote doesn't exist yet, or turns out to be misattributed, leave the
 quote block out entirely rather than guessing or adding a placeholder
-note. Link the new page from both `src/case-studies/index.njk` and the
-homepage's Case studies section (`src/index.njk`).
+note. Link the new page from both `src/pages/case-studies/index.astro` and the
+homepage's Case studies section (`src/pages/index.astro`).
 
 ## Deploying
 
-Vercel builds from `main` automatically: `npm run build`, output directory `_site`.
+Vercel builds from `main` automatically: `npm run build`, output directory `dist`.
 
 If something breaks, roll back to the previous deployment in the Vercel dashboard
 rather than hotfixing under pressure.
@@ -121,12 +135,12 @@ Confirm every time:
 
 ## Open slots
 
-None. The portrait (`src/christopher.jpg`), the phone number
+None. The portrait (`public/christopher.jpg`), the phone number
 (310-703-6003), the email (christopher@theweb3family.com), and the booking
-panel (a real Calendly inline embed in `src/index.njk`) are all real.
+button (Calendly's real popup scheduler) are all real.
 
 The homepage's Case studies section links to three real, named clients
-under `/case-studies/`: Arthur Flatto (Love Aid Foundation), Howard Eley
+under `/case-studies/`: Love Aid Foundation, Howard Eley
 (Ask G-Pop), and Anthony Taylor (Rap Frogs). All three gave written
 permission to be named. `/proof/`, the earlier anonymous single-page
 version, now redirects to `/case-studies/` (see `vercel.json`); a

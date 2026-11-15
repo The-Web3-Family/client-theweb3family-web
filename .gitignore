@@ -17,3 +17,7 @@ node_modules/
 _site/
 .cache/
 .history
+# Astro build output
+dist/
+.astro/
+.vercel/

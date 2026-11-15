@@ -1,8 +1,10 @@
 ---
-layout: base.njk
-title: Contact | The Web3 Family
-description: Call, text, email, or schedule a call with Christopher Clarke directly.
+import Base from '../layouts/Base.astro';
+
+const title = "Contact | The Web3 Family";
+const description = "Call, text, email, or schedule a call with Christopher Clarke directly.";
 ---
+<Base title={title} description={description}>
 <!-- CONTACT -->
 <section>
   <div class="wrap">
@@ -52,8 +54,8 @@ description: Call, text, email, or schedule a call with Christopher Clarke direc
   </div>
 </section>
 
-<script src="https://splitforms.com/embed.js" async></script>
-<script>
+<script is:inline src="https://splitforms.com/embed.js" async></script>
+<script is:inline>
 (function(){
   var form = document.getElementById('contact-form');
   if (!form) return;
@@ -89,3 +91,4 @@ description: Call, text, email, or schedule a call with Christopher Clarke direc
   });
 })();
 </script>
+</Base>

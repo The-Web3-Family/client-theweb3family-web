@@ -1,84 +1,75 @@
 ---
-layout: base.njk
-title: "Love Aid Foundation: Building a Nonprofit Media & Donation Platform | The Web3 Family"
-description: A brand, a pitch deck, a CRM dashboard, a fundraising plan, and a live streaming platform, built one Friday at a time.
----
-{% from "cta.njk" import button %}
-<!-- INTRO -->
-<section>
-  <div class="wrap">
-    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/case-studies/">Case studies</a> &rarr; Love Aid Foundation</p>
-    <script type="application/ld+json">
-    {
+import Base from '../../layouts/Base.astro';
+import CallButton from '../../components/CallButton.astro';
+
+const title = "Ask G-Pop: Building a Youth Mentorship App and Album | The Web3 Family";
+const description = "An app in TestFlight, a ten-track album, a filed trademark, and a QR sheet that replaced $1,000 of flash drives.";
+const ld0 = `    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theweb3family.com/"},
         {"@type": "ListItem", "position": 2, "name": "Case studies", "item": "https://theweb3family.com/case-studies/"},
-        {"@type": "ListItem", "position": 3, "name": "Love Aid Foundation", "item": "https://theweb3family.com/case-studies/love-aid-foundation/"}
+        {"@type": "ListItem", "position": 3, "name": "Ask G-Pop", "item": "https://theweb3family.com/case-studies/ask-g-pop/"}
       ]
     }
-    </script>
-    <span class="eyebrow-person"><span class="org-name">Love Aid Foundation</span></span>
-    <h1>A mission that now runs on a system the whole team can drive</h1>
+    `;
+---
+<Base title={title} description={description}>
+<!-- INTRO -->
+<section>
+  <div class="wrap">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/case-studies/">Case studies</a> &rarr; Ask G-Pop</p>
+    <script is:inline type="application/ld+json" set:html={ld0} />
+    <span class="eyebrow-person"><span class="person-name">Howard Eley</span><span class="org-name">Ask G-Pop</span></span>
+    <h1>A lifetime of wisdom, now sitting in a kid&rsquo;s hand</h1>
     <div class="case-facts">
       <div>
         <span class="case-fact-label">Client type</span>
-        <span class="case-fact-value">Nonprofit media &amp; donation platform</span>
+        <span class="case-fact-value">Youth program, app, and album</span>
       </div>
     </div>
 
-    <p>I built Love Aid Foundation a nonprofit media and donation platform: a brand, a pitch deck, a fundraising plan, and a streaming platform that runs at its own address.</p>
-    <p><a class="card-site" href="https://loveaid.foundation" target="_blank" rel="noopener">See Love Aid Foundation live at loveaid.foundation<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
+    <p>I built Howard Eley a youth mentorship app and a ten-track album, plus a filed trademark and a donation platform to support it.</p>
+    <p><a class="card-site" href="https://askgpop.online" target="_blank" rel="noopener">See Ask G-Pop live at askgpop.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
 
     <div class="split prose split-swapped">
       <div class="split-body">
         <h3>Here is what landed</h3>
         <ul class="promise">
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A pitch deck he can hand across a table</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A logo, a brand book, a tagline his people pull from freely</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>An explainer video and a promo video</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A dashboard holding every charity, artist, and contact on one screen</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A fundraising plan with the grant math inside it</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A donation path wired to the bank</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>Accessibility compliance cleared</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A streaming platform live at its own address</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>Content sorted six by six, ready to publish</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A pipeline where he adds an artist himself and watches it appear</p></li>
-          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>An outreach script so volunteers can run the calls</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>Two domains, bought and pointed at a live site</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A recording pipeline that runs on a phone and a text thread</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>An app in TestFlight, in Apple&rsquo;s review queue</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A child-safety rebuild, because the audience is children</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A ten-track album, built two songs at a time</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>Trademark paperwork filed, so the name belongs to him</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A brand book his whole volunteer team pulls from</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A donation platform, live</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>Promo videos on a repeatable pipeline</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A printed sheet with a QR code, replacing $1,000 of flash drives</p></li>
+          <li><span class="promise-check" aria-hidden="true">&#10003;</span><p>A deployment plan for youth centers and schools</p></li>
         </ul>
       </div>
       <div class="split-label">
         <h3>Sound familiar?</h3>
         <ul class="proof-questions">
-          <li>Is your mission still living in your head and on phone calls?</li>
-          <li>Do you freeze when someone asks for a deck?</li>
-          <li>Are your contacts spread across four inboxes and a legal pad?</li>
-          <li>Does every decision route through you, all day, every day?</li>
-          <li>Would you like your team to move while you sleep?</li>
+          <li>Does your best material live only in your voice?</li>
+          <li>Are you waiting on tech skills you would rather skip?</li>
+          <li>Does someone else own the name you built?</li>
+          <li>Is your reach limited to the room you happen to be standing in?</li>
+          <li>Would you like your work to keep going after you leave the room?</li>
         </ul>
       </div>
     </div>
 
-    {{ button("content-cta", true) }}
-
-    <div class="prose">
-      <blockquote>
-        <p>&ldquo;Our EOW paints a clear picture of action steps. Looking forward to executing more biz dev.&rdquo;</p>
-        <cite>Founder, Love Aid Foundation</cite>
-      </blockquote>
-      <blockquote>
-        <p>&ldquo;You&rsquo;re the best, as usual. And I don&rsquo;t take you for granted.&rdquo;</p>
-        <cite>Founder, Love Aid Foundation</cite>
-      </blockquote>
-    </div>
+    <CallButton wrapClass="content-cta" riskReversal />
   </div>
 </section>
 
 <section class="ink">
   <div class="wrap">
     <h3>What this proves</h3>
-    <p style="margin-bottom:0">Bring the mission, and five months later you own the brand, the dashboard, the money path, and a team that runs while you rest.</p>
+    <p style="margin-bottom:0">A phone and a text thread are enough. Five months later he owns a trademark, an app, an album, and one sheet of paper that puts all three in a kid&rsquo;s hand.</p>
   </div>
 </section>
 
@@ -92,25 +83,25 @@ description: A brand, a pitch deck, a CRM dashboard, a fundraising plan, and a l
           <span class="log-timeline-month">March 2026</span>
           <span class="log-timeline-num" aria-hidden="true">1</span>
           <p class="log-timeline-date"><span class="sr-only">Week 1, </span>Mar 6</p>
-          <p class="log-timeline-text">Pitch deck research pulled and read. First deck draft generated from it.</p>
+          <p class="log-timeline-text">Site rebuilt around what came out of the interviews. Team expanded.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">2</span>
           <p class="log-timeline-date"><span class="sr-only">Week 2, </span>Mar 13</p>
-          <p class="log-timeline-text">Draft tools sharpened. Faster rough cuts, fewer rewrites.</p>
+          <p class="log-timeline-text">Quiet week on this side of the desk.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">3</span>
           <p class="log-timeline-date"><span class="sr-only">Week 3, </span>Mar 20</p>
-          <p class="log-timeline-text">Contact data organized so he could filter and sort it himself.</p>
+          <p class="log-timeline-text">Donation platform set up. Brand book written so his team can pull their own files. Fundraising plan drafted.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">4</span>
           <p class="log-timeline-date"><span class="sr-only">Week 4, </span>Mar 27</p>
-          <p class="log-timeline-text">Deck close to final. Logo guide read, brief written, designer lined up.</p>
+          <p class="log-timeline-text">App build platform chosen after a week of digging.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">April 2026</span>
@@ -122,115 +113,121 @@ description: A brand, a pitch deck, a CRM dashboard, a fundraising plan, and a l
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">6</span>
           <p class="log-timeline-date"><span class="sr-only">Week 6, </span>Apr 10</p>
-          <p class="log-timeline-text">Meeting prep for Tuesday. Language cleaned up: cut the words that make people flinch.</p>
+          <p class="log-timeline-text">First app preview: splash screen and two onboarding screens. Two songs delivered.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">7</span>
           <p class="log-timeline-date"><span class="sr-only">Week 7, </span>Apr 17</p>
-          <p class="log-timeline-text">Logo designer brought on. Call-center research started.</p>
+          <p class="log-timeline-text">App in TestFlight, sitting in Apple&rsquo;s review queue. Logo variants for his pick.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">8</span>
           <p class="log-timeline-date"><span class="sr-only">Week 8, </span>Apr 24</p>
-          <p class="log-timeline-text">Twilio&rsquo;s nonprofit arm contacted. Logo in the shop. Full system memory written to one document he can skim.</p>
+          <p class="log-timeline-text">Logo iteration continued. He signed off on a direction.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">May 2026</span>
-          <span class="log-timeline-num" aria-hidden="true">9&ndash;10</span>
-          <p class="log-timeline-date"><span class="sr-only">Weeks 9 to 10, </span>May 1&ndash;8</p>
-          <p class="log-timeline-text log-gap">No Friday email on file for these two weeks.</p>
+          <span class="log-timeline-num" aria-hidden="true">9</span>
+          <p class="log-timeline-date"><span class="sr-only">Week 9, </span>May 1</p>
+          <p class="log-timeline-text">Partner meeting recorded and shared.</p>
+        </li>
+        <li class="log-timeline-item">
+          <span class="log-timeline-month">&nbsp;</span>
+          <span class="log-timeline-num" aria-hidden="true">10</span>
+          <p class="log-timeline-date"><span class="sr-only">Week 10, </span>May 8</p>
+          <p class="log-timeline-text">Distribution path to the app store confirmed. Live preview link sent.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">11</span>
           <p class="log-timeline-date"><span class="sr-only">Week 11, </span>May 15</p>
-          <p class="log-timeline-text">One folder, four links: explainer video, meeting brief, full agenda, remaining-work breakdown with the grant math inside it.</p>
+          <p class="log-timeline-text">App rebuilt for child-safety rules. The audience is kids. That part is not optional.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">12</span>
           <p class="log-timeline-date"><span class="sr-only">Week 12, </span>May 22</p>
-          <p class="log-timeline-text">Outreach contact list built from his advisor&rsquo;s notes.</p>
+          <p class="log-timeline-text">Promo video pipeline built. Two per day.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">13</span>
           <p class="log-timeline-date"><span class="sr-only">Week 13, </span>May 29</p>
-          <p class="log-timeline-text">Research document delivered for the weekend.</p>
+          <p class="log-timeline-text">Interfaces moved onto the build platform.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">June 2026</span>
           <span class="log-timeline-num" aria-hidden="true">14</span>
           <p class="log-timeline-date"><span class="sr-only">Week 14, </span>Jun 5</p>
-          <p class="log-timeline-text">Week&rsquo;s notes folded into the working plan.</p>
+          <p class="log-timeline-text">Plan video shared, unlisted, for his eyes.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">15</span>
           <p class="log-timeline-date"><span class="sr-only">Week 15, </span>Jun 12</p>
-          <p class="log-timeline-text">Accessibility compliance work. Fundraising event structure drafted. Separate research video and legal-angle document sent.</p>
+          <p class="log-timeline-text">Packed him for his trip. Business cards in hand before he flew.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">16</span>
           <p class="log-timeline-date"><span class="sr-only">Week 16, </span>Jun 19</p>
-          <p class="log-timeline-text">Logos in the shop. Streaming vendor onboarding mapped. Live-channel plan set.</p>
+          <p class="log-timeline-text">Image asset delivered. Album research started. Probation-program angle opened.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">17</span>
           <p class="log-timeline-date"><span class="sr-only">Week 17, </span>Jun 26</p>
-          <p class="log-timeline-text">List of nonprofits pulled and sorted by who got hit hardest.</p>
+          <p class="log-timeline-text">Court-approved pivot researched before committing a single build hour to it.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">July 2026</span>
           <span class="log-timeline-num" aria-hidden="true">18</span>
           <p class="log-timeline-date"><span class="sr-only">Week 18, </span>Jul 3</p>
-          <p class="log-timeline-text">Site tagline updated and live.</p>
+          <p class="log-timeline-text">Compliance research finished for the program markets.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">19</span>
           <p class="log-timeline-date"><span class="sr-only">Week 19, </span>Jul 10</p>
-          <p class="log-timeline-text">Outreach strategy document delivered.</p>
+          <p class="log-timeline-text">Deployment plan for youth centers and schools. Downloadable videos sent.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">20</span>
           <p class="log-timeline-date"><span class="sr-only">Week 20, </span>Jul 17</p>
-          <p class="log-timeline-text">Everything consolidated into one view.</p>
+          <p class="log-timeline-text">Two of ten tracks finished. Copyright strategy set. Bonus track thrown in.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">21</span>
           <p class="log-timeline-date"><span class="sr-only">Week 21, </span>Jul 24</p>
-          <p class="log-timeline-text">Dashboard reviewed and approved by him. Every charity, artist, and contact in one screen.</p>
+          <p class="log-timeline-text">Album assembled. Flash drives dropped for a printed sheet and a QR code. Team agreed same day.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">22</span>
           <p class="log-timeline-date"><span class="sr-only">Week 22, </span>Jul 31</p>
-          <p class="log-timeline-text">Streaming vendor kicked off.</p>
+          <p class="log-timeline-text">Album finished. Folder shared.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">August 2026</span>
           <span class="log-timeline-num" aria-hidden="true">23</span>
           <p class="log-timeline-date"><span class="sr-only">Week 23, </span>Aug 7</p>
-          <p class="log-timeline-text">Video built and delivered.</p>
+          <p class="log-timeline-text">Album moved to YouTube, unlisted, ready when he says go.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">24</span>
           <p class="log-timeline-date"><span class="sr-only">Week 24, </span>Aug 14</p>
-          <p class="log-timeline-text">Site live at the vendor URL. Content categories set six by six.</p>
+          <p class="log-timeline-text">Trademark material prepared and sent to the attorney. The name becomes his.</p>
         </li>
         <li class="log-timeline-item">
           <span class="log-timeline-month">&nbsp;</span>
           <span class="log-timeline-num" aria-hidden="true">25</span>
           <p class="log-timeline-date"><span class="sr-only">Week 25, </span>Aug 21</p>
-          <p class="log-timeline-text">Dashboard hosted. Pipeline built so he can submit a new artist or charity himself and watch it appear.</p>
+          <p class="log-timeline-text">One more song added to the copyright filing. DNS records live.</p>
         </li>
       </ol>
     </div>
@@ -243,8 +240,9 @@ description: A brand, a pitch deck, a CRM dashboard, a fundraising plan, and a l
 
     <h3 class="crosslinks-heading">Want to see more case studies?</h3>
     <ul class="case-crosslinks">
-      <li><a href="/case-studies/ask-g-pop/">Ask G-Pop &rarr; a lifetime of wisdom, now sitting in a kid&rsquo;s hand</a></li>
+      <li><a href="/case-studies/love-aid-foundation/">Love Aid Foundation &rarr; a mission that now runs on a system his whole team can drive</a></li>
       <li><a href="/case-studies/rap-frogs/">Rap Frogs &rarr; a character with a real path to grant money underneath it</a></li>
     </ul>
   </div>
 </section>
+</Base>

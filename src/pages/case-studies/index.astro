@@ -1,8 +1,10 @@
 ---
-layout: base.njk
-title: 'Case Studies: Nonprofit Websites, Apps & Donation Platforms | The Web3 Family'
-description: Three nonprofits, three builds. Love Aid Foundation, Ask G-Pop, and Rap Frogs. See what landed and how long it took.
+import Base from '../../layouts/Base.astro';
+
+const title = "Case Studies: Nonprofit Websites, Apps & Donation Platforms | The Web3 Family";
+const description = "Three nonprofits, three builds. Love Aid Foundation, Ask G-Pop, and Rap Frogs. See what landed and how long it took.";
 ---
+<Base title={title} description={description}>
 <!-- INTRO -->
 <section>
   <div class="wrap">
@@ -33,3 +35,4 @@ description: Three nonprofits, three builds. Love Aid Foundation, Ask G-Pop, and
     </div>
   </div>
 </section>
+</Base>

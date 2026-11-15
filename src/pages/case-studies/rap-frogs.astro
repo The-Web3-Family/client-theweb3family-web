@@ -1,15 +1,10 @@
 ---
-layout: base.njk
-title: "Rap Frogs: A Licensing Structure and Funding Path for a Children's IP | The Web3 Family"
-description: A real budget, a licensing structure that keeps ownership with the creator, and three partners brought to the table.
----
-{% from "cta.njk" import button %}
-<!-- INTRO -->
-<section>
-  <div class="wrap">
-    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/case-studies/">Case studies</a> &rarr; Rap Frogs</p>
-    <script type="application/ld+json">
-    {
+import Base from '../../layouts/Base.astro';
+import CallButton from '../../components/CallButton.astro';
+
+const title = "Rap Frogs: A Licensing Structure and Funding Path for a Children's IP | The Web3 Family";
+const description = "A real budget, a licensing structure that keeps ownership with the creator, and three partners brought to the table.";
+const ld0 = `    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -18,7 +13,14 @@ description: A real budget, a licensing structure that keeps ownership with the 
         {"@type": "ListItem", "position": 3, "name": "Rap Frogs", "item": "https://theweb3family.com/case-studies/rap-frogs/"}
       ]
     }
-    </script>
+    `;
+---
+<Base title={title} description={description}>
+<!-- INTRO -->
+<section>
+  <div class="wrap">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/case-studies/">Case studies</a> &rarr; Rap Frogs</p>
+    <script is:inline type="application/ld+json" set:html={ld0} />
     <span class="eyebrow-person"><span class="person-name">Anthony Taylor</span><span class="org-name">Rap Frogs</span></span>
     <h1>A character with a real path to grant money underneath it</h1>
     <div class="case-facts">
@@ -57,7 +59,7 @@ description: A real budget, a licensing structure that keeps ownership with the 
       </div>
     </div>
 
-    {{ button("content-cta", true) }}
+    <CallButton wrapClass="content-cta" riskReversal />
   </div>
 </section>
 
@@ -156,3 +158,4 @@ description: A real budget, a licensing structure that keeps ownership with the 
     </ul>
   </div>
 </section>
+</Base>

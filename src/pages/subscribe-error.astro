@@ -1,13 +1,14 @@
 ---
-layout: base.njk
-title: Signup didn't go through | The Web3 Family
-description: There was a problem signing up for the newsletter.
-noindex: true
-eleventyExcludeFromCollections: true
+import Base from '../layouts/Base.astro';
+
+const title = "Signup didn't go through | The Web3 Family";
+const description = "There was a problem signing up for the newsletter.";
 ---
+<Base title={title} description={description} noindex>
 <section>
   <div class="wrap">
     <h1>That did not go through.</h1>
     <p class="subhead" style="margin-bottom:0">Please try again, or email <a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a> and I will add you by hand. <a href="/">Back to the homepage</a>.</p>
   </div>
 </section>
+</Base>

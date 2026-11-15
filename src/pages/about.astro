@@ -1,23 +1,20 @@
 ---
-layout: base.njk
-title: About Christopher Clarke | The Web3 Family
-description: Christopher Clarke is the founder of The Web3 Family, a creative studio for nonprofits in Inglewood, California, with 15+ years building tools that help people do their own work.
----
-{#
-  ProfilePage JSON-LD, same convention as article.njk's BlogPosting/
-  BreadcrumbList blocks: inert structured data placed at the top of
-  the page content rather than base.njk's <head> (the homepage-only
-  Organization/Person blocks live there), since this is a single-page
-  concern, not a sitewide one. Reuses the homepage's own @id values so
-  this Person and that one are the same entity to a crawler.
-#}
-<script type="application/ld+json">
-{
+import Base from '../layouts/Base.astro';
+
+const title = "About Christopher Clarke | The Web3 Family";
+const description = "Christopher Clarke is the founder of The Web3 Family, a creative studio for nonprofits in Inglewood, California, with 15+ years building tools that help people do their own work.";
+
+// Update this date whenever the words on this page change.
+const updated = '2026-11-14';
+
+// ProfilePage JSON-LD. Inert structured data for search engines. It reuses
+// the homepage's @id values, so both pages read as the same person.
+const profilePage = `{
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "url": "https://theweb3family.com/about/",
   "name": "About Christopher Clarke",
-  "dateModified": "{{ page.date | isoDate }}",
+  "dateModified": "${new Date(updated).toISOString()}",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://theweb3family.com/#christopher",
@@ -38,8 +35,10 @@ description: Christopher Clarke is the founder of The Web3 Family, a creative st
       "https://x.com/aweb3dad"
     ]
   }
-}
-</script>
+}`;
+---
+<Base title={title} description={description}>
+<script is:inline type="application/ld+json" set:html={profilePage} />
 <!-- ABOUT -->
 <section>
   <div class="wrap">
@@ -137,3 +136,4 @@ description: Christopher Clarke is the founder of The Web3 Family, a creative st
     </div>
   </div>
 </section>
+</Base>

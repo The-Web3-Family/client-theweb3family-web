@@ -1,11 +1,11 @@
 ---
-layout: base.njk
-permalink: /404.html
-title: Page not found | The Web3 Family
-description: This page has moved. Find your way back to The Web3 Family's articles, case studies, or home page.
-robotsMeta: noindex, follow
-eleventyExcludeFromCollections: true
+import Base from '../layouts/Base.astro';
+import CallButton from '../components/CallButton.astro';
+
+const title = "Page not found | The Web3 Family";
+const description = "This page has moved. Find your way back to The Web3 Family's articles, case studies, or home page.";
 ---
+<Base title={title} description={description} robotsMeta="noindex, follow">
 <!-- 404 -->
 <section>
   <div class="wrap">
@@ -37,11 +37,11 @@ eleventyExcludeFromCollections: true
     </div>
 
     <h2>Or pick a time on my calendar, and we&rsquo;ll talk it through</h2>
-    {% from "cta.njk" import button %}
-    {{ button("content-cta", false, false) }}
+        <CallButton wrapClass="content-cta" showPhone={false} />
 
     <p class="subhead">Rather talk now? <a href="tel:+13107036003">Call</a> or <a href="sms:+13107036003">text</a> (310) 703-6003.</p>
   </div>
 </section>
 
-<script>clarity("set","page_type","404");</script>
+<script is:inline>clarity("set","page_type","404");</script>
+</Base>

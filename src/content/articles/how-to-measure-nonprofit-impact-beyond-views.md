@@ -1,5 +1,4 @@
 ---
-layout: article.njk
 title: How to Measure Nonprofit Impact Beyond Views
 date: 2026-10-23T12:00:00Z
 description: Views and impressions show who scrolled past. Here’s how to count the moments people truly reach out, starting with a nonprofit phone line I set up this week.

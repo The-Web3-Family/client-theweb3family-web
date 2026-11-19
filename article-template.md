@@ -28,6 +28,12 @@
   - When you revise an older article, add updated: with today's date.
   - Leave out summary, image, imageCaption, or updated and that piece simply
     disappears.
+  - Optional extras (see nonprofit-dates-december-2026.md for a full example):
+    titleTag (a browser-tab title that differs from the headline), category
+    (such as News), shareImage (a link-preview image kept off the page),
+    and faq (question and answer pairs, repeated for search engines).
+  - A source link that opens in a new tab is written as plain HTML:
+    <a href="https://..." target="_blank" rel="noopener">Source name</a>
 -->
 ---
 title: 

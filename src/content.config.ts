@@ -17,6 +17,17 @@ const articles = defineCollection({
     imageAlt: z.string().nullish(),
     imageCaption: z.string().nullish(),
     keyword: z.string().nullish(),
+    // Optional extras, used by the News articles:
+    // titleTag    the browser-tab and search title, when it differs from the headline
+    // category    a section name for search engines, such as News
+    // schemaType  the structured-data type, BlogPosting unless set
+    // shareImage  a link-preview image, kept off the page itself
+    // faq         questions and answers, repeated for search engines as FAQPage data
+    titleTag: z.string().nullish(),
+    category: z.string().nullish(),
+    schemaType: z.enum(['BlogPosting', 'Article', 'NewsArticle']).nullish(),
+    shareImage: z.string().nullish(),
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).nullish(),
   }),
 });
 

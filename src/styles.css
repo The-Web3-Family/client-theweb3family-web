@@ -683,3 +683,42 @@ footer p:last-child{margin-bottom:0}
 .article-cover img{display:block;width:100%;height:auto;border-radius:8px}
 .article-cover figcaption{font-size:18px;color:var(--muted);margin-top:8px}
 .article-letter{font-size:20px;margin:0 0 24px}
+
+/* Privacy choices banner (added Nov 19 2026, on direct request). A plain bar
+   pinned to the bottom of the screen until the visitor chooses. Forest
+   ground, cream text (12.06:1). Both buttons share one style on purpose:
+   an equal choice, and neither in orange, which stays reserved for the
+   booking button. While it shows, the page gains the same space at its
+   very end (html.consent-open), so nothing above it moves. */
+.consent-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:var(--forest);color:var(--cream);
+  border-top:1px solid rgba(245,235,225,.3);padding:var(--space-4) 0;
+}
+.consent-row{display:flex;flex-direction:column;gap:var(--space-3)}
+.consent-text{margin:0;font-size:18px;line-height:1.5;color:var(--cream)}
+.consent-text a{color:var(--cream)}
+.consent-text a:hover{color:var(--cream-deep)}
+.consent-actions{display:flex;gap:var(--space-3)}
+.consent-btn{
+  flex:1 1 0;min-height:48px;padding:10px 20px;cursor:pointer;
+  font:inherit;font-size:18px;font-weight:600;
+  background:var(--cream);color:var(--forest);border:2px solid var(--cream);border-radius:3px;
+}
+.consent-btn:hover{background:var(--cream-deep);border-color:var(--cream-deep)}
+.consent-bar a:focus-visible,.consent-btn:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+html.consent-open body{padding-bottom:var(--consent-h,0)}
+@media (min-width:760px){
+  .consent-row{flex-direction:row;align-items:center;justify-content:space-between;gap:var(--space-6)}
+  .consent-actions{flex:0 0 auto}
+  .consent-btn{flex:0 0 auto;min-width:140px}
+}
+/* the footer's "Privacy choices" control: a real button, styled like the
+   footer links around it */
+.footer-link-btn{
+  background:none;border:0;padding:0;cursor:pointer;
+  font:inherit;font-size:18px;color:#cbbfb3;
+  text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;
+}
+.footer-link-btn:hover{color:var(--cream)}
+@media print{.consent-bar{display:none}}

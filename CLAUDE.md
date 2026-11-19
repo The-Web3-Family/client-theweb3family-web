@@ -358,3 +358,25 @@ banner and chose cookies plus a Privacy page paragraph over a banner or
 cookie-free mode, the same call already made for Clarity and GA in section 9.
 This makes PostHog a fifth external dependency on the list in section 9 and
 widens the cookie exception there to three tools.
+
+**Privacy choices banner and PostHog consent mode (added Nov 19 2026, on a
+direct brief).** This replaces the earlier "cookies plus a Privacy page
+paragraph" setup for PostHog only. PostHog now starts every visit quiet
+(`cookieless_mode: 'on_reject'`, `disable_session_recording: true`): zero
+cookies, zero events, zero recording until the visitor chooses. A bar at
+the bottom of every page (`#consent-bar` in `Base.astro`) offers Accept and
+Decline as two identical buttons, on purpose. Accept calls
+`opt_in_capturing()` and `startSessionRecording()`; Decline calls
+`opt_out_capturing()`, which keeps PostHog counting the visit cookie-free,
+with replay off. The choice is saved in `localStorage` under `w3f_consent`,
+a named, confirmed exception to the no-localStorage line in section 9, and
+reapplied on every page once PostHog loads. The footer's "Privacy choices"
+button (a real `<button>`, styled like the footer links) reopens the bar.
+The PostHog project ("The Web3 Family", 750488) has cookieless counting
+switched on (stateful) and keeps recordings for 30 days, which the Privacy
+page states. The contact form and the newsletter form carry `ph-no-capture`,
+and every input is masked in recordings. The banner copy is Christopher's,
+word for word, including its "we"; the Privacy page section was adjusted to
+the page's own first person "I". Clarity and Google Analytics still load
+outside this banner, unchanged; bringing them under it needs its own
+explicit request.

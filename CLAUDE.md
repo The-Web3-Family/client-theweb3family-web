@@ -332,3 +332,29 @@ pull-quote under the headline rather than a mismatch, since both describe
 the same piece, but if a future article adds its own cover image, match the
 image's own text to that article's real `<h1>` to avoid drifting the two
 further apart.
+
+**News articles (added Nov 19 2026, on a direct brief).** "5 nonprofit dates
+to know before January 1, 2027" (`nonprofit-dates-december-2026.md`) is the
+first one. Its words are Christopher's own, used exactly as supplied. Four
+optional front matter fields came with it, all handled in
+`src/pages/articles/[slug].astro`: `titleTag` (the `<title>` when it differs
+from the `<h1>`), `category` (written into the structured data as
+`articleSection`), `schemaType` (`Article` here; every other article stays
+`BlogPosting`), and `faq` (a `FAQPage` JSON-LD block that repeats the
+questions shown on the page). `shareImage` sets the link-preview image only,
+and only once its file exists in `public/`; until then the preview uses the
+standard share card. Source links in a news article are plain HTML anchors
+with `target="_blank"` and `rel="noopener"`. The `<!-- YOUTUBE_EMBED -->`
+comment in that article marks where its video goes once Christopher sends
+the link.
+
+**PostHog (added Nov 19 2026, on direct request).** Loaded on every page from
+`Base.astro`, right after Speed Insights, sending to its own PostHog project,
+"The Web3 Family" (project 750488, US cloud), kept apart from the client
+projects in the same PostHog account. The `phc_` token in the snippet is a
+public project key, safe in page code. It sets cookies, like Clarity and
+Google Analytics. Christopher asked directly whether it needed a cookie
+banner and chose cookies plus a Privacy page paragraph over a banner or
+cookie-free mode, the same call already made for Clarity and GA in section 9.
+This makes PostHog a fifth external dependency on the list in section 9 and
+widens the cookie exception there to three tools.

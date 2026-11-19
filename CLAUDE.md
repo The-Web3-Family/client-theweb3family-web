@@ -347,3 +347,14 @@ standard share card. Source links in a news article are plain HTML anchors
 with `target="_blank"` and `rel="noopener"`. The `<!-- YOUTUBE_EMBED -->`
 comment in that article marks where its video goes once Christopher sends
 the link.
+
+**PostHog (added Nov 19 2026, on direct request).** Loaded on every page from
+`Base.astro`, right after Speed Insights, sending to its own PostHog project,
+"The Web3 Family" (project 750488, US cloud), kept apart from the client
+projects in the same PostHog account. The `phc_` token in the snippet is a
+public project key, safe in page code. It sets cookies, like Clarity and
+Google Analytics. Christopher asked directly whether it needed a cookie
+banner and chose cookies plus a Privacy page paragraph over a banner or
+cookie-free mode, the same call already made for Clarity and GA in section 9.
+This makes PostHog a fifth external dependency on the list in section 9 and
+widens the cookie exception there to three tools.

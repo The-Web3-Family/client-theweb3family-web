@@ -18,7 +18,8 @@
   Analytics: Microsoft Clarity, Google Analytics, Vercel Speed Insights,
   and PostHog (its own project, "The Web3 Family") load on every page,
   each on Christopher's direct request. The PostHog token is a public
-  project key, safe in page code.
+  project key, safe in page code. PostHog waits for the privacy banner at
+  the bottom of this file: see the consent note there.
   Calendly's popup assets load on every page too, since the footer's
   booking button appears everywhere.
 
@@ -124,9 +125,21 @@ const person = `{
 <script is:inline defer src="/_vercel/speed-insights/script.js"></script>
 <script is:inline>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  // Consent mode. Every visit starts with PostHog quiet: no cookies, no
+  // events, no recording. The banner at the bottom of the page saves the
+  // visitor's choice in localStorage ("w3f_consent") and applies it:
+  // Accept turns on full tracking and session replay; Decline keeps PostHog
+  // cookie-free, counting the visit anonymously, with replay off. Typed form
+  // entries stay masked in every recording.
   posthog.init('phc_xYaKi2YW3BTDk3Dst9hpxUCQw5NQArci7ppCKDWFyYX6', {
     api_host: 'https://us.i.posthog.com',
-    defaults: '2026-08-30'
+    defaults: '2026-08-30',
+    cookieless_mode: 'on_reject',
+    disable_session_recording: true,
+    autocapture: true,
+    capture_pageview: true,
+    session_recording: { maskAllInputs: true },
+    loaded: function () { if (window.w3fApplyConsent) window.w3fApplyConsent(); }
   });
 </script>
 {isHome && <script is:inline type="application/ld+json" set:html={organization} />}
@@ -174,7 +187,7 @@ const person = `{
     <div class="wrap">
       <h2 id="newsletter-heading" class="newsletter-title">Join my Friday newsletter.</h2>
       <p class="newsletter-blurb">Every Friday I send an email to all my clients. I would love to send you one too.</p>
-      <form action="/api/subscribe" method="post" class="newsletter-form">
+      <form action="/api/subscribe" method="post" class="newsletter-form ph-no-capture">
         <div class="newsletter-field">
           <label for="bd-email" class="newsletter-label sr-only">Your email</label>
           <input type="email" name="email" id="bd-email" placeholder="Your email" autocomplete="email" required>
@@ -197,6 +210,7 @@ const person = `{
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
       <p class="footer-line"><a href="/privacy/">Privacy Policy</a></p>
+      <p class="footer-line" data-consent-link hidden><button type="button" class="footer-link-btn">Privacy choices</button></p>
       <p class="footer-line"><a href="/support/">Support the studio</a></p>
     </div>
     <div class="footer-clients">
@@ -208,6 +222,87 @@ const person = `{
     <CallButton wrapClass="footer-cta actions" />
   </div>
 </footer>
+
+<!--
+  PRIVACY CHOICES BANNER. Added Nov 19 2026 on Christopher's direct brief.
+  Governs PostHog only (see the posthog.init note in <head>). Shown at the
+  bottom of the screen until the visitor picks Accept or Decline; the
+  footer's "Privacy choices" button brings it back. Both buttons carry the
+  same size and weight on purpose: an equal choice. Hidden by default, so
+  with JavaScript off it stays out of the way, and PostHog stays quiet too.
+-->
+<div class="consent-bar" id="consent-bar" role="region" aria-label="Privacy choices" hidden>
+  <div class="wrap consent-row">
+    <p class="consent-text">We use privacy-friendly analytics and anonymous session recordings to improve this site. <a href="/privacy/">Privacy policy</a></p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" data-consent="accepted">Accept</button>
+      <button type="button" class="consent-btn" data-consent="declined">Decline</button>
+    </div>
+  </div>
+</div>
+<script is:inline>
+(function () {
+  var KEY = 'w3f_consent';
+  var bar = document.getElementById('consent-bar');
+  var root = document.documentElement;
+  var memory = null;
+  var returnFocus = null;
+
+  function read() {
+    try { return localStorage.getItem(KEY) || memory; } catch (e) { return memory; }
+  }
+  function save(choice) {
+    memory = choice;
+    try { localStorage.setItem(KEY, choice); } catch (e) {}
+  }
+
+  // Hands the saved choice to PostHog, once its script has loaded.
+  function apply() {
+    var ph = window.posthog;
+    if (!ph || !ph.__loaded) return;
+    var choice = read();
+    if (choice === 'accepted') {
+      if (!ph.has_opted_in_capturing()) ph.opt_in_capturing();
+      ph.startSessionRecording();
+    } else if (choice === 'declined') {
+      if (ph.sessionRecordingStarted && ph.sessionRecordingStarted()) ph.stopSessionRecording();
+      if (!ph.has_opted_out_capturing()) ph.opt_out_capturing();
+    }
+  }
+  window.w3fApplyConsent = apply;
+
+  // While the bar shows, the page gains matching space at its very end, so
+  // the footer stays reachable. Nothing above it moves.
+  function fit() { root.style.setProperty('--consent-h', bar.offsetHeight + 'px'); }
+  function show() { bar.hidden = false; root.classList.add('consent-open'); fit(); }
+  function hide() { bar.hidden = true; root.classList.remove('consent-open'); }
+
+  var current = read();
+  if (current !== 'accepted' && current !== 'declined') show();
+  window.addEventListener('resize', function () { if (!bar.hidden) fit(); });
+
+  bar.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-consent]');
+    if (!button) return;
+    save(button.getAttribute('data-consent'));
+    hide();
+    apply();
+    if (returnFocus) { returnFocus.focus(); returnFocus = null; }
+  });
+
+  var link = document.querySelector('[data-consent-link]');
+  if (link) {
+    link.hidden = false;
+    link.querySelector('button').addEventListener('click', function () {
+      returnFocus = this;
+      show();
+      bar.querySelector('[data-consent]').focus();
+    });
+  }
+
+  apply();
+})();
+</script>
 
 </body>
 </html>

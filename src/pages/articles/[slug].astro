@@ -54,7 +54,7 @@ const blogPosting = ld({
   datePublished: date.toISOString(),
   dateModified: (updated ?? date).toISOString(),
   mainEntityOfPage: pageUrl,
-  image: `https://theweb3family.com${previewImage ?? '/og-share-v2.jpg'}`,
+  image: `https://theweb3family.com${previewImage ?? '/brand/og-default.png'}`,
   ...(category ? { articleSection: category } : {}),
   author: {
     '@type': 'Person',
@@ -68,7 +68,7 @@ const blogPosting = ld({
     '@type': 'Organization',
     '@id': 'https://theweb3family.com/#organization',
     name: 'The Web3 Family',
-    logo: { '@type': 'ImageObject', url: 'https://theweb3family.com/logo.png' },
+    logo: { '@type': 'ImageObject', url: 'https://theweb3family.com/brand/png/W3F_logo_icon_fullcolor_2x.png' },
   },
   isPartOf: { '@type': 'Blog', name: 'The Friday Letter', url: 'https://theweb3family.com/articles/' },
   ...(keyword ? { keywords: keyword } : {}),

@@ -380,3 +380,26 @@ word for word, including its "we"; the Privacy page section was adjusted to
 the page's own first person "I". Clarity and Google Analytics still load
 outside this banner, unchanged; bringing them under it needs its own
 explicit request.
+
+**W3F logo rollout (added Nov 20 2026, on a direct brief with a supplied logo
+kit).** The kit lives in `public/brand/` exactly as supplied (`svg/`, `png/`,
+`favicon/`, `print/`, plus the brand sheet). These files are final: use them
+as they are, with their colors, crop, and proportions untouched. The header
+shows `svg/W3F_logo_horizontal_fullcolor.svg` (`.brand-logo`, 56px tall, about
+197px wide, alt "The Web3 Family", linked to `/`) in place of the old globe
+badge and the "Christopher Clarke / The Web3 Family" text beside it; the
+horizontal version fits on a phone too, so the icon-only fallback stays
+unused. The footer shows `svg/W3F_logo_horizontal_reversed.svg`
+(`.footer-logo`) above the existing footer lines, which are unchanged. The
+favicon and touch-icon links, `theme-color`, the Organization `logo`, and the
+article publisher logo all point into `public/brand/`. The default link
+preview image is `public/brand/og-default.png` (1200x630, Deep Green with the
+reversed horizontal logo about 900px wide, rendered once from the supplied
+SVG); it replaced `og-share-v2.jpg` as the sitewide default, and articles
+keep their own images. `public/images/w3f-signature-logo.png` is a plain copy
+of `png/W3F_logo_icon_fullcolor_2x.png`; Christopher's Gmail signature points
+at that exact address, so keep the path and file name. The logo carries its
+own tagline, "Nonprofits, found & funded"; that lives inside the logo art,
+and the written descriptor elsewhere stays "Creative Studio for Nonprofits"
+until Christopher asks for a change. The About and 404 pages carried no logo
+before this and still carry none.

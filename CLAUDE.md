@@ -380,3 +380,54 @@ word for word, including its "we"; the Privacy page section was adjusted to
 the page's own first person "I". Clarity and Google Analytics still load
 outside this banner, unchanged; bringing them under it needs its own
 explicit request.
+
+**W3F logo rollout (added Nov 20 2026, on a direct brief with a supplied logo
+kit).** The kit lives in `public/brand/` exactly as supplied (`svg/`, `png/`,
+`favicon/`, `print/`, plus the brand sheet). These files are final: use them
+as they are, with their colors, crop, and proportions untouched. The header
+shows `svg/W3F_logo_horizontal_fullcolor.svg` (`.brand-logo`, alt "The Web3 Family", linked to `/`; see the size rule
+below) in place of the old globe
+badge and the "Christopher Clarke / The Web3 Family" text beside it; the
+horizontal version fits on a phone too, so the icon-only fallback stays
+unused. The footer shows `svg/W3F_logo_horizontal_reversed.svg`
+(`.footer-logo`) above the existing footer lines, which are unchanged. The
+favicon and touch-icon links, `theme-color`, the Organization `logo`, and the
+article publisher logo all point into `public/brand/`. The default link
+preview image is `public/brand/og-default.png` (1200x630, Deep Green with the
+reversed horizontal logo about 900px wide, rendered once from the supplied
+SVG); it replaced `og-share-v2.jpg` as the sitewide default, and articles
+keep their own images. `public/images/w3f-signature-logo.png` is a plain copy
+of `png/W3F_logo_icon_fullcolor_2x.png`; Christopher's Gmail signature points
+at that exact address, so keep the path and file name. The logo carries its
+own tagline, "Nonprofits, found & funded"; that lives inside the logo art,
+and the written descriptor elsewhere stays "Creative Studio for Nonprofits"
+until Christopher asks for a change. The About and 404 pages carried no logo
+before this and still carry none.
+
+**Default font size, forever (Christopher's direct rule, Nov 20 2026).** The
+first logo rollout shipped the header logo at 197px wide, and Christopher
+called the lettering "way too small": "we need a default font size forever
+for old people, keep that as part of the notes." So the 18px floor in section
+7 is the standing default for every piece of text on this site, and it also
+covers words that live inside a picture, the logo included. The name inside
+the horizontal logo is about 8% of the logo's width tall, so the logo is
+sized by width to keep that name near 18px or larger: `clamp(210px, 64vw,
+250px)` on phones (240px wide on a 375px phone), 240px from 760px up, and
+300px from 1100px up; the footer logo runs up to 300px. Keep the logo at
+these sizes or larger. The small orange tagline line inside the logo art is
+part of the supplied drawing and stays as drawn; a larger tagline needs a
+new logo file from Christopher. When any new text, label, caption, or image
+with words is added, size it to this floor first and ask before going under
+it.
+
+**"Privacy choices" in the footer is a plain link now** (`<a
+href="#consent-bar">`), changed Nov 20 2026 after Christopher said its text
+formatting looked off next to its neighbors. It was a `<button>` styled to
+look like a link; as a real link it takes the exact footer link styling in
+every browser. The script in `Base.astro` still opens the bar on click. The
+`.footer-link-btn` CSS is gone.
+
+**Known and still open:** between 760px and about 968px wide (a tablet held
+upright), the desktop menu plus the logo run wider than the screen. The old
+header did the same at those widths. A fix means showing the hamburger menu
+up to about 1000px, which is a menu change and needs Christopher's yes.

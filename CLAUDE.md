@@ -431,3 +431,10 @@ every browser. The script in `Base.astro` still opens the bar on click. The
 upright), the desktop menu plus the logo run wider than the screen. The old
 header did the same at those widths. A fix means showing the hamburger menu
 up to about 1000px, which is a menu change and needs Christopher's yes.
+
+**Ko-fi is off the support page (Nov 20 2026, Christopher's direct request).**
+The "Already use Ko-fi? Tip me there." link is removed from
+`src/pages/support.astro`. The page's tip buttons are real Stripe Payment
+Links now (one "Pick your amount" button for giving once, and $10, $25, $50
+a month), so the placeholder note in section 10 is history. Keep Ko-fi off
+the site until Christopher asks for it back.

@@ -28,6 +28,10 @@ const articles = defineCollection({
     schemaType: z.enum(['BlogPosting', 'Article', 'NewsArticle']).nullish(),
     shareImage: z.string().nullish(),
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).nullish(),
+    // draft: true builds the page at its own address and keeps it off the
+    // Articles list, the "more articles" links, and the sitemap, and asks
+    // search engines to skip it. Remove the line to publish.
+    draft: z.boolean().nullish(),
   }),
 });
 

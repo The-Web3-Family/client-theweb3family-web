@@ -685,6 +685,13 @@ footer p:last-child{margin-bottom:0}
 @media print{img[aria-hidden="true"]{display:none}.newsletter{display:none}}
 
 /* Article page: short answer box, cover image, Friday Letter line */
+/* Tables inside an article. Wide tables scroll sideways inside their own
+   box on a phone, so the page itself stays still and the text stays 18px. */
+.prose table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;margin:0 0 var(--space-3);font-size:18px}
+.prose th,.prose td{padding:var(--space-3) var(--space-4);border:1px solid var(--hair);text-align:left;vertical-align:top;min-width:120px}
+.prose th{background:var(--cream-deep);color:var(--forest);font-weight:700}
+/* A spot still waiting on something from Christopher, shown on drafts only. */
+.draft-slot{border:2px dashed var(--forest);padding:var(--space-4);margin:0 0 var(--space-5);color:var(--muted);max-width:62ch}
 .article-summary{background:var(--cream-deep,#ede0d3);border-left:6px solid var(--forest,#003223);padding:20px 22px;margin:24px 0 28px;border-radius:4px}
 .article-summary p{margin:0;font-size:20px;line-height:1.6}
 .article-summary .article-summary-label{font-weight:700;font-size:18px;color:var(--forest,#003223);margin-bottom:6px}

@@ -438,3 +438,24 @@ The "Already use Ko-fi? Tip me there." link is removed from
 Links now (one "Pick your amount" button for giving once, and $10, $25, $50
 a month), so the placeholder note in section 10 is history. Keep Ko-fi off
 the site until Christopher asks for it back.
+
+**Unlisted draft articles (added Nov 23 2026, on direct request).** An
+article with `draft: true` in its front matter still gets its own page, and
+it stays off the Articles list, the "More from The Friday Letter" links, and
+the sitemap. Its page carries `noindex` and a dashed "Draft preview" note at
+the top. Removing the `draft` line publishes it. `.draft-slot` (a dashed
+forest box) marks a spot still waiting on something from Christopher; use it
+on drafts only. Article tables are styled now too (`.prose table`): on a
+phone a wide table scrolls sideways inside its own box, with text held at
+18px.
+
+"How Much Does a Nonprofit Website Cost in 2026?"
+(`nonprofit-website-cost-2026.md`) is the first draft, built from
+Christopher's supplied text, which he is still fact-checking. It is on the
+working branch only, unmerged, until he says to launch it. Open items before
+it publishes: the video, the calculator, the sponsored partner card, client
+examples (written sign-off first), and his build timeline, each shown as a
+`.draft-slot`. The draft says monthly plans start at $495 (and $5,940 a
+year), while the site's pricing cards say $500; ask Christopher which is
+right before publishing. The draft's own "About the author" block was left
+out, since the article page already ends with the standard author note.

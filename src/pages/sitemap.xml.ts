@@ -18,7 +18,7 @@ const pages = [
 
 export const GET: APIRoute = async () => {
   const built = new Date().toISOString();
-  const articles = await getCollection('articles');
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
   const entries = [
     ...pages.map((path) => ({ path, lastmod: built })),
     ...articles.map((article) => ({ path: `/articles/${article.id}/`, lastmod: article.data.date.toISOString() })),

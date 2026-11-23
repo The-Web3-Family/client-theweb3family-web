@@ -22,13 +22,14 @@ export async function getStaticPaths() {
   const articles = (await getCollection('articles')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return articles.map((article) => ({
     params: { slug: article.id },
-    props: { article, more: articles.filter((other) => other.id !== article.id).slice(0, 3) },
+    // Drafts get a page of their own and stay out of every "more" list.
+    props: { article, more: articles.filter((other) => other.id !== article.id && !other.data.draft).slice(0, 3) },
   }));
 }
 
 const { article, more } = Astro.props;
 const { title, description, date, updated, summary, image, imageAlt, imageCaption, keyword } = article.data;
-const { titleTag, category, schemaType, shareImage, faq } = article.data;
+const { titleTag, category, schemaType, shareImage, faq, draft } = article.data;
 
 // A share image is used for link previews only, and only once its file is
 // really in public/. Until then the preview falls back to the cover image
@@ -92,13 +93,14 @@ const faqPage = faq && faq.length > 0 && ld({
   })),
 });
 ---
-<Base title={titleTag ?? title} description={description} ogType="article" image={previewImage} imageAlt={shareImageReady ? undefined : imageAlt ?? undefined}>
+<Base title={titleTag ?? title} description={description} ogType="article" image={previewImage} imageAlt={shareImageReady ? undefined : imageAlt ?? undefined} noindex={Boolean(draft)}>
 <script is:inline type="application/ld+json" set:html={blogPosting} />
 <script is:inline type="application/ld+json" set:html={breadcrumbs} />
 {faqPage && <script is:inline type="application/ld+json" set:html={faqPage} />}
 <article class="prose article">
   <div class="wrap">
     <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/articles/">Articles</a></p>
+    {draft && <p class="draft-slot">Draft preview. This page is unlisted: only someone with this exact address can open it.</p>}
     <p class="article-date">
       <time datetime={date.toISOString()}>{readableDate(date)}</time>{' '}&middot; {readingTime} minute read
       {updated && <><br>Updated <time datetime={updated.toISOString()}>{readableDate(updated)}</time></>}

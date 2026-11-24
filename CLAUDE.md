@@ -454,8 +454,10 @@ phone a wide table scrolls sideways inside its own box, with text held at
 Nov 24 2026 to Christopher's second version, word for word: each section
 pairs "According to [source]" with "According to me," his own take. The one
 change from his text: his sign-off's em dash ("— Christopher") became a line
-break, per section 4. It is on the working branch only, unmerged, until he
-says to launch it. The article's own "Book a free 15-minute call" link sits
+break, per section 4. Published Nov 24 2026 on
+Christopher's direct request ("launch the new article"): `draft: true` is
+gone, so it is on the Articles page, the more-articles links, and the
+sitemap. The article's own "Book a free 15-minute call" link sits
 above the page's standard booking button, so the page carries two booking
 links; ask Christopher before trimming either.
 

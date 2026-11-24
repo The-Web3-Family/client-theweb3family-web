@@ -3,7 +3,6 @@ title: How Much Does a Nonprofit Website Cost in 2026?
 date: 2026-11-24T12:00:00Z
 description: "What the research says a nonprofit website costs in 2026, and what a 20-year web builder actually sees with small nonprofits in Los Angeles."
 keyword: nonprofit website cost
-draft: true
 ---
 *By Christopher Clarke, founder of The Web3 Family, 20 years building websites · Inglewood, Los Angeles · Updated November 2026*
 

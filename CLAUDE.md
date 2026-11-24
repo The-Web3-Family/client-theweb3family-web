@@ -450,12 +450,11 @@ phone a wide table scrolls sideways inside its own box, with text held at
 18px.
 
 "How Much Does a Nonprofit Website Cost in 2026?"
-(`nonprofit-website-cost-2026.md`) is the first draft, built from
-Christopher's supplied text, which he is still fact-checking. It is on the
-working branch only, unmerged, until he says to launch it. Open items before
-it publishes: the video, the calculator, the sponsored partner card, client
-examples (written sign-off first), and his build timeline, each shown as a
-`.draft-slot`. The draft says monthly plans start at $495 (and $5,940 a
-year), while the site's pricing cards say $500; ask Christopher which is
-right before publishing. The draft's own "About the author" block was left
-out, since the article page already ends with the standard author note.
+(`nonprofit-website-cost-2026.md`) is the first draft. It was rewritten on
+Nov 24 2026 to Christopher's second version, word for word: each section
+pairs "According to [source]" with "According to me," his own take. The one
+change from his text: his sign-off's em dash ("— Christopher") became a line
+break, per section 4. It is on the working branch only, unmerged, until he
+says to launch it. The article's own "Book a free 15-minute call" link sits
+above the page's standard booking button, so the page carries two booking
+links; ask Christopher before trimming either.

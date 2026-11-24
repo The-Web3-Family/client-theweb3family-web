@@ -7,8 +7,6 @@
   --charcoal:#181C1B;
   --muted:#2f3d38;
   --hair:rgba(24,28,27,.2);
-  /* spacing scale, added on a September 2026 build instruction to
-     replace one-off pixel values with a shared set of steps */
   --space-1:4px;  --space-2:8px;  --space-3:12px;
   --space-4:16px; --space-5:24px; --space-6:32px;
   --space-7:48px; --space-8:64px; --space-9:80px;
@@ -25,9 +23,6 @@ body{
   font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;
   font-variant-numeric:oldstyle-nums;
 }
-/* Headings are set in px/clamp(), not em/rem, so this drop from the old
-   20px base doesn't cascade into them; the type scale stays proportional
-   without any heading-size changes. */
 a,button{touch-action:manipulation}
 h1,h2,h3{font-family:'Lora',Georgia,serif;color:var(--forest);margin:0}
 p{margin:0 0 var(--space-5)}
@@ -42,22 +37,14 @@ a:hover{color:var(--rust)}
   color:var(--rust);margin:0 0 14px;line-height:1.3;
 }
 
-/* person + organization label: two lines, differentiated by size and
-   weight, replacing the old single-line "Name · Org" eyebrow. Used on
-   the case study cards (index and homepage teaser) and the three
-   detail page eyebrows, wherever a client is being named. */
 .eyebrow-person{display:flex;flex-direction:column;gap:2px;margin:0 0 14px}
 .eyebrow-person .person-name{font-size:18px;font-weight:500;font-style:italic;color:var(--muted)}
 .eyebrow-person .org-name{
   font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:var(--rust);margin-left:14px;
 }
-/* org-name alone (no person-name line above it, e.g. a client not named by
-   their own request) shouldn't carry the indent meant to offset it under
-   a name that isn't there */
 .eyebrow-person .org-name:only-child{margin-left:0}
 
-/* even rhythm: top and bottom padding match, on every section, on every page */
 section{padding:var(--gap) 0}
 .band{background-color:var(--cream-deep);background-image:var(--grain);background-repeat:repeat;background-size:160px 160px}
 .ink{background:var(--forest);color:var(--cream)}
@@ -74,24 +61,14 @@ h2::after{
 }
 h3{font-size:21px;line-height:1.3;margin-bottom:6px}
 
-/* editorial two-column split: label left, body right, desktop only */
 .split{display:flex;flex-direction:column}
 .split-label h2::after{margin-bottom:0}
 
-/* ---------- header ---------- */
 header{padding:20px 0;border-bottom:1px solid var(--hair)}
 header .wrap.header-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
-/* The header logo is the supplied horizontal lockup, used as is. The
-   margin keeps the brand sheet's clear space (the height of the "W")
-   between the logo and the menu beside it. */
 .brand{display:block;flex:0 0 auto;margin-right:var(--space-4);text-decoration:none}
-/* Sized so the name inside the logo reads at 18px or larger: the name's
-   letters are about 8% of the logo's width, so 240px wide is the floor. */
 .brand-logo{display:block;width:clamp(210px,64vw,250px);height:auto}
 
-/* hamburger menu: a <details>/<summary> disclosure, so it opens and
-   closes with zero client-side JavaScript, same as the old weekly-log
-   pattern on the case study pages. */
 .nav-menu{position:relative;flex:0 0 auto}
 .nav-toggle{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
@@ -115,8 +92,6 @@ header .wrap.header-row{display:flex;align-items:center;justify-content:space-be
 .nav-panel a:hover{background:var(--cream-deep)}
 .nav-panel a.nav-cta{margin-top:6px}
 
-/* the booking link styled as a real button, not a plain menu link, in
-   both the mobile dropdown and the desktop inline nav */
 a.nav-cta{
   background:var(--orange);color:var(--charcoal);justify-content:center;
   text-align:center;text-decoration:none;border:2px solid var(--forest);
@@ -124,10 +99,8 @@ a.nav-cta{
 }
 a.nav-cta:hover{background:#ff5f18}
 
-/* desktop inline nav (see .nav-menu/.nav-inline toggle at 760px) */
 .nav-inline{display:none;flex:0 0 auto}
 
-/* ---------- hero ---------- */
 .hero{padding:var(--gap) 0}
 .me{display:flex;align-items:center;gap:16px;margin-bottom:32px}
 .portrait{
@@ -146,7 +119,6 @@ h1{
   line-height:1.42;margin:0 0 32px;max-width:44ch;
 }
 
-/* ---------- actions ---------- */
 .actions{margin-bottom:14px}
 .cta{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -161,7 +133,6 @@ h1{
 .call-alt a{color:var(--forest)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 
-/* ---------- promises (outlined checkmarks) ---------- */
 .promise{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:24px}
 .promise li{display:flex;gap:14px}
 .promise li p{margin:0}
@@ -172,15 +143,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
   font-size:18px;font-weight:600;
 }
 
-/* ---------- price (three tiers, replacing the old single-figure band) ---------- */
-/* the one set of numbers on the page set in lining figures, per the
-   copy notes; shared by all three card prices below */
 .fig-lining{font-variant-numeric:lining-nums}
 .price-cards{display:grid;grid-template-columns:1fr;gap:var(--space-5);margin:var(--space-2) 0 var(--space-6)}
-/* cream cards on the section's dark forest ground, the same card
-   grammar as .card (cream fill, hair border, orange top accent, flat
-   offset shadow on hover) so the two card systems on this page read as
-   one family even though they sit on different backgrounds */
 .price-card{
   position:relative;background:var(--cream);color:var(--charcoal);
   border:1px solid var(--hair);border-top:4px solid var(--orange);border-radius:3px;
@@ -203,10 +167,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 }
 .price-figure .fig-lining{font-family:'Lora',serif;font-weight:700;font-size:40px;line-height:1}
 .price-figure .price-per{font-size:18px;color:var(--muted)}
-/* decorative only (aria-hidden): the weekday strip from the share-card
-   art, M T W T F with Friday lit. Animated again as of Oct 27 2026; see
-   the "pricing tile motion" rules below this card's other CSS for the
-   named, confirmed exception to section 3's no-animation rule. */
 .price-tiles{display:flex;gap:8px;padding:var(--space-4) 0;border-block:1px solid var(--hair);margin:0 0 var(--space-4)}
 .price-tile{
   position:relative;width:40px;height:40px;border-radius:3px;background:var(--cream-deep);
@@ -228,21 +188,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .price-card.rec .price-card-cta{background:var(--forest);color:var(--cream)}
 .price-card.rec .price-card-cta:hover{background:#004a33}
 
-/* Pricing tile motion: a named, confirmed exception to section 3's
-   no-animation-while-reading rule, scoped to these decorative,
-   aria-hidden tiles only, restored on direct request (Oct 27 2026)
-   after shipping static. Family Package (p1) shows Mon-Thu as dashed
-   outlines, since that tier reserves no fixed time. Extra Support (p2)
-   draws one orange squiggle across one weekday at a time; Extra Extra
-   Support (p3) draws two at once. Each squiggle draws in, holds, then
-   erases backwards, in a shared 17.6s loop. Hovering or focusing a
-   card pauses its own squiggles; `prefers-reduced-motion` turns the
-   whole thing off. The entire card is a click target too, through
-   `.price-card-cta::after` stretched over `.price-card` (its nearest
-   positioned ancestor), the same mechanism `.card-btn::after` uses
-   elsewhere on the site; there's only one link per card here, so no
-   `pointer-events` carve-out is needed the way `.card` needs one for
-   its two separate links. */
 .price-card{cursor:pointer}
 .price-card.p1 .price-tile:not(.lit){background:transparent;border:1.5px dashed rgba(47,61,56,.45);color:rgba(47,61,56,.6)}
 .price-sq{position:absolute;inset:-9px;width:calc(100% + 18px);height:calc(100% + 18px);overflow:visible;pointer-events:none}
@@ -265,34 +210,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .price-card.p3 .t2 .price-sq path{animation:price-p3d2 17.6s linear infinite}
 @keyframes price-p3d3{0%{stroke-dashoffset:300;opacity:0}0.01%{stroke-dashoffset:300;opacity:0}25.01%{stroke-dashoffset:300;opacity:0}25.3%{stroke-dashoffset:291;opacity:1}31.25%{stroke-dashoffset:0;opacity:1}42.61%{stroke-dashoffset:0;opacity:1}48.58%{stroke-dashoffset:291;opacity:1}48.86%{stroke-dashoffset:300;opacity:0}50.01%{stroke-dashoffset:300;opacity:0}50.3%{stroke-dashoffset:291;opacity:1}56.25%{stroke-dashoffset:0;opacity:1}67.61%{stroke-dashoffset:0;opacity:1}73.58%{stroke-dashoffset:291;opacity:1}73.86%{stroke-dashoffset:300;opacity:0}75.01%{stroke-dashoffset:300;opacity:0}100%{stroke-dashoffset:300;opacity:0}}
 .price-card.p3 .t3 .price-sq path{animation:price-p3d3 17.6s linear infinite}
-/* Extra Extra Support runs half a step behind Extra Support so the two cards never squiggle in sync */
 .price-card.p3 .price-tile .price-sq path{animation-delay:-2.2s}
-/* within Extra Extra Support, the second day of each pair (always Wed or Thu) starts about a second after the first */
 .price-card.p3 .t2 .price-sq path,.price-card.p3 .t3 .price-sq path{animation-delay:-1.2s}
 
-/* ---------- cards ---------- */
-/* Plain <div>, not <a>: each card holds two real links (the client's
-   own external site, and the card-anchor to the case study page), and
-   nesting two <a> tags inside one outer <a> is invalid HTML. Instead
-   the whole card is clickable via a stretched ::after pseudo-element
-   on .card-btn (position:absolute;inset:0, sized to .card because
-   .card is the nearest positioned ancestor), a September 2026 build
-   instruction fixing a Lighthouse audit that flagged "Learn More" as
-   non-descriptive link text; the anchor text now names the client
-   ("See the Love Aid Foundation build"). .card-site is carved out of
-   that overlay with its own z-index so it stays independently
-   clickable to the client's own domain; every other child gets
-   pointer-events:none so a click anywhere else on the card still
-   reaches the stretched anchor underneath. Hovering anywhere in the
-   card, including the button, still lifts the whole card, since CSS
-   :hover on a parent fires from a hover anywhere inside it. Each card
-   is a flex column with the button pinned to the bottom via
-   margin-top:auto, not absolutely positioned: that way, when the
-   row's cards stretch to match the tallest one (the grid's default
-   align-items:stretch), every button still lands on the same line,
-   since it's laid out relative to its own now-equal-height card
-   rather than positioned at a fixed offset that only worked if every
-   card already happened to be the same height. */
 .cards{display:grid;grid-template-columns:1fr;gap:var(--space-4);margin-top:30px;align-items:stretch}
 .card{
   background:var(--cream);border:1px solid var(--hair);border-top:4px solid var(--orange);
@@ -303,51 +223,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .card:hover{border-top-color:var(--rust);transform:translateY(-4px);box-shadow:0 8px 0 rgba(24,28,27,.16)}
 .card p{margin:0}
 .card > *:not(.card-btn):not(.card-site){pointer-events:none}
-/* base link styling shared with the case-study detail pages' own
-   "See [client] live at [domain]" paragraph link, a plain inline link
-   there, not a corner badge; the badge treatment below is scoped to
-   .card specifically so it doesn't reach that other, unrelated use of
-   the same class. */
 .card-site{
   display:inline-flex;align-items:center;gap:5px;
   font-size:18px;font-weight:500;color:var(--forest);
 }
-/* moved to the card's top-right corner, then through an icon-and-size
-   round ("it's ugly," wrapped in a rust pill), then restructured again
-   on direct, size-specific instruction: the class moved off the <a>
-   onto a wrapping <div>, so the link itself carries no class, and the
-   link now reads forest, 16px, underlined on hover only. Both the
-   16px size and the hover-only underline are explicit, deliberate
-   exceptions this time (section 7's 18px floor and the sitewide
-   underline-by-default rule), given with the kind of precise,
-   size-specific confirmation the earlier "make it smaller" rounds
-   didn't carry; scoped to this corner badge alone, not a sitewide
-   change to either rule. Moved again, from the top-right corner to
-   the bottom-right, on direct feedback that it "looks better" there;
-   this round dropped position:absolute entirely, since the flex
-   column .card already is (align-self:flex-end plus margin-top:auto
-   claims the column's leftover vertical space and right-aligns it,
-   landing it right above .card-btn, which went from its own
-   margin-top:auto to a small fixed gap now that .card-site claims
-   that space instead). position:relative plus z-index:2 still carry
-   over, unrelated to where it sits: that's what keeps it clickable
-   above .card-btn's stretched overlay (inset:0 across the whole
-   card, not just .card-btn itself), and z-index only does anything
-   on a positioned element, not a static one. The <a> inside inherits
-   normal pointer-events since the overlay-carveout rule only touches
-   .card's direct children. */
 .card .card-site{position:relative;z-index:2;align-self:flex-end;margin-top:var(--space-2);padding-right:4px}
 .card .card-site a{color:var(--forest);font-size:16px;text-decoration:none}
 .card .card-site a:hover{text-decoration:underline;text-decoration-thickness:2px}
-/* the ↗ icon came back on direct request, now a sibling of the <a>
-   inside the div rather than nested in it, so it reads as part of the
-   corner badge rather than the link text itself. On hover it nudges
-   in the direction it already points (up and to the right), the same
-   kind of hover-triggered micro-motion as .card's own hover lift
-   below, not the autoplay/scroll animation the no-animation rule in
-   CLAUDE.md section 3 is actually about; it's covered by the same
-   sitewide prefers-reduced-motion rule that already disables that
-   card lift. */
 .card .card-site .link-out-icon{display:inline-block;transition:transform .2s ease-out}
 .card .card-site:hover .link-out-icon{transform:translate(2px,-2px)}
 .link-out-icon{font-size:16px}
@@ -360,12 +242,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .card-btn::after{content:"";position:absolute;inset:0;z-index:1}
 .card-btn:hover{background:#ff5f18}
 
-/* client card watermark system ─────────────────────────────────────────────
-   .card-watermark sits at z-index:-1 behind the card content and uses
-   mix-blend-mode:multiply so logos/book-covers with white backgrounds
-   blend into the cream card surface. It is always present at a low opacity
-   (.2 default); hover increases it to .55 so the image "comes forward."
-   isolation:isolate on .card keeps the negative z-index child contained. */
 .card-watermark{
   position:absolute;inset:0;
   background-size:cover;background-position:center;background-repeat:no-repeat;
@@ -375,24 +251,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .card--ask-g-pop .card-watermark{background-image:url('/images/clients/ask-g-pop.png')}
 .card--rap-frogs .card-watermark{background-image:url('/images/clients/rap-frogs.png');background-size:contain}
 
-/* ---------- faq ---------- */
 .faq-list{display:flex;flex-direction:column}
 .faq-item{padding:24px 0;border-top:1px solid var(--hair)}
 .faq-item:last-child{border-bottom:1px solid var(--hair)}
 .faq-item p{margin:0}
 .faq-item p:not(:last-child){margin-bottom:12px}
 
-/* ---------- footer ---------- */
 footer{background:var(--forest);color:var(--cream);padding:44px 0}
 footer p{margin:0 0 8px}
 footer p:last-child{margin-bottom:0}
 
-/* newsletter signup, added on a September 2026 build instruction; sits
-   above the contact block inside the footer (see base.njk). Buttondown
-   accepts a plain form POST, so this needs no JavaScript. Uses the
-   same cream-fill/forest-border field styling as .contact-form, and a
-   cream (not orange) button: orange stays reserved for the booking
-   CTA, per the instruction's own "secondary treatment" call. */
 .newsletter{padding-block:var(--space-7);border-block-start:1px solid rgba(245,235,225,.2)}
 .newsletter-title{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--cream);margin:0 0 var(--space-2)}
 .newsletter-title::after{content:none}
@@ -412,9 +280,6 @@ footer p:last-child{margin-bottom:0}
   display:inline-flex;align-items:center;justify-content:center;text-decoration:none;
 }
 .newsletter-btn:hover{background:var(--cream-deep)}
-/* honeypot: visually and positionally hidden from real visitors, who
-   never see or fill this field; a bot that fills every field does,
-   and gets quietly redirected instead of erroring (api/subscribe.js) */
 .hp{position:absolute;left:-9999px;height:0;overflow:hidden}
 
 .footer-logo{display:block;width:clamp(210px,64vw,300px);height:auto;margin:0 0 var(--space-5)}
@@ -444,7 +309,6 @@ footer p:last-child{margin-bottom:0}
   .brand-logo{width:300px}
 }
 @media (min-width:760px){
-  /* desktop: the plain inline nav takes over, the hamburger disappears */
   .nav-menu{display:none}
   .nav-inline{display:flex;align-items:center;gap:28px}
   .nav-inline a{font-size:18px;font-weight:600;color:var(--forest)}
@@ -466,13 +330,6 @@ footer p:last-child{margin-bottom:0}
 
   .price-cards{grid-template-columns:1fr 1fr 1fr;align-items:stretch}
   .price-card.rec{transform:translateY(-10px)}
-  /* "Family Package" alone is one line; the other two cards' h3 wraps to
-     two ("with Extra Support" / "with Extra Extra Support" on its own
-     line), and the desc line wraps to two lines on two of three cards
-     but not the first. Both left unreserved, the tiles divider (and
-     everything under it) landed at a different height on each card,
-     so the row never lined up. Reserving two lines' worth on both
-     evens every card out to the same starting height below them. */
   .price-card h3{min-height:2.6em}
   .price-card .price-card-desc{min-height:3.2em}
 
@@ -481,7 +338,6 @@ footer p:last-child{margin-bottom:0}
   .booking-wrap{max-width:620px}
 }
 
-/* ---------- prose, shared by articles and case studies ---------- */
 .prose h1{margin-bottom:24px}
 .prose :where(h2,h3){margin-top:1.6em}
 .prose ul:not(.promise),.prose ol{margin:0 0 1.15rem;padding-left:1.4em;max-width:62ch}
@@ -491,21 +347,12 @@ footer p:last-child{margin-bottom:0}
 .content-cta .call-alt{text-align:center;margin:0 0 6px}
 .content-cta .risk-reversal{font-size:14px;color:var(--muted);text-align:center;margin:0}
 
-/* visually hidden but readable by screen readers: used in the weekly
-   timeline below to keep "Week N" context that the visible date drops */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* short human aside above a closing CTA: the homepage portrait, reused
-   smaller, next to a first-person line in Christopher's own voice */
 .author-note{display:flex;align-items:center;gap:16px;margin:32px 0 24px}
 .author-note p{margin:0;font-size:20px}
 .portrait-sm{width:64px;height:64px;border-width:2px}
 
-/* ---------- support ----------
-   Tip buttons: cream fill, forest outline, never orange, so orange
-   stays reserved for the one "Schedule your call today" action on the
-   page (section 6's "orange means act" rule). Each links straight to
-   a Stripe Payment Link. */
 .tip-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin:0 0 var(--space-6)}
 .tip-btn{
   display:inline-flex;align-items:center;justify-content:center;
@@ -516,9 +363,6 @@ footer p:last-child{margin-bottom:0}
 .tip-btn:hover{background:var(--cream-deep)}
 .tip-note{max-width:62ch;margin:0 0 var(--space-6);color:var(--muted)}
 
-/* ---------- about ----------
-   Work history: same border-top rhythm as .article-list-item, not a
-   new timeline system. */
 .work-history{display:flex;flex-direction:column;margin:0 0 var(--space-6)}
 .work-item{padding:var(--space-4) 0;border-top:1px solid var(--hair)}
 .work-item:first-child{border-top:none;padding-top:0}
@@ -527,7 +371,6 @@ footer p:last-child{margin-bottom:0}
 .work-role{color:var(--muted);margin:0 0 8px}
 .work-item p:last-child{margin-bottom:0}
 
-/* ---------- articles ---------- */
 .article-date{font-size:18px;color:var(--muted);margin:0 0 8px}
 
 .article-list{display:flex;flex-direction:column;margin-top:30px}
@@ -536,10 +379,6 @@ footer p:last-child{margin-bottom:0}
 .article-list-item h2{margin-bottom:6px}
 .article-list-item p{margin:0}
 
-/* ---------- case studies ---------- */
-
-/* "at a glance" fact strip under the headline, print magazine style,
-   not a sticky sidebar */
 .case-facts{display:flex;flex-direction:column;gap:20px;margin:28px 0 32px;padding-top:24px;border-top:1px solid var(--hair)}
 .case-fact-label{
   display:block;font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -547,32 +386,24 @@ footer p:last-child{margin-bottom:0}
 }
 .case-fact-value{display:block;font-weight:700;color:var(--forest)}
 
-/* pull-quote treatment: a real editorial quote, not muted footnote text */
 .prose blockquote{margin:0 0 1.15rem;padding-left:22px;border-left:3px solid var(--forest)}
 .prose blockquote p{
   font-family:'Lora',serif;font-style:italic;color:var(--forest);
   font-size:clamp(22px,3vw,25px);line-height:1.45;margin:0;
 }
+.prose blockquote p + p{margin-top:var(--space-4)}
 .prose blockquote cite{
   display:block;font-style:normal;font-family:'Inter',system-ui,sans-serif;
   font-size:18px;font-weight:600;color:var(--muted);margin-top:10px;
 }
 .prose blockquote cite::before{content:"\2013\0020"}
 
-/* breadcrumb, plain text, a print-plausible "you are here" */
 .breadcrumb{font-size:18px;color:var(--muted);margin:0 0 20px}
 
-/* closing cross-links to the other case studies */
-/* sized like h2 (a real heading, not a footnote), kept as an h3 tag since
-   the rest of a case study page runs h1 straight to h3 with no h2 level */
 .crosslinks-heading{font-size:clamp(29px,6vw,38px);font-weight:600;line-height:1.18;letter-spacing:-.01em;margin-bottom:14px}
 .case-crosslinks{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
 .case-crosslinks a{font-size:20px;font-weight:700}
 
-/* weekly log, shown as a horizontal timeline: every week visible at once
-   as circled numbers on a connecting line, scroll to see the rest. No
-   JavaScript: overflow-x:auto is the whole mechanism, so it still works
-   with JS off and is reachable by keyboard (tabindex + arrow/scroll). */
 .log-timeline-scroll{
   overflow-x:auto;margin:0 0 8px;padding:4px 4px 10px;
   scrollbar-width:thin;scrollbar-color:var(--muted) var(--hair);
@@ -581,16 +412,8 @@ footer p:last-child{margin-bottom:0}
 .log-timeline-scroll::-webkit-scrollbar{height:8px}
 .log-timeline-scroll::-webkit-scrollbar-track{background:var(--hair);border-radius:4px}
 .log-timeline-scroll::-webkit-scrollbar-thumb{background:var(--muted);border-radius:4px}
-/* width:max-content is the fix here: a block-level flex container otherwise
-   sizes to its scroll parent's visible width, not its overflowing children,
-   which left the connecting line stopping partway through the log instead
-   of running the full length of every week */
 .log-timeline{list-style:none;margin:0;padding:0;display:flex;gap:28px;position:relative;width:max-content}
 .log-timeline-item{flex:0 0 210px;display:flex;flex-direction:column;position:relative}
-/* the connecting line is drawn per item, circle center to circle center
-   (item width + gap = 238px, half the circle's own width = 26px), not as
-   one line across the whole row: a single full-width line left empty
-   track past the last circle, since nothing follows it to connect to */
 .log-timeline-item:not(:last-child)::after{
   content:"";position:absolute;left:26px;top:58px;width:238px;height:1px;background:var(--hair);
 }
@@ -611,8 +434,6 @@ footer p:last-child{margin-bottom:0}
 .log-timeline-text{font-size:18px;color:var(--charcoal);margin:0}
 .log-timeline-text.log-gap{color:var(--muted);font-style:italic}
 
-/* real numbers pulled out and set large, rust (not orange: orange on
-   cream fails contrast, rust is the site's existing numeral color) */
 .stat-row{display:flex;flex-wrap:wrap;gap:28px 40px;margin:28px 0 4px}
 .stat-num{
   display:block;font-family:'Lora',serif;font-weight:700;line-height:1;
@@ -620,10 +441,8 @@ footer p:last-child{margin-bottom:0}
 }
 .stat-label{display:block;font-size:18px;color:var(--muted);margin-top:2px;max-width:16ch}
 
-/* "sound familiar?" questions, muted, inside the narrow split column */
 .proof-questions{color:var(--muted)}
 
-/* ---------- contact form ---------- */
 .contact-form{display:flex;flex-direction:column;gap:20px;margin:28px 0;max-width:480px}
 .contact-form label{display:flex;flex-direction:column;gap:6px;font-size:18px;font-weight:600;color:var(--forest)}
 .contact-form input,.contact-form textarea{
@@ -636,7 +455,6 @@ footer p:last-child{margin-bottom:0}
 .contact-form button.cta:disabled{opacity:.6;cursor:default}
 .form-status{font-size:18px;color:var(--forest);min-height:1.5em}
 
-/* three ways to reach Christopher, beside the note form */
 .contact-grid{display:grid;gap:var(--space-7);margin-top:var(--space-6)}
 .contact-ways{display:flex;flex-direction:column;gap:var(--space-4)}
 .way{
@@ -649,7 +467,6 @@ footer p:last-child{margin-bottom:0}
 .way-label{font-family:'Lora',Georgia,serif;font-weight:700;font-size:22px;color:var(--forest)}
 .way-detail{font-size:18px}
 .way-go{position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--forest)}
-/* the one orange card: "when orange appears, it means act" */
 .way-primary{background:var(--orange)}
 .way-primary .way-label,.way-primary .way-detail,.way-primary .way-go{color:var(--charcoal)}
 .way-primary:hover{background:#ff5f18;border-color:var(--forest)}
@@ -667,10 +484,6 @@ footer p:last-child{margin-bottom:0}
   .case-facts>div+div{border-left:1px solid var(--hair)}
 }
 
-/* hover reveal for client cards ─────────────────────────────────────────
-   Only on devices that report hover capability; touch screens see the
-   description at all times and nothing changes on tap.
-   150ms delay stops the effect firing when a mouse passes through. */
 @media(hover:hover){
   .card .card-watermark{transition:opacity .25s ease .15s}
 
@@ -679,12 +492,12 @@ footer p:last-child{margin-bottom:0}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 
-/* hides the GoatCounter analytics pixel (base.njk) from a printed page,
-   once it's live; harmless to keep while the pixel itself is still
-   commented out pending Christopher's real account code (see section 8) */
 @media print{img[aria-hidden="true"]{display:none}.newsletter{display:none}}
 
-/* Article page: short answer box, cover image, Friday Letter line */
+.prose table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;margin:0 0 var(--space-3);font-size:18px}
+.prose th,.prose td{padding:var(--space-3) var(--space-4);border:1px solid var(--hair);text-align:left;vertical-align:top;min-width:120px}
+.prose th{background:var(--cream-deep);color:var(--forest);font-weight:700}
+.draft-slot{border:2px dashed var(--forest);padding:var(--space-4);margin:0 0 var(--space-5);color:var(--muted);max-width:62ch}
 .article-summary{background:var(--cream-deep,#ede0d3);border-left:6px solid var(--forest,#003223);padding:20px 22px;margin:24px 0 28px;border-radius:4px}
 .article-summary p{margin:0;font-size:20px;line-height:1.6}
 .article-summary .article-summary-label{font-weight:700;font-size:18px;color:var(--forest,#003223);margin-bottom:6px}
@@ -693,12 +506,6 @@ footer p:last-child{margin-bottom:0}
 .article-cover figcaption{font-size:18px;color:var(--muted);margin-top:8px}
 .article-letter{font-size:20px;margin:0 0 24px}
 
-/* Privacy choices banner (added Nov 19 2026, on direct request). A plain bar
-   pinned to the bottom of the screen until the visitor chooses. Forest
-   ground, cream text (12.06:1). Both buttons share one style on purpose:
-   an equal choice, and neither in orange, which stays reserved for the
-   booking button. While it shows, the page gains the same space at its
-   very end (html.consent-open), so nothing above it moves. */
 .consent-bar{
   position:fixed;left:0;right:0;bottom:0;z-index:40;
   background:var(--forest);color:var(--cream);
@@ -722,6 +529,4 @@ html.consent-open body{padding-bottom:var(--consent-h,0)}
   .consent-actions{flex:0 0 auto}
   .consent-btn{flex:0 0 auto;min-width:140px}
 }
-/* the footer's "Privacy choices" control is a plain footer link, so it
-   takes the exact styling of the links around it in every browser */
 @media print{.consent-bar{display:none}}

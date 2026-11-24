@@ -438,3 +438,36 @@ The "Already use Ko-fi? Tip me there." link is removed from
 Links now (one "Pick your amount" button for giving once, and $10, $25, $50
 a month), so the placeholder note in section 10 is history. Keep Ko-fi off
 the site until Christopher asks for it back.
+
+**Unlisted draft articles (added Nov 23 2026, on direct request).** An
+article with `draft: true` in its front matter still gets its own page, and
+it stays off the Articles list, the "More from The Friday Letter" links, and
+the sitemap. Its page carries `noindex` and a dashed "Draft preview" note at
+the top. Removing the `draft` line publishes it. `.draft-slot` (a dashed
+forest box) marks a spot still waiting on something from Christopher; use it
+on drafts only. Article tables are styled now too (`.prose table`): on a
+phone a wide table scrolls sideways inside its own box, with text held at
+18px.
+
+"How Much Does a Nonprofit Website Cost in 2026?"
+(`nonprofit-website-cost-2026.md`) is the first draft. It was rewritten on
+Nov 24 2026 to Christopher's second version, word for word: each section
+pairs "According to [source]" with "According to me," his own take. The one
+change from his text: his sign-off's em dash ("— Christopher") became a line
+break, per section 4. Published Nov 24 2026 on
+Christopher's direct request ("launch the new article"): `draft: true` is
+gone, so it is on the Articles page, the more-articles links, and the
+sitemap. The article's own "Book a free 15-minute call" link sits
+above the page's standard booking button, so the page carries two booking
+links; ask Christopher before trimming either.
+
+**Code notes removed (Nov 24 2026, Christopher's direct request).** Every
+comment was stripped from the website's code files (`src/`, `api/`,
+`astro.config.mjs`): CSS notes, JavaScript notes, HTML comments, and the `#`
+notes in article front matter. A build before and after was compared page by
+page, and the only difference was the removed notes. This file is now the
+one place the reasoning lives, so keep explanations here and keep new code
+free of comments. Two markers went with them: the `<!-- YOUTUBE_EMBED -->`
+line in `nonprofit-dates-december-2026.md` (the video belongs right after
+that article's opening italic line) and the note beside `draft: true` in
+`nonprofit-website-cost-2026.md` (removing `draft: true` still publishes it).

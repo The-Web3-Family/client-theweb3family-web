@@ -1,32 +1,4 @@
 ---
-/*
-  THE WEB3 FAMILY  ·  theweb3family.com
-  Built with Astro. This is the one shared layout: the <head>, the header,
-  and the footer. Page content lives in each page's own file under
-  src/pages/. Read CLAUDE.md before changing anything.
-
-  The design system lives in one place, src/styles.css, and every page
-  shares it through this layout. Keep page-specific styles there too,
-  scoped with a class.
-
-  Header navigation: four links (Portfolio, About, Articles, Contact) and
-  the booking button. Below 760px it is a <details>/<summary> disclosure,
-  so it opens with zero JavaScript; at 760px and up it is a plain inline
-  nav. Both exist in the markup at once, one hidden by CSS. Adding a link
-  needs an explicit conversation with Christopher first.
-
-  Analytics: Microsoft Clarity, Google Analytics, Vercel Speed Insights,
-  and PostHog (its own project, "The Web3 Family") load on every page,
-  each on Christopher's direct request. The PostHog token is a public
-  project key, safe in page code. PostHog waits for the privacy banner at
-  the bottom of this file: see the consent note there.
-  Calendly's popup assets load on every page too, since the footer's
-  booking button appears everywhere.
-
-  The newsletter form in the footer is a plain HTML POST to
-  /api/subscribe (api/subscribe.js at the repo root), which keeps the
-  Buttondown key on the server. The hidden "company" field is a honeypot.
-*/
 import '../styles.css';
 import CallButton from '../components/CallButton.astro';
 
@@ -45,8 +17,6 @@ const pathname = Astro.url.pathname.startsWith('/404') ? '/404.html' : Astro.url
 const pageUrl = `https://theweb3family.com${pathname}`;
 const isHome = pathname === '/';
 
-// Organization + Person JSON-LD, homepage only. Inert structured data for
-// search engines, with the same @id values the About page uses.
 const organization = `{
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -130,13 +100,6 @@ const person = `{
 <script is:inline defer src="/_vercel/speed-insights/script.js"></script>
 <script is:inline>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-  // Consent mode. Every visit starts with PostHog quiet: no cookies, no
-  // events, no recording. The banner at the bottom of the page saves the
-  // visitor's choice in localStorage ("w3f_consent") and applies it:
-  // Accept turns on full tracking and session replay; Decline keeps PostHog
-  // cookie-free, counting the visit anonymously, with replay off. Typed form
-  // entries stay masked in every recording.
-  // A visitor who accepted on an earlier page starts recording right away.
   var w3fChoice = null;
   try { w3fChoice = localStorage.getItem('w3f_consent'); } catch (e) {}
   posthog.init('phc_xYaKi2YW3BTDk3Dst9hpxUCQw5NQArci7ppCKDWFyYX6', {
@@ -228,14 +191,6 @@ const person = `{
   </div>
 </footer>
 
-<!--
-  PRIVACY CHOICES BANNER. Added Nov 19 2026 on Christopher's direct brief.
-  Governs PostHog only (see the posthog.init note in <head>). Shown at the
-  bottom of the screen until the visitor picks Accept or Decline; the
-  footer's "Privacy choices" button brings it back. Both buttons carry the
-  same size and weight on purpose: an equal choice. Hidden by default, so
-  with JavaScript off it stays out of the way, and PostHog stays quiet too.
--->
 <div class="consent-bar" id="consent-bar" role="region" aria-label="Privacy choices" hidden>
   <div class="wrap consent-row">
     <p class="consent-text">We use privacy-friendly analytics and anonymous session recordings to improve this site. <a href="/privacy/">Privacy policy</a></p>
@@ -261,14 +216,10 @@ const person = `{
     try { localStorage.setItem(KEY, choice); } catch (e) {}
   }
 
-  // Hands the saved choice to PostHog, once its script has loaded.
   function apply() {
     var ph = window.posthog;
     if (!ph || !ph.__loaded) return;
     var choice = read();
-    // PostHog's own record of an explicit choice: 'granted', 'denied', or
-    // 'pending'. (A visitor who hasn't chosen also reads as "opted out"
-    // to has_opted_out_capturing, so that check can't tell the two apart.)
     var status = ph.get_explicit_consent_status();
     if (choice === 'accepted') {
       if (status !== 'granted') ph.opt_in_capturing();
@@ -280,8 +231,6 @@ const person = `{
   }
   window.w3fApplyConsent = apply;
 
-  // While the bar shows, the page gains matching space at its very end, so
-  // the footer stays reachable. Nothing above it moves.
   function fit() { root.style.setProperty('--consent-h', bar.offsetHeight + 'px'); }
   function show() { bar.hidden = false; root.classList.add('consent-open'); fit(); }
   function hide() { bar.hidden = true; root.classList.remove('consent-open'); }

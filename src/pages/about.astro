@@ -4,11 +4,8 @@ import Base from '../layouts/Base.astro';
 const title = "About Christopher Clarke | The Web3 Family";
 const description = "Christopher Clarke is the founder of The Web3 Family, a creative studio for nonprofits in Inglewood, California, with 15+ years building tools that help people do their own work.";
 
-// Update this date whenever the words on this page change.
 const updated = '2026-11-14';
 
-// ProfilePage JSON-LD. Inert structured data for search engines. It reuses
-// the homepage's @id values, so both pages read as the same person.
 const profilePage = `{
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -39,7 +36,6 @@ const profilePage = `{
 ---
 <Base title={title} description={description}>
 <script is:inline type="application/ld+json" set:html={profilePage} />
-<!-- ABOUT -->
 <section>
   <div class="wrap">
     <img class="portrait" src="/christopher.jpg" alt="Christopher Clarke">

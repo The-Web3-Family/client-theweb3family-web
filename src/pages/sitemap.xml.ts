@@ -1,5 +1,3 @@
-// /sitemap.xml, the address robots.txt points to. Lists every public page.
-// The 404 page and the two newsletter result pages stay out of it.
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
@@ -18,7 +16,7 @@ const pages = [
 
 export const GET: APIRoute = async () => {
   const built = new Date().toISOString();
-  const articles = await getCollection('articles');
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
   const entries = [
     ...pages.map((path) => ({ path, lastmod: built })),
     ...articles.map((article) => ({ path: `/articles/${article.id}/`, lastmod: article.data.date.toISOString() })),

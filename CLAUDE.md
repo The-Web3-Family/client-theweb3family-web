@@ -458,3 +458,14 @@ break, per section 4. It is on the working branch only, unmerged, until he
 says to launch it. The article's own "Book a free 15-minute call" link sits
 above the page's standard booking button, so the page carries two booking
 links; ask Christopher before trimming either.
+
+**Code notes removed (Nov 24 2026, Christopher's direct request).** Every
+comment was stripped from the website's code files (`src/`, `api/`,
+`astro.config.mjs`): CSS notes, JavaScript notes, HTML comments, and the `#`
+notes in article front matter. A build before and after was compared page by
+page, and the only difference was the removed notes. This file is now the
+one place the reasoning lives, so keep explanations here and keep new code
+free of comments. Two markers went with them: the `<!-- YOUTUBE_EMBED -->`
+line in `nonprofit-dates-december-2026.md` (the video belongs right after
+that article's opening italic line) and the note beside `draft: true` in
+`nonprofit-website-cost-2026.md` (removing `draft: true` still publishes it).

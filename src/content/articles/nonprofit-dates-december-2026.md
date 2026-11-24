@@ -5,8 +5,6 @@ date: 2026-11-19T12:00:00Z
 description: "Giving Tuesday, the December 11 federal deadline, December 15 filings, $730,000 in LADWP grants, and California's January 1 wage and charity-form changes, with one action for each."
 category: News
 schemaType: Article
-# The share preview picks this up as soon as the file sits at
-# public/images/articles/W3F_news_2026-11-19_cover_1080x1920.jpg
 shareImage: /images/articles/W3F_news_2026-11-19_cover_1080x1920.jpg
 faq:
   - question: What is the deadline for Giving Tuesday 2026?
@@ -20,7 +18,6 @@ faq:
 ---
 *Nonprofit news, made simple. Here are the five dates small nonprofits should keep in mind between now and the new year, with one action for each.*
 
-<!-- YOUTUBE_EMBED: paste Shorts URL after posting -->
 
 ### December 1: Giving Tuesday, and your good standing
 

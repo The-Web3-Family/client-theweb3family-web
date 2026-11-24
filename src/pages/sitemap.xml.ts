@@ -1,5 +1,3 @@
-// /sitemap.xml, the address robots.txt points to. Lists every public page.
-// The 404 page and the two newsletter result pages stay out of it.
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 

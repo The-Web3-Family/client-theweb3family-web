@@ -471,3 +471,70 @@ free of comments. Two markers went with them: the `<!-- YOUTUBE_EMBED -->`
 line in `nonprofit-dates-december-2026.md` (the video belongs right after
 that article's opening italic line) and the note beside `draft: true` in
 `nonprofit-website-cost-2026.md` (removing `draft: true` still publishes it).
+
+**Homepage rebuild, Nov 25 2026 (Christopher's brief plus a visual mockup).**
+The brief and mockup arrived as `W3F_homepage_update.zip`; the mockup is a
+picture of the goal, so the page was rebuilt in this site's own classes and
+18px text floor. This entry replaces the older homepage notes in sections 1
+and 5 wherever they differ. Christopher reviewed a preview and approved it
+the same day ("merge"), so it is live.
+
+- **Offer and prices.** Trial (free for 2 weeks), Family Package ($495 a
+  month, "Most popular"), Family Package + Coaching ($1,495 a month). The old
+  $500, $1,500, and $3,000 packages are gone from the homepage and from the
+  Organization `priceRange` (now "$495 - $1,495"). The two Friday Letter
+  articles that mention $500 and $3,000 are Christopher's own dated words
+  and stay as written until he says to change them.
+- **The trial link lives in one place:** `src/site.ts`, `STRIPE_TRIAL_LINK`.
+  It is empty until Christopher sends his real Stripe checkout link. While
+  it is empty, every "Start free trial" button opens the Calendly booking
+  popup, so every button still works. Paste the Stripe link there and every
+  trial button on the site switches to it. Keep invented links out of it.
+- **Section order:** hero, client quote (hidden for now), "Donors check your
+  website before they give." (three cards), "Everything your nonprofit needs
+  to be found and funded." (four cards with simple line icons, on his
+  request), "Nonprofits we've worked with", "How it works" (three numbered
+  steps), "Available Packages" (forest band, `id="booking"`), "Have
+  Questions?", and a centered closing band, "Ready to be found and funded?".
+  All copy is word for word from the brief, including its "we" and "us".
+- **Hidden until Christopher supplies them** (each is one field at the top of
+  `src/pages/index.astro`): the client quote and its Google reviews link
+  (`clientQuote`), each client's result and person line (`result`, `person`
+  in `clients`), and the answer to "Can I edit the site myself?" (an FAQ
+  entry with an empty answer stays off the page and out of the FAQ data).
+  Love Aid Foundation's `person` stays empty for good unless its founder
+  gives fresh permission through Christopher (section 8).
+- **Kept from the old page on purpose:** the weekday tiles and the orange
+  squiggle on the package cards (Trial and Family Package show Monday to
+  Thursday as dashed outlines, the Coaching card draws one squiggle at a
+  time), the client logo watermarks on the three client cards, each client's
+  existing one-line description, and the "Available Packages" and "Have
+  Questions?" capital letters. The mockup shows the cards plainer; ask
+  Christopher before removing any of these.
+- **Client cards on the homepage** now end with a text link, "See the full
+  story". The "Family Package" label from the mockup was removed on
+  Christopher's direct request (Nov 25 2026); keep package names off the
+  client cards. The cards on `/case-studies/`
+  keep their "Click for more info" button, since the brief said to leave the
+  case-study pages as they are.
+- **Header and footer, on every page:** the orange header button reads "Start
+  free trial" (its text is charcoal now, matching the 5.08:1 contrast in
+  section 6). The footer button reads "Start free trial" and the footer has
+  Instagram and Facebook text links. Buttons inside other pages still read
+  "Schedule your call today". The header stays in the normal page flow; the
+  brief asked for a sticky header and also asked to keep the header working
+  as it does today, and a fixed header would cover about an eighth of a
+  phone screen, so this waits on Christopher's call.
+- **Backgrounds:** the faded logo textures live in `public/brand/textures/`.
+  They show on the hero from 1200px wide, and on the package band and footer
+  from 760px wide, so words on a phone sit on a clean ground.
+- **New tokens:** `--cream-light` (#fbf6f0, card fill; muted text on it is
+  10.59:1) and `--land` (#1c6a50, checkmarks; 5.53:1 on cream).
+- **Homepage title and description** are the brief's. A `FAQPage` data block
+  on the homepage repeats the visible questions.
+- **Checked:** zero sideways scroll at 320px and 390px, the headline is 38px
+  on a phone, Lighthouse accessibility 100 and SEO 100, performance 99 on
+  desktop and 87 on a simulated phone (the old homepage scored 86 in the
+  same test; fonts and the Calendly styles are the slow part). The copy
+  says "Cancel before day 14" on the Trial card and "billing starts on day
+  15" in the FAQ; ask Christopher which day is right.

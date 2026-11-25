@@ -1,6 +1,6 @@
 ---
 import '../styles.css';
-import CallButton from '../components/CallButton.astro';
+import { trialLink } from '../site';
 
 interface Props {
   title: string;
@@ -23,14 +23,14 @@ const organization = `{
   "@id": "https://theweb3family.com/#organization",
   "name": "The Web3 Family",
   "alternateName": "The Web3 Family, Creative Studio for Nonprofits",
-  "description": "A one-person creative studio for nonprofits in Inglewood, California that builds websites, brand identity, pitch decks, apps, donation platforms, and fundraising infrastructure for nonprofits.",
+  "description": "A one-person creative studio in Inglewood, California that builds websites, donation pages, decks, brand books, and videos for small Los Angeles nonprofits, with a finished piece every Friday and a 2-week free trial.",
   "disambiguatingDescription": "The Web3 Family is a nonprofit-focused design and build studio. It is not a cryptocurrency, blockchain, or Web3 software company.",
   "url": "https://theweb3family.com",
   "email": "christopher@theweb3family.com",
   "telephone": "+1-310-703-6003",
   "logo": "https://theweb3family.com/brand/png/W3F_logo_icon_fullcolor_2x.png",
   "image": "https://theweb3family.com/christopher.jpg",
-  "priceRange": "$500 - $3,000",
+  "priceRange": "$495 - $1,495",
   "founder": { "@id": "https://theweb3family.com/#christopher" },
   "areaServed": "United States",
   "address": {
@@ -39,7 +39,7 @@ const organization = `{
     "addressRegion": "CA",
     "addressCountry": "US"
   },
-  "sameAs": ["https://www.youtube.com/@theweb3family"],
+  "sameAs": ["https://www.youtube.com/@theweb3family", "https://www.instagram.com/theweb3familystudio", "https://www.facebook.com/profile.php?id=61595722419849"],
   "knowsAbout": ["nonprofit website design", "brand identity", "pitch decks", "donation platforms", "mobile apps", "fundraising strategy"]
 }`;
 const person = `{
@@ -128,7 +128,7 @@ const person = `{
       <a href="/about/">About</a>
       <a href="/articles/">Articles</a>
       <a href="/contact/">Contact</a>
-      <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule your call today</a>
+      <a class="nav-cta" {...trialLink}>Start free trial</a>
     </nav>
     <details class="nav-menu">
       <summary class="nav-toggle" aria-label="Menu">
@@ -139,7 +139,7 @@ const person = `{
         <a href="/about/">About</a>
         <a href="/articles/">Articles</a>
         <a href="/contact/">Contact</a>
-        <a class="nav-cta" href="https://calendly.com/aweb3dad/15-minute-greeting" onclick="Calendly.initPopupWidget({url:'https://calendly.com/aweb3dad/15-minute-greeting'});return false;">Schedule your call today</a>
+        <a class="nav-cta" {...trialLink}>Start free trial</a>
       </nav>
     </details>
   </div>
@@ -177,6 +177,7 @@ const person = `{
       <p class="footer-line">Inglewood, California</p>
       <p class="footer-line"><a href="tel:+13107036003">(310) 703-6003</a></p>
       <p class="footer-line"><a href="mailto:christopher@theweb3family.com">christopher@theweb3family.com</a></p>
+      <p class="footer-line"><a href="https://www.instagram.com/theweb3familystudio" target="_blank" rel="noopener">Instagram</a> &middot; <a href="https://www.facebook.com/profile.php?id=61595722419849" target="_blank" rel="noopener">Facebook</a></p>
       <p class="footer-line"><a href="/privacy/">Privacy Policy</a></p>
       <p class="footer-line" data-consent-link hidden><a href="#consent-bar">Privacy choices</a></p>
       <p class="footer-line"><a href="/support/">Support the studio</a></p>
@@ -187,7 +188,13 @@ const person = `{
       <p class="footer-line"><a href="https://askgpop.online" target="_blank" rel="noopener">askgpop.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
       <p class="footer-line"><a href="https://rapfrogs.online" target="_blank" rel="noopener">rapfrogs.online<span class="link-out-icon" aria-hidden="true">&#8599;</span></a></p>
     </div>
-    <CallButton wrapClass="footer-cta actions" />
+    <div class="footer-cta actions">
+      <a class="cta" {...trialLink}>
+        <span>Start free trial</span>
+      </a>
+      <p class="call-alt">or call or text at <a href="tel:+13107036003">(310) 703-6003</a></p>
+      <p class="call-alt">or <a href="mailto:christopher@theweb3family.com?subject=Booking%20a%20call">email directly</a></p>
+    </div>
   </div>
 </footer>
 

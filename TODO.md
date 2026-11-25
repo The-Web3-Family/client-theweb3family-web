@@ -6,8 +6,7 @@ real unfinished step. Delete an item once it's done.
 
 ## Homepage update (Nov 25 2026)
 
-Built locally and waiting on your approval. These turn on the parts that are
-hidden for now:
+Live as of Nov 25 2026. These turn on the parts that are hidden for now:
 
 - [ ] **Stripe free-trial checkout link** (2 weeks free, then $495 a month).
       Until it arrives, every "Start free trial" button opens your Calendly
@@ -19,8 +18,6 @@ hidden for now:
 - [ ] **Your answer to "Can I edit the site myself?"**
 - [ ] **Which day is right:** the Trial card says "Cancel before day 14" and
       the FAQ says billing starts on day 15.
-- [ ] **Confirm all three clients are on the Family Package**, as their cards
-      now say.
 
 ## About page (`/about/`)
 

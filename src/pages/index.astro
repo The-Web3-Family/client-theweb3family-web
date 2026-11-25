@@ -14,7 +14,6 @@ const clients = [
     name: 'Love Aid Foundation',
     summary: 'A nonprofit driving impact through music and charity',
     site: 'loveaid.foundation',
-    pkg: 'Family Package',
     result: '',
     person: '',
   },
@@ -24,7 +23,6 @@ const clients = [
     name: 'Ask G-Pop',
     summary: "A nonprofit investing into America's future",
     site: 'askgpop.online',
-    pkg: 'Family Package',
     result: '',
     person: '',
   },
@@ -34,7 +32,6 @@ const clients = [
     name: 'Rap Frogs',
     summary: 'An upcoming nonprofit spreading awareness to the youth about drugs and crime',
     site: 'rapfrogs.online',
-    pkg: 'Family Package',
     result: '',
     person: '',
   },
@@ -181,7 +178,7 @@ const weekdays = ['M', 'T', 'W', 'T'];
           <span class="eyebrow-person"><span class="org-name">{client.name}</span></span>
           {client.result && <p class="card-result">{client.result}</p>}
           <h3>{client.summary}</h3>
-          <p class="card-meta">{client.person && <>{client.person} &middot; </>}{client.pkg}</p>
+          {client.person && <p class="card-meta">{client.person}</p>}
           <a class="card-btn card-btn--link" href={`/case-studies/${client.slug}/`} aria-label={`See the full story of the ${client.name} build`}>See the full story <span aria-hidden="true">&rarr;</span></a>
           <div class="card-site"><a href={`https://${client.site}`} target="_blank" rel="noopener">{client.site}</a><span class="link-out-icon" aria-hidden="true">&#8599;</span></div>
         </div>

@@ -476,8 +476,8 @@ that article's opening italic line) and the note beside `draft: true` in
 The brief and mockup arrived as `W3F_homepage_update.zip`; the mockup is a
 picture of the goal, so the page was rebuilt in this site's own classes and
 18px text floor. This entry replaces the older homepage notes in sections 1
-and 5 wherever they differ. Built and shown to Christopher first, on the
-working branch as a preview link; it goes live once he approves.
+and 5 wherever they differ. Christopher reviewed a preview and approved it
+the same day ("merge"), so it is live.
 
 - **Offer and prices.** Trial (free for 2 weeks), Family Package ($495 a
   month, "Most popular"), Family Package + Coaching ($1,495 a month). The old
@@ -512,7 +512,9 @@ working branch as a preview link; it goes live once he approves.
   Questions?" capital letters. The mockup shows the cards plainer; ask
   Christopher before removing any of these.
 - **Client cards on the homepage** now end with a text link, "See the full
-  story", and show a "Family Package" label. The cards on `/case-studies/`
+  story". The "Family Package" label from the mockup was removed on
+  Christopher's direct request (Nov 25 2026); keep package names off the
+  client cards. The cards on `/case-studies/`
   keep their "Click for more info" button, since the brief said to leave the
   case-study pages as they are.
 - **Header and footer, on every page:** the orange header button reads "Start

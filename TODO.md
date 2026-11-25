@@ -4,6 +4,24 @@ Things built, but waiting on something only Christopher can supply, or a step
 only he can take. Nothing here is invented; each is a real placeholder or a
 real unfinished step. Delete an item once it's done.
 
+## Homepage update (Nov 25 2026)
+
+Built locally and waiting on your approval. These turn on the parts that are
+hidden for now:
+
+- [ ] **Stripe free-trial checkout link** (2 weeks free, then $495 a month).
+      Until it arrives, every "Start free trial" button opens your Calendly
+      booking popup.
+- [ ] **One client quote**, with name, role, organization, and written OK,
+      plus the link to your Google reviews.
+- [ ] **One result and one name and role** for Ask G-Pop and Rap Frogs, and
+      one result for Love Aid Foundation, each with written OK.
+- [ ] **Your answer to "Can I edit the site myself?"**
+- [ ] **Which day is right:** the Trial card says "Cancel before day 14" and
+      the FAQ says billing starts on day 15.
+- [ ] **Confirm all three clients are on the Family Package**, as their cards
+      now say.
+
 ## About page (`/about/`)
 
 Content is done: the real "Why I do this" paragraph, all six social links,
